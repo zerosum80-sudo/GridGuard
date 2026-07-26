@@ -2,8 +2,8 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Current resume point: M12 Worker Service builds with no warnings, install/uninstall
-scripts parse, default AuditOnly is validated, and status uses a local named pipe.
+Current resume point: M13 tray and service build with no warnings; status, AuditOnly
+scan, pause/resume, logs, quarantine, and exit actions use local-only IPC/UI.
 
 For M02 extraction-specific work, place the reference binary at:
 

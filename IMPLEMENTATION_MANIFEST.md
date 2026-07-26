@@ -14,8 +14,8 @@
 | M10 | Event monitoring | Complete |
 | M11 | Safe response framework | Complete |
 | M12 | Windows service | Complete |
-| M13 | Tray management | In progress |
-| M14 | End-to-end synthetic validation | Pending |
+| M13 | Tray management | Complete |
+| M14 | End-to-end synthetic validation | In progress |
 | M15 | CI, packaging, baseline release candidate | Pending |
 
 ## Required top-level deliverables

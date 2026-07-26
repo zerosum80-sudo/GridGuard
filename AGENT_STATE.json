@@ -1,10 +1,10 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-dev",
-  "phase": "tray-management",
-  "current_milestone": "M13",
-  "last_completed_milestone": "M12",
-  "next_milestone": "M14",
+  "phase": "synthetic-validation",
+  "current_milestone": "M14",
+  "last_completed_milestone": "M13",
+  "next_milestone": "M15",
   "status": "IN_PROGRESS",
   "blockers": [
     {
@@ -122,8 +122,15 @@
       "result": "PASS",
       "detail": "Worker Service built with 0 warnings/errors; installation scripts parsed; local-only named pipe and AuditOnly configuration inspected.",
       "observed_at": "2026-07-26T15:10:00+09:00"
+    },
+    {
+      "milestone": "M13",
+      "kind": "build",
+      "result": "PASS",
+      "detail": "Tray and updated service built with 0 warnings/errors; UI cannot enable deletion and controls use current-user named pipe.",
+      "observed_at": "2026-07-26T15:15:00+09:00"
     }
   ],
   "repository_head": null,
-  "updated_at": "2026-07-26T15:10:00+09:00"
+  "updated_at": "2026-07-26T15:15:00+09:00"
 }

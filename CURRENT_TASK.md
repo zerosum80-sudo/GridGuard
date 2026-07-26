@@ -1,6 +1,7 @@
 # Current Task
 
-- Milestone: M13
-- Name: Tray management
+- Milestone: M14
+- Name: End-to-end synthetic validation
 - Status: IN_PROGRESS
-- Scope: minimal tray UI model for status, scan, pause/resume, logs, and quarantine
+- Scope: synthetic detection, simulated response, quarantine/restore, and failure
+  paths without real host remediation
