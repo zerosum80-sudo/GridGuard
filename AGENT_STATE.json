@@ -1,10 +1,10 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-dev",
-  "phase": "system-inventory",
-  "current_milestone": "M07",
-  "last_completed_milestone": "M06",
-  "next_milestone": "M08",
+  "phase": "snapshot-diff",
+  "current_milestone": "M08",
+  "last_completed_milestone": "M07",
+  "next_milestone": "M09",
   "status": "IN_PROGRESS",
   "blockers": [
     {
@@ -80,8 +80,15 @@
       "result": "PASS",
       "detail": "Detection engine and evidence normalization tests passed: 5 total, 0 failed.",
       "observed_at": "2026-07-26T14:39:00+09:00"
+    },
+    {
+      "milestone": "M07",
+      "kind": "unit-tests",
+      "result": "PASS",
+      "detail": "Read-only inventory adapter test passed: 1 total, 0 failed; final build emitted 0 warnings.",
+      "observed_at": "2026-07-26T14:44:00+09:00"
     }
   ],
   "repository_head": null,
-  "updated_at": "2026-07-26T14:39:00+09:00"
+  "updated_at": "2026-07-26T14:44:00+09:00"
 }

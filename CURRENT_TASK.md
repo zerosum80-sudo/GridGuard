@@ -1,7 +1,6 @@
 # Current Task
 
-- Milestone: M07
-- Name: Safe system inventory adapters
+- Milestone: M08
+- Name: Snapshot and diff utility
 - Status: IN_PROGRESS
-- Scope: process, service, autorun, scheduled-task, and file inventory behind safe
-  abstractions
+- Scope: non-destructive capture, normalized comparison, CLI, and tests

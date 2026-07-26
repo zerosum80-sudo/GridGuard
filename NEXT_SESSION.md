@@ -2,8 +2,8 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Current resume point: M06 normalization, boolean/threshold evaluation, exclusions,
-allowlist precedence, scoring, and explanations pass five tests. Continue M07.
+Current resume point: M07 read-only process/service/autorun/task/startup/file
+inventory passes its temporary-directory immutability test with no warnings.
 
 For M02 extraction-specific work, place the reference binary at:
 

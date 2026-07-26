@@ -8,8 +8,8 @@
 | M04 | Indicator normalization | Complete |
 | M05 | Rule schema and validation | Complete |
 | M06 | Core evidence and scoring engine | Complete |
-| M07 | Safe system inventory adapters | In progress |
-| M08 | Snapshot and diff utility | Pending |
+| M07 | Safe system inventory adapters | Complete |
+| M08 | Snapshot and diff utility | In progress |
 | M09 | Initial scanner and CLI | Pending |
 | M10 | Event monitoring | Pending |
 | M11 | Safe response framework | Pending |
