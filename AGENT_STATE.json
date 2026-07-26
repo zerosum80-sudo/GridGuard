@@ -1,10 +1,10 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-dev",
-  "phase": "indicator-normalization",
-  "current_milestone": "M04",
-  "last_completed_milestone": "M01",
-  "next_milestone": "M05",
+  "phase": "rule-foundation",
+  "current_milestone": "M05",
+  "last_completed_milestone": "M04",
+  "next_milestone": "M06",
   "status": "IN_PROGRESS",
   "blockers": [
     {
@@ -59,8 +59,15 @@
       "result": "PASS_PARTIAL",
       "detail": "Pinned AutoIt-Ripper 1.2.0 commit and wheel hashes recorded; source risk scan and script parsing passed; missing input fails closed; extraction blocked by BINARY_NOT_FOUND.",
       "observed_at": "2026-07-26T14:21:00+09:00"
+    },
+    {
+      "milestone": "M04",
+      "kind": "build-and-synthetic-self-test",
+      "result": "PASS",
+      "detail": "RuleCompiler built with 0 warnings/errors; self-test passed; one synthetic candidate emitted with candidate status and no confirmation claim.",
+      "observed_at": "2026-07-26T14:26:00+09:00"
     }
   ],
   "repository_head": null,
-  "updated_at": "2026-07-26T14:21:00+09:00"
+  "updated_at": "2026-07-26T14:26:00+09:00"
 }

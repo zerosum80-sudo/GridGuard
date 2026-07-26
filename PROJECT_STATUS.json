@@ -4,17 +4,17 @@
   "preferred_path_unavailable_for_writes": "D:\\AI Project\\GridGuard",
   "branch": "main",
   "head": null,
-  "phase": "indicator-normalization",
-  "current_milestone": "M04",
-  "last_completed_milestone": "M01",
-  "next_milestone": "M05",
+  "phase": "rule-foundation",
+  "current_milestone": "M05",
+  "last_completed_milestone": "M04",
+  "next_milestone": "M06",
   "runtime_active": false,
   "default_mode": "AuditOnly",
   "binary_status": "BINARY_NOT_FOUND",
   "sdk_status": "LOCAL_DOTNET_8_0_423",
-  "build_status": "PASS_M02_TOOL",
+  "build_status": "PASS_M04_TOOL",
   "test_status": "NOT_APPLICABLE",
   "rule_validation_status": "NOT_APPLICABLE",
   "remote_status": "REMOTE_REPOSITORY_UNAVAILABLE",
-  "updated_at": "2026-07-26T14:21:00+09:00"
+  "updated_at": "2026-07-26T14:26:00+09:00"
 }

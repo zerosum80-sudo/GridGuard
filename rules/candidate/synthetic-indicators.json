@@ -1,0 +1,13 @@
+[
+  {
+    "Type": "serviceName",
+    "Value": "SyntheticGridService",
+    "SourceType": "synthetic-fixture",
+    "SourceLocation": "tests/fixtures/raw-indicators.synthetic.json#/0",
+    "ExtractionMethod": "unit-test",
+    "Confidence": "strong-inference",
+    "IndependentlyVerified": false,
+    "RuleStatus": "candidate",
+    "ConfirmationNote": "Extracted observation is not independently verified and cannot be confirmed."
+  }
+]

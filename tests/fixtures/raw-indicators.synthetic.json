@@ -1,0 +1,11 @@
+[
+  {
+    "type": "serviceName",
+    "value": "  SyntheticGridService  ",
+    "sourceType": "synthetic-fixture",
+    "sourceLocation": "tests/fixtures/raw-indicators.synthetic.json#/0",
+    "extractionMethod": "unit-test",
+    "confidence": "strong-inference",
+    "independentlyVerified": false
+  }
+]

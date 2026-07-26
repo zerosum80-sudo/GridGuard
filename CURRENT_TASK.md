@@ -1,8 +1,8 @@
 # Current Task
 
-- Milestone: M04
-- Name: Indicator normalization
+- Milestone: M05
+- Name: Rule schema and validation
 - Status: IN_PROGRESS
-- Scope: candidate indicator pipeline, confidence/provenance model, candidate rule
-  output, and unsupported-confirmation prevention
-- Carry-forward blocker: `BINARY_NOT_FOUND`
+- Scope: versioned JSON schema, rule loader/validator, synthetic rules, and tests
+- Safety boundary: synthetic rules only; extracted observations cannot be promoted
+  automatically.
