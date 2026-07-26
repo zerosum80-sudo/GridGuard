@@ -4,10 +4,10 @@
   "preferred_path_unavailable_for_writes": "D:\\AI Project\\GridGuard",
   "branch": "main",
   "head": null,
-  "phase": "extraction-research",
-  "current_milestone": "M03",
+  "phase": "indicator-normalization",
+  "current_milestone": "M04",
   "last_completed_milestone": "M01",
-  "next_milestone": "M04",
+  "next_milestone": "M05",
   "runtime_active": false,
   "default_mode": "AuditOnly",
   "binary_status": "BINARY_NOT_FOUND",
@@ -16,5 +16,5 @@
   "test_status": "NOT_APPLICABLE",
   "rule_validation_status": "NOT_APPLICABLE",
   "remote_status": "REMOTE_REPOSITORY_UNAVAILABLE",
-  "updated_at": "2026-07-26T14:14:00+09:00"
+  "updated_at": "2026-07-26T14:21:00+09:00"
 }

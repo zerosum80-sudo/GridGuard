@@ -2,9 +2,10 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Current resume point: M02 analyzer/methodology are implemented and build cleanly;
-the actual sample report remains blocked by `BINARY_NOT_FOUND`. Continue M03 from
-the pinned AutoIt-Ripper dependency review.
+Current resume point: M03 dependency review, hash-locked environment, fail-closed
+sample verification, and private-output command are complete. Actual extraction
+remains blocked by `BINARY_NOT_FOUND`. Continue M04 normalization using synthetic
+input only.
 
 For M02 extraction-specific work, place the reference binary at:
 

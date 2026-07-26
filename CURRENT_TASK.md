@@ -1,8 +1,8 @@
 # Current Task
 
-- Milestone: M03
-- Name: AutoIt extraction research and isolated tooling
+- Milestone: M04
+- Name: Indicator normalization
 - Status: IN_PROGRESS
-- Scope: reviewed/pinned extraction dependency, license record, isolated command,
-  attempt logging, and private-output protection
+- Scope: candidate indicator pipeline, confidence/provenance model, candidate rule
+  output, and unsupported-confirmation prevention
 - Carry-forward blocker: `BINARY_NOT_FOUND`

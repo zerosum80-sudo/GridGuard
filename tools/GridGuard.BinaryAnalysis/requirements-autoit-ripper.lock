@@ -1,0 +1,5 @@
+autoit-ripper==1.2.0 \
+    --hash=sha256:e43fddb7d8eb2e985dffb7952bd1102b77d85a9a4467c1821ecefd8f416b45ce
+pefile==2024.8.26 \
+    --hash=sha256:76f8b485dcd3b1bb8166f1128d395fa3d87af26360c2358fb75b80019b957c6f
+
