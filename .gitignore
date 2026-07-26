@@ -1,0 +1,43 @@
+# Build outputs
+bin/
+obj/
+TestResults/
+coverage/
+*.trx
+
+# IDE and user state
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Reference and extracted content must never be committed
+input/*
+!input/.gitkeep
+quarantine/*
+!quarantine/.gitkeep
+artifacts/*
+!artifacts/.gitkeep
+artifacts/private-analysis/
+**/private-analysis/
+*.exe
+*.dll
+*.pdb
+*.dmp
+
+# Machine-specific data
+*.log
+*.etl
+*.evtx
+appsettings.Local.json
+local.override.json
+
+# Analysis environments and caches
+.venv/
+__pycache__/
+*.pyc
+
+# Packaging output
+dist/
+packages/
+

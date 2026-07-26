@@ -1,0 +1,20 @@
+{
+  "project": "GridGuard",
+  "repository_path": "C:\\Users\\Administrator\\Documents\\GridGuard",
+  "preferred_path_unavailable_for_writes": "D:\\AI Project\\GridGuard",
+  "branch": "main",
+  "head": null,
+  "phase": "binary-analysis",
+  "current_milestone": "M02",
+  "last_completed_milestone": "M01",
+  "next_milestone": "M03",
+  "runtime_active": false,
+  "default_mode": "AuditOnly",
+  "binary_status": "BINARY_NOT_FOUND",
+  "sdk_status": "DOTNET_SDK_NOT_FOUND",
+  "build_status": "NOT_APPLICABLE",
+  "test_status": "NOT_APPLICABLE",
+  "rule_validation_status": "NOT_APPLICABLE",
+  "remote_status": "REMOTE_REPOSITORY_UNAVAILABLE",
+  "updated_at": "2026-07-26T14:01:43.6961174+09:00"
+}
