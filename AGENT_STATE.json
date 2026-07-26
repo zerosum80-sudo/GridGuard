@@ -2,22 +2,16 @@
   "project": "GridGuard",
   "version": "0.1.0-dev",
   "phase": "binary-analysis",
-  "current_milestone": "M02",
+  "current_milestone": "M03",
   "last_completed_milestone": "M01",
-  "next_milestone": "M03",
-  "status": "PARTIAL_BLOCKED",
+  "next_milestone": "M04",
+  "status": "IN_PROGRESS",
   "blockers": [
     {
       "code": "BINARY_NOT_FOUND",
       "scope": ["M02", "M03", "M04"],
       "blocks_all_work": false,
       "detail": "Reference binary was not found in the approved search locations."
-    },
-    {
-      "code": "DOTNET_SDK_NOT_FOUND",
-      "scope": ["M05", "M06", "M07", "M08", "M09", "M10", "M11", "M12", "M13", "M14", "M15"],
-      "blocks_all_work": false,
-      "detail": "No dotnet executable was found on PATH or in common installation locations."
     }
   ],
   "approvals": {
@@ -51,8 +45,15 @@
       "result": "PASS",
       "detail": "13 required files and 29 required directories exist; canonical JSON parses; reference EXE and private-analysis paths are ignored.",
       "observed_at": "2026-07-26T14:01:43.6961174+09:00"
+    },
+    {
+      "milestone": "M02",
+      "kind": "build",
+      "result": "PASS_PARTIAL",
+      "detail": "Static PE/hash/entropy/AutoIt-marker analyzer built with 0 warnings and 0 errors; sample-specific analysis blocked by BINARY_NOT_FOUND.",
+      "observed_at": "2026-07-26T14:14:00+09:00"
     }
   ],
   "repository_head": null,
-  "updated_at": "2026-07-26T14:01:43.6961174+09:00"
+  "updated_at": "2026-07-26T14:14:00+09:00"
 }

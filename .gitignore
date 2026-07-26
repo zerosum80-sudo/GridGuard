@@ -34,10 +34,13 @@ local.override.json
 
 # Analysis environments and caches
 .venv/
+.dotnet/
+.dotnet-home/
+.nuget-packages/
+.tools/
 __pycache__/
 *.pyc
 
 # Packaging output
 dist/
 packages/
-

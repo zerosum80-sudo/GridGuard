@@ -2,9 +2,9 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Current resume point: M01 is complete. Continue M02 static identity. If the reference
-file remains absent, complete the static-analysis interfaces/methodology, record the
-partial result, and continue to M03.
+Current resume point: M02 analyzer/methodology are implemented and build cleanly;
+the actual sample report remains blocked by `BINARY_NOT_FOUND`. Continue M03 from
+the pinned AutoIt-Ripper dependency review.
 
 For M02 extraction-specific work, place the reference binary at:
 

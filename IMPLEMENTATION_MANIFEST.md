@@ -3,8 +3,8 @@
 | Milestone | Scope | State |
 |---|---|---|
 | M01 | Repository and AI-OS-compatible governance foundation | Complete |
-| M02 | Reference binary static identity | In progress; binary unavailable |
-| M03 | AutoIt extraction research and isolated tooling | Pending |
+| M02 | Reference binary static identity | Partial; analyzer complete, binary unavailable |
+| M03 | AutoIt extraction research and isolated tooling | In progress |
 | M04 | Indicator normalization | Pending |
 | M05 | Rule schema and validation | Pending |
 | M06 | Core evidence and scoring engine | Pending |
