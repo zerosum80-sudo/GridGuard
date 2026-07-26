@@ -2,8 +2,8 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Current resume point: M05 schema, loader, semantic validator, synthetic rule, and
-three unit tests pass. Continue M06 detection evaluation.
+Current resume point: M06 normalization, boolean/threshold evaluation, exclusions,
+allowlist precedence, scoring, and explanations pass five tests. Continue M07.
 
 For M02 extraction-specific work, place the reference binary at:
 

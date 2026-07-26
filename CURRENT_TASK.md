@@ -1,7 +1,7 @@
 # Current Task
 
-- Milestone: M06
-- Name: Core evidence and scoring engine
+- Milestone: M07
+- Name: Safe system inventory adapters
 - Status: IN_PROGRESS
-- Scope: normalized evidence, boolean/threshold matching, scoring, exclusions,
-  allowlist precedence, and explanations
+- Scope: process, service, autorun, scheduled-task, and file inventory behind safe
+  abstractions

@@ -7,8 +7,8 @@
 | M03 | AutoIt extraction research and isolated tooling | Partial; tooling complete, binary unavailable |
 | M04 | Indicator normalization | Complete |
 | M05 | Rule schema and validation | Complete |
-| M06 | Core evidence and scoring engine | In progress |
-| M07 | Safe system inventory adapters | Pending |
+| M06 | Core evidence and scoring engine | Complete |
+| M07 | Safe system inventory adapters | In progress |
 | M08 | Snapshot and diff utility | Pending |
 | M09 | Initial scanner and CLI | Pending |
 | M10 | Event monitoring | Pending |

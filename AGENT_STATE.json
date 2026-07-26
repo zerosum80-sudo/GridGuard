@@ -1,10 +1,10 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-dev",
-  "phase": "detection-engine",
-  "current_milestone": "M06",
-  "last_completed_milestone": "M05",
-  "next_milestone": "M07",
+  "phase": "system-inventory",
+  "current_milestone": "M07",
+  "last_completed_milestone": "M06",
+  "next_milestone": "M08",
   "status": "IN_PROGRESS",
   "blockers": [
     {
@@ -73,8 +73,15 @@
       "result": "PASS",
       "detail": "Rule schema/semantic validator tests passed: 3 total, 0 failed.",
       "observed_at": "2026-07-26T14:33:00+09:00"
+    },
+    {
+      "milestone": "M06",
+      "kind": "unit-tests",
+      "result": "PASS",
+      "detail": "Detection engine and evidence normalization tests passed: 5 total, 0 failed.",
+      "observed_at": "2026-07-26T14:39:00+09:00"
     }
   ],
   "repository_head": null,
-  "updated_at": "2026-07-26T14:33:00+09:00"
+  "updated_at": "2026-07-26T14:39:00+09:00"
 }
