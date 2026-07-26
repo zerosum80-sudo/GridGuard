@@ -2,8 +2,8 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Current resume point: M08 snapshot capture/diff CLI builds cleanly and two monitoring
-tests pass. Continue M09 AuditOnly scanner and management CLI.
+Current resume point: M09 AuditOnly scanner/CLI builds, validates one synthetic rule,
+and passes two CLI exit-code tests. Continue M10.
 
 For M02 extraction-specific work, place the reference binary at:
 

@@ -10,8 +10,8 @@
 | M06 | Core evidence and scoring engine | Complete |
 | M07 | Safe system inventory adapters | Complete |
 | M08 | Snapshot and diff utility | Complete |
-| M09 | Initial scanner and CLI | In progress |
-| M10 | Event monitoring | Pending |
+| M09 | Initial scanner and CLI | Complete |
+| M10 | Event monitoring | In progress |
 | M11 | Safe response framework | Pending |
 | M12 | Windows service | Pending |
 | M13 | Tray management | Pending |

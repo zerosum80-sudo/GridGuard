@@ -1,13 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GridGuard.Core\GridGuard.Core.csproj" />
+    <ProjectReference Include="..\GridGuard.Detection\GridGuard.Detection.csproj" />
     <ProjectReference Include="..\GridGuard.Monitoring\GridGuard.Monitoring.csproj" />
     <ProjectReference Include="..\GridGuard.Rules\GridGuard.Rules.csproj" />
   </ItemGroup>

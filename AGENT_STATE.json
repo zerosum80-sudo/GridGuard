@@ -1,10 +1,10 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-dev",
-  "phase": "scanner-cli",
-  "current_milestone": "M09",
-  "last_completed_milestone": "M08",
-  "next_milestone": "M10",
+  "phase": "event-monitoring",
+  "current_milestone": "M10",
+  "last_completed_milestone": "M09",
+  "next_milestone": "M11",
   "status": "IN_PROGRESS",
   "blockers": [
     {
@@ -94,8 +94,15 @@
       "result": "PASS",
       "detail": "Snapshot CLI built with 0 warnings/errors; monitoring suite passed 2 tests.",
       "observed_at": "2026-07-26T14:48:00+09:00"
+    },
+    {
+      "milestone": "M09",
+      "kind": "cli-and-integration-tests",
+      "result": "PASS",
+      "detail": "CLI validated 1 synthetic rule; status/usage exit-code tests passed: 2 total, 0 failed.",
+      "observed_at": "2026-07-26T14:54:00+09:00"
     }
   ],
   "repository_head": null,
-  "updated_at": "2026-07-26T14:48:00+09:00"
+  "updated_at": "2026-07-26T14:54:00+09:00"
 }

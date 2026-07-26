@@ -1,7 +1,7 @@
 # Current Task
 
-- Milestone: M09
-- Name: Initial scanner and CLI
+- Milestone: M10
+- Name: Event monitoring
 - Status: IN_PROGRESS
-- Scope: full AuditOnly reconciliation, CLI results/exit codes, structured output,
-  and tests
+- Scope: process/file events, deduplication/debounce, bounded processing, fallback
+  reconciliation, graceful shutdown, and tests
