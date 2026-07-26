@@ -1,7 +1,7 @@
 # Current Task
 
-- Milestone: M11
-- Name: Safe response framework
+- Milestone: M12
+- Name: Windows service
 - Status: IN_PROGRESS
-- Scope: AuditOnly, Simulate, Quarantine, guarded Remediate, metadata/restore, and
-  configuration/privilege enforcement
+- Scope: worker host, install scripts, local-only status channel, configuration
+  validation, structured logs, recovery documentation

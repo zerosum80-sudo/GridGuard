@@ -1,10 +1,10 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-dev",
-  "phase": "safe-response",
-  "current_milestone": "M11",
-  "last_completed_milestone": "M10",
-  "next_milestone": "M12",
+  "phase": "windows-service",
+  "current_milestone": "M12",
+  "last_completed_milestone": "M11",
+  "next_milestone": "M13",
   "status": "IN_PROGRESS",
   "blockers": [
     {
@@ -108,8 +108,15 @@
       "result": "PASS",
       "detail": "Monitoring suite passed 4 tests including deduplication and bounded graceful completion.",
       "observed_at": "2026-07-26T14:58:00+09:00"
+    },
+    {
+      "milestone": "M11",
+      "kind": "unit-tests",
+      "result": "PASS",
+      "detail": "Response suite passed 4 tests covering AuditOnly, Simulate, quarantine/restore, and unsafe configuration rejection.",
+      "observed_at": "2026-07-26T15:03:00+09:00"
     }
   ],
   "repository_head": null,
-  "updated_at": "2026-07-26T14:58:00+09:00"
+  "updated_at": "2026-07-26T15:03:00+09:00"
 }

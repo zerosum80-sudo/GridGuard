@@ -2,8 +2,8 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Current resume point: M10 process/file sources, bounded queue, deduplication,
-reconciliation, and graceful completion pass four monitoring tests.
+Current resume point: M11 response modes, quarantine metadata/restore, and unsafe
+configuration rejection pass four tests. Remediate adapters remain disabled.
 
 For M02 extraction-specific work, place the reference binary at:
 
