@@ -1,7 +1,7 @@
 # Current Task
 
-- Milestone: M10
-- Name: Event monitoring
+- Milestone: M11
+- Name: Safe response framework
 - Status: IN_PROGRESS
-- Scope: process/file events, deduplication/debounce, bounded processing, fallback
-  reconciliation, graceful shutdown, and tests
+- Scope: AuditOnly, Simulate, Quarantine, guarded Remediate, metadata/restore, and
+  configuration/privilege enforcement

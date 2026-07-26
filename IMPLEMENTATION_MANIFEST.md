@@ -11,8 +11,8 @@
 | M07 | Safe system inventory adapters | Complete |
 | M08 | Snapshot and diff utility | Complete |
 | M09 | Initial scanner and CLI | Complete |
-| M10 | Event monitoring | In progress |
-| M11 | Safe response framework | Pending |
+| M10 | Event monitoring | Complete |
+| M11 | Safe response framework | In progress |
 | M12 | Windows service | Pending |
 | M13 | Tray management | Pending |
 | M14 | End-to-end synthetic validation | Pending |

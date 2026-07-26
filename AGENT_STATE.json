@@ -1,10 +1,10 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-dev",
-  "phase": "event-monitoring",
-  "current_milestone": "M10",
-  "last_completed_milestone": "M09",
-  "next_milestone": "M11",
+  "phase": "safe-response",
+  "current_milestone": "M11",
+  "last_completed_milestone": "M10",
+  "next_milestone": "M12",
   "status": "IN_PROGRESS",
   "blockers": [
     {
@@ -101,8 +101,15 @@
       "result": "PASS",
       "detail": "CLI validated 1 synthetic rule; status/usage exit-code tests passed: 2 total, 0 failed.",
       "observed_at": "2026-07-26T14:54:00+09:00"
+    },
+    {
+      "milestone": "M10",
+      "kind": "unit-tests",
+      "result": "PASS",
+      "detail": "Monitoring suite passed 4 tests including deduplication and bounded graceful completion.",
+      "observed_at": "2026-07-26T14:58:00+09:00"
     }
   ],
   "repository_head": null,
-  "updated_at": "2026-07-26T14:54:00+09:00"
+  "updated_at": "2026-07-26T14:58:00+09:00"
 }

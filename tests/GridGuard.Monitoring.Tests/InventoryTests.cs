@@ -41,4 +41,29 @@ public sealed class InventoryTests
 
     private static InventorySnapshot Snapshot(params InventoryRecord[] records) =>
         new(DateTimeOffset.UtcNow, records, []);
+
+    [Fact]
+    public void DeduplicatesInsideDebounceWindow()
+    {
+        var now = DateTimeOffset.UtcNow;
+        var dedupe = new EventDeduplicator(TimeSpan.FromSeconds(1));
+        Assert.True(dedupe.ShouldProcess(new("file", "x", now)));
+        Assert.False(dedupe.ShouldProcess(new("file", "x", now.AddMilliseconds(50))));
+        Assert.True(dedupe.ShouldProcess(new("file", "x", now.AddSeconds(2))));
+    }
+
+    [Fact]
+    public async Task BoundedProcessorShutsDownGracefully()
+    {
+        var handled = new List<string>();
+        var processor = new BoundedEventProcessor(
+            2,
+            new EventDeduplicator(TimeSpan.Zero),
+            (item, _) => { handled.Add(item.ObjectId); return Task.CompletedTask; });
+        processor.TryPublish(new("file", "a", DateTimeOffset.UtcNow));
+        processor.TryPublish(new("file", "b", DateTimeOffset.UtcNow));
+        processor.Complete();
+        await processor.RunAsync(CancellationToken.None);
+        Assert.Equal(["a", "b"], handled);
+    }
 }

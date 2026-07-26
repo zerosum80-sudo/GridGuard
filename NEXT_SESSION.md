@@ -2,8 +2,8 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Current resume point: M09 AuditOnly scanner/CLI builds, validates one synthetic rule,
-and passes two CLI exit-code tests. Continue M10.
+Current resume point: M10 process/file sources, bounded queue, deduplication,
+reconciliation, and graceful completion pass four monitoring tests.
 
 For M02 extraction-specific work, place the reference binary at:
 
