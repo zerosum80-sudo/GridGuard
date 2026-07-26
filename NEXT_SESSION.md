@@ -2,8 +2,8 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Current resume point: M11 response modes, quarantine metadata/restore, and unsafe
-configuration rejection pass four tests. Remediate adapters remain disabled.
+Current resume point: M12 Worker Service builds with no warnings, install/uninstall
+scripts parse, default AuditOnly is validated, and status uses a local named pipe.
 
 For M02 extraction-specific work, place the reference binary at:
 

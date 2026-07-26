@@ -1,7 +1,6 @@
 # Current Task
 
-- Milestone: M12
-- Name: Windows service
+- Milestone: M13
+- Name: Tray management
 - Status: IN_PROGRESS
-- Scope: worker host, install scripts, local-only status channel, configuration
-  validation, structured logs, recovery documentation
+- Scope: minimal tray UI model for status, scan, pause/resume, logs, and quarantine

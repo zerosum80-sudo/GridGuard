@@ -1,10 +1,10 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-dev",
-  "phase": "windows-service",
-  "current_milestone": "M12",
-  "last_completed_milestone": "M11",
-  "next_milestone": "M13",
+  "phase": "tray-management",
+  "current_milestone": "M13",
+  "last_completed_milestone": "M12",
+  "next_milestone": "M14",
   "status": "IN_PROGRESS",
   "blockers": [
     {
@@ -115,8 +115,15 @@
       "result": "PASS",
       "detail": "Response suite passed 4 tests covering AuditOnly, Simulate, quarantine/restore, and unsafe configuration rejection.",
       "observed_at": "2026-07-26T15:03:00+09:00"
+    },
+    {
+      "milestone": "M12",
+      "kind": "build-and-script-inspection",
+      "result": "PASS",
+      "detail": "Worker Service built with 0 warnings/errors; installation scripts parsed; local-only named pipe and AuditOnly configuration inspected.",
+      "observed_at": "2026-07-26T15:10:00+09:00"
     }
   ],
   "repository_head": null,
-  "updated_at": "2026-07-26T15:03:00+09:00"
+  "updated_at": "2026-07-26T15:10:00+09:00"
 }

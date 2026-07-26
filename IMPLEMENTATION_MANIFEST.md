@@ -13,8 +13,8 @@
 | M09 | Initial scanner and CLI | Complete |
 | M10 | Event monitoring | Complete |
 | M11 | Safe response framework | Complete |
-| M12 | Windows service | In progress |
-| M13 | Tray management | Pending |
+| M12 | Windows service | Complete |
+| M13 | Tray management | In progress |
 | M14 | End-to-end synthetic validation | Pending |
 | M15 | CI, packaging, baseline release candidate | Pending |
 
