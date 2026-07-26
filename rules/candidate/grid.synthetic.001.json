@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "id": "grid.synthetic.001",
+  "name": "Synthetic Grid Service",
+  "vendor": "synthetic",
+  "family": "test-fixture",
+  "description": "Synthetic test rule; not a real GridGuard detection.",
+  "confidence": "strong-inference",
+  "status": "candidate",
+  "sources": ["tests/fixtures/raw-indicators.synthetic.json"],
+  "match": {
+    "all": [
+      { "type": "serviceName", "operator": "equalsIgnoreCase", "value": "SyntheticGridService" },
+      { "type": "serviceImagePath", "operator": "containsIgnoreCase", "value": "\\SyntheticGrid\\" }
+    ]
+  },
+  "exclusions": [],
+  "score": 100,
+  "response": {
+    "terminateProcess": true,
+    "stopService": true,
+    "disableService": true,
+    "removePersistence": true,
+    "quarantineFiles": true,
+    "permanentDelete": false
+  },
+  "createdAt": "2026-07-26T00:00:00Z",
+  "updatedAt": "2026-07-26T00:00:00Z"
+}
+

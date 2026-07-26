@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gridguard.local/schema/rule-1.0.json",
+  "title": "GridGuard Rule 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "id", "name", "vendor", "family", "description",
+    "confidence", "status", "sources", "match", "exclusions", "score",
+    "response", "createdAt", "updatedAt"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "id": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "vendor": { "type": "string", "minLength": 1 },
+    "family": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "confidence": {
+      "enum": ["hypothesis", "candidate", "strong-inference", "confirmed"]
+    },
+    "status": { "enum": ["enabled", "disabled", "candidate"] },
+    "sources": {
+      "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 }
+    },
+    "match": { "$ref": "#/$defs/expression" },
+    "exclusions": {
+      "type": "array", "items": { "$ref": "#/$defs/expression" }
+    },
+    "score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "terminateProcess", "stopService", "disableService",
+        "removePersistence", "quarantineFiles", "permanentDelete"
+      ],
+      "properties": {
+        "terminateProcess": { "type": "boolean" },
+        "stopService": { "type": "boolean" },
+        "disableService": { "type": "boolean" },
+        "removePersistence": { "type": "boolean" },
+        "quarantineFiles": { "type": "boolean" },
+        "permanentDelete": { "const": false }
+      }
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "expression": {
+      "type": "object",
+      "oneOf": [
+        {
+          "required": ["type", "operator", "value"],
+          "properties": {
+            "type": { "type": "string" },
+            "operator": {
+              "enum": ["equalsIgnoreCase", "containsIgnoreCase", "equals", "sha256Equals"]
+            },
+            "value": { "type": "string" },
+            "weight": { "type": "integer", "minimum": 0 }
+          }
+        },
+        {
+          "required": ["all"],
+          "properties": {
+            "all": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/expression" } }
+          }
+        },
+        {
+          "required": ["any"],
+          "properties": {
+            "any": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/expression" } }
+          }
+        },
+        {
+          "required": ["threshold", "minimum"],
+          "properties": {
+            "threshold": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/expression" } },
+            "minimum": { "type": "integer", "minimum": 1 }
+          }
+        }
+      ]
+    }
+  }
+}
+

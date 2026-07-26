@@ -1,10 +1,10 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-dev",
-  "phase": "rule-foundation",
-  "current_milestone": "M05",
-  "last_completed_milestone": "M04",
-  "next_milestone": "M06",
+  "phase": "detection-engine",
+  "current_milestone": "M06",
+  "last_completed_milestone": "M05",
+  "next_milestone": "M07",
   "status": "IN_PROGRESS",
   "blockers": [
     {
@@ -66,8 +66,15 @@
       "result": "PASS",
       "detail": "RuleCompiler built with 0 warnings/errors; self-test passed; one synthetic candidate emitted with candidate status and no confirmation claim.",
       "observed_at": "2026-07-26T14:26:00+09:00"
+    },
+    {
+      "milestone": "M05",
+      "kind": "unit-tests",
+      "result": "PASS",
+      "detail": "Rule schema/semantic validator tests passed: 3 total, 0 failed.",
+      "observed_at": "2026-07-26T14:33:00+09:00"
     }
   ],
   "repository_head": null,
-  "updated_at": "2026-07-26T14:26:00+09:00"
+  "updated_at": "2026-07-26T14:33:00+09:00"
 }

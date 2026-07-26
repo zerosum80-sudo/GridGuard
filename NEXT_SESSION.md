@@ -2,9 +2,8 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Current resume point: M04 candidate normalization is complete and self-tested;
-synthetic output remains candidate-only. Continue M05 versioned rule schema and
-validation.
+Current resume point: M05 schema, loader, semantic validator, synthetic rule, and
+three unit tests pass. Continue M06 detection evaluation.
 
 For M02 extraction-specific work, place the reference binary at:
 

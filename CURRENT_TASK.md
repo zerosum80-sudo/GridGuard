@@ -1,8 +1,7 @@
 # Current Task
 
-- Milestone: M05
-- Name: Rule schema and validation
+- Milestone: M06
+- Name: Core evidence and scoring engine
 - Status: IN_PROGRESS
-- Scope: versioned JSON schema, rule loader/validator, synthetic rules, and tests
-- Safety boundary: synthetic rules only; extracted observations cannot be promoted
-  automatically.
+- Scope: normalized evidence, boolean/threshold matching, scoring, exclusions,
+  allowlist precedence, and explanations
