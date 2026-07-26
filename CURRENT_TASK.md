@@ -1,7 +1,10 @@
 # Current Task
 
-- Milestone: M15
-- Name: CI, packaging, and baseline release candidate
-- Status: IN_PROGRESS
-- Scope: CI, unsigned packaging, full safe suite, security/release documentation,
-  and final evidence
+- Milestone: none
+- Status: SAFE_BASELINE_COMPLETE_WITH_EXTERNAL_BLOCKERS
+- Completed through: M15
+- Remaining external work:
+  - M02 actual sample identity: `BINARY_NOT_FOUND`
+  - M03 actual extraction attempt: `BINARY_NOT_FOUND`
+- No real detection indicator is confirmed.
+- No runtime remediation is enabled.

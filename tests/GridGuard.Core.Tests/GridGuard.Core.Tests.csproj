@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\GridGuard.Detection\GridGuard.Detection.csproj" />
+    <ProjectReference Include="..\..\src\GridGuard.Core\GridGuard.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,6 +3,7 @@ using GridGuard.Core;
 using GridGuard.Detection;
 using GridGuard.Monitoring;
 using GridGuard.Rules;
+using GridGuard.Response;
 
 namespace GridGuard.Cli;
 
@@ -72,8 +73,55 @@ public static class CliApplication
                 return 0;
             }
 
+            if (args is ["quarantine", "list"])
+            {
+                var store = new QuarantineStore(Path.Combine(repositoryRoot, "quarantine"));
+                foreach (var item in store.List())
+                    await output.WriteLineAsync(
+                        $"{item.Id}\t{item.RuleId}\t{item.OriginalPath}\t{item.QuarantinedAt:O}");
+                return 0;
+            }
+
+            if (args is ["quarantine", "restore", var itemId])
+            {
+                await new QuarantineStore(Path.Combine(repositoryRoot, "quarantine"))
+                    .RestoreAsync(itemId);
+                await output.WriteLineAsync($"Restored quarantine item {itemId}.");
+                return 0;
+            }
+
+            if (args is ["snapshot", "capture", "--output", var snapshotOutput])
+            {
+                var snapshot = await inventory.CaptureAsync();
+                await File.WriteAllTextAsync(
+                    snapshotOutput,
+                    JsonSerializer.Serialize(snapshot, new JsonSerializerOptions { WriteIndented = true }));
+                await output.WriteLineAsync($"Captured {snapshot.Records.Count} records.");
+                return 0;
+            }
+
+            if (args is ["snapshot", "diff", var beforePath, var afterPath])
+            {
+                var before = JsonSerializer.Deserialize<InventorySnapshot>(
+                    await File.ReadAllTextAsync(beforePath))!;
+                var after = JsonSerializer.Deserialize<InventorySnapshot>(
+                    await File.ReadAllTextAsync(afterPath))!;
+                await output.WriteLineAsync(JsonSerializer.Serialize(
+                    SnapshotComparer.Compare(before, after),
+                    new JsonSerializerOptions { WriteIndented = true }));
+                return 0;
+            }
+
+            if (args is ["diagnostics"])
+            {
+                await output.WriteLineAsync($"OS: {Environment.OSVersion}");
+                await output.WriteLineAsync($".NET: {Environment.Version}");
+                await output.WriteLineAsync("Mode: AuditOnly; permanent deletion unavailable");
+                return 0;
+            }
+
             await error.WriteLineAsync(
-                "Usage: gridguard status|scan|rules validate|rules list|rules explain <id>");
+                "Usage: gridguard status|scan|rules ...|quarantine ...|snapshot ...|diagnostics");
             return 64;
         }
         catch (Exception ex) when (ex is IOException or JsonException or InvalidDataException)

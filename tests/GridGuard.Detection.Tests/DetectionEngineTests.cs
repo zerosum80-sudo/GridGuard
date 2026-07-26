@@ -83,12 +83,20 @@ public sealed class DetectionEngineTests
 
     private static GridRule Rule(MatchExpression match) => new()
     {
-        SchemaVersion = "1.0", Id = "synthetic", Name = "Synthetic",
-        Vendor = "synthetic", Family = "test", Description = "test",
-        Confidence = "candidate", Status = "enabled", Sources = ["synthetic"],
-        Match = match, Score = 100,
+        SchemaVersion = "1.0",
+        Id = "synthetic",
+        Name = "Synthetic",
+        Vendor = "synthetic",
+        Family = "test",
+        Description = "test",
+        Confidence = "candidate",
+        Status = "enabled",
+        Sources = ["synthetic"],
+        Match = match,
+        Score = 100,
         Response = new(false, false, false, false, false, false),
-        CreatedAt = DateTimeOffset.UtcNow, UpdatedAt = DateTimeOffset.UtcNow
+        CreatedAt = DateTimeOffset.UtcNow,
+        UpdatedAt = DateTimeOffset.UtcNow
     };
 }
 

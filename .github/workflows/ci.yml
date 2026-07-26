@@ -1,0 +1,29 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - run: dotnet restore GridGuard.sln --configfile NuGet.Config
+      - run: dotnet build GridGuard.sln --configuration Release --no-restore
+      - run: dotnet test GridGuard.sln --configuration Release --no-build
+      - run: dotnet format GridGuard.sln --verify-no-changes --no-restore
+      - run: dotnet run --project src/GridGuard.Cli --configuration Release --no-build -- rules validate
+      - run: dotnet list GridGuard.sln package --vulnerable --include-transitive
+      - shell: pwsh
+        run: ./scripts/Build-Package.ps1 -Configuration Release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gridguard-unsigned
+          path: artifacts/package/
+

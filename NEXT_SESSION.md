@@ -2,8 +2,10 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Current resume point: M14 integration suite passes four tests including synthetic
-confirmed detection, simulation, quarantine, restore, and suspicious-response block.
+Current resume point: all safe synthetic milestones through M15 are complete.
+Release build, 22 tests, formatting, rule validation, vulnerability review, and
+unsigned packaging pass. Resume only the sample-specific M02/M03 remainder after the
+reference binary is placed at the path below.
 
 For M02 extraction-specific work, place the reference binary at:
 

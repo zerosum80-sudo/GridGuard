@@ -1,11 +1,11 @@
 {
   "project": "GridGuard",
-  "version": "0.1.0-dev",
-  "phase": "release-candidate",
-  "current_milestone": "M15",
-  "last_completed_milestone": "M14",
+  "version": "0.1.0-rc.1",
+  "phase": "safe-baseline-complete",
+  "current_milestone": null,
+  "last_completed_milestone": "M15",
   "next_milestone": null,
-  "status": "IN_PROGRESS",
+  "status": "COMPLETE_WITH_EXTERNAL_BLOCKERS",
   "blockers": [
     {
       "code": "BINARY_NOT_FOUND",
@@ -136,8 +136,15 @@
       "result": "PASS",
       "detail": "Integration suite passed 4 tests covering synthetic detection, simulation, quarantine, restore, and suspicious-response blocking.",
       "observed_at": "2026-07-26T15:20:00+09:00"
+    },
+    {
+      "milestone": "M15",
+      "kind": "release-candidate-validation",
+      "result": "PASS",
+      "detail": "17-project Release build passed with 0 warnings/errors; 22 tests passed; formatting, 1-rule validation, vulnerability review, and unsigned packaging passed.",
+      "observed_at": "2026-07-26T14:53:16.1715518+09:00"
     }
   ],
-  "repository_head": null,
-  "updated_at": "2026-07-26T15:20:00+09:00"
+  "repository_head": "HEAD",
+  "updated_at": "2026-07-26T14:53:16.1715518+09:00"
 }

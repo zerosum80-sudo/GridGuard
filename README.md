@@ -20,3 +20,20 @@ therefore remains externally blocked without blocking synthetic implementation.
 Read `SECURITY.md`, `IMPLEMENTATION_RULES.md`, and `DESIGN_FREEZE.md` before making
 changes.
 
+## Commands
+
+```text
+gridguard status
+gridguard scan --mode audit
+gridguard rules validate
+gridguard rules list
+gridguard rules explain <rule-id>
+gridguard quarantine list
+gridguard quarantine restore <item-id>
+gridguard snapshot capture --output <file>
+gridguard snapshot diff <before> <after>
+gridguard diagnostics
+```
+
+The Windows Worker Service and tray remain local-only. Build unsigned artifacts with
+`scripts/Build-Package.ps1`.

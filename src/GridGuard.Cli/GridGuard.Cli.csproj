@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GridGuard.Detection\GridGuard.Detection.csproj" />
     <ProjectReference Include="..\GridGuard.Monitoring\GridGuard.Monitoring.csproj" />
+    <ProjectReference Include="..\GridGuard.Response\GridGuard.Response.csproj" />
     <ProjectReference Include="..\GridGuard.Rules\GridGuard.Rules.csproj" />
   </ItemGroup>
 

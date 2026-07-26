@@ -16,7 +16,7 @@
 | M12 | Windows service | Complete |
 | M13 | Tray management | Complete |
 | M14 | End-to-end synthetic validation | Complete |
-| M15 | CI, packaging, baseline release candidate | In progress |
+| M15 | CI, packaging, baseline release candidate | Complete |
 
 ## Required top-level deliverables
 
