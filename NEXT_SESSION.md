@@ -2,8 +2,8 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Current resume point: M07 read-only process/service/autorun/task/startup/file
-inventory passes its temporary-directory immutability test with no warnings.
+Current resume point: M08 snapshot capture/diff CLI builds cleanly and two monitoring
+tests pass. Continue M09 AuditOnly scanner and management CLI.
 
 For M02 extraction-specific work, place the reference binary at:
 

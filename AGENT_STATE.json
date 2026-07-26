@@ -1,10 +1,10 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-dev",
-  "phase": "snapshot-diff",
-  "current_milestone": "M08",
-  "last_completed_milestone": "M07",
-  "next_milestone": "M09",
+  "phase": "scanner-cli",
+  "current_milestone": "M09",
+  "last_completed_milestone": "M08",
+  "next_milestone": "M10",
   "status": "IN_PROGRESS",
   "blockers": [
     {
@@ -87,8 +87,15 @@
       "result": "PASS",
       "detail": "Read-only inventory adapter test passed: 1 total, 0 failed; final build emitted 0 warnings.",
       "observed_at": "2026-07-26T14:44:00+09:00"
+    },
+    {
+      "milestone": "M08",
+      "kind": "build-and-unit-tests",
+      "result": "PASS",
+      "detail": "Snapshot CLI built with 0 warnings/errors; monitoring suite passed 2 tests.",
+      "observed_at": "2026-07-26T14:48:00+09:00"
     }
   ],
   "repository_head": null,
-  "updated_at": "2026-07-26T14:44:00+09:00"
+  "updated_at": "2026-07-26T14:48:00+09:00"
 }
