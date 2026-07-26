@@ -15,8 +15,8 @@
 | M11 | Safe response framework | Complete |
 | M12 | Windows service | Complete |
 | M13 | Tray management | Complete |
-| M14 | End-to-end synthetic validation | In progress |
-| M15 | CI, packaging, baseline release candidate | Pending |
+| M14 | End-to-end synthetic validation | Complete |
+| M15 | CI, packaging, baseline release candidate | In progress |
 
 ## Required top-level deliverables
 

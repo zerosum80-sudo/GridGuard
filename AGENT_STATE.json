@@ -1,10 +1,10 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-dev",
-  "phase": "synthetic-validation",
-  "current_milestone": "M14",
-  "last_completed_milestone": "M13",
-  "next_milestone": "M15",
+  "phase": "release-candidate",
+  "current_milestone": "M15",
+  "last_completed_milestone": "M14",
+  "next_milestone": null,
   "status": "IN_PROGRESS",
   "blockers": [
     {
@@ -129,8 +129,15 @@
       "result": "PASS",
       "detail": "Tray and updated service built with 0 warnings/errors; UI cannot enable deletion and controls use current-user named pipe.",
       "observed_at": "2026-07-26T15:15:00+09:00"
+    },
+    {
+      "milestone": "M14",
+      "kind": "integration-tests",
+      "result": "PASS",
+      "detail": "Integration suite passed 4 tests covering synthetic detection, simulation, quarantine, restore, and suspicious-response blocking.",
+      "observed_at": "2026-07-26T15:20:00+09:00"
     }
   ],
   "repository_head": null,
-  "updated_at": "2026-07-26T15:15:00+09:00"
+  "updated_at": "2026-07-26T15:20:00+09:00"
 }

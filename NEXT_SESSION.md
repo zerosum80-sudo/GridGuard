@@ -2,8 +2,8 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Current resume point: M13 tray and service build with no warnings; status, AuditOnly
-scan, pause/resume, logs, quarantine, and exit actions use local-only IPC/UI.
+Current resume point: M14 integration suite passes four tests including synthetic
+confirmed detection, simulation, quarantine, restore, and suspicious-response block.
 
 For M02 extraction-specific work, place the reference binary at:
 

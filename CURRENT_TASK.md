@@ -1,7 +1,7 @@
 # Current Task
 
-- Milestone: M14
-- Name: End-to-end synthetic validation
+- Milestone: M15
+- Name: CI, packaging, and baseline release candidate
 - Status: IN_PROGRESS
-- Scope: synthetic detection, simulated response, quarantine/restore, and failure
-  paths without real host remediation
+- Scope: CI, unsigned packaging, full safe suite, security/release documentation,
+  and final evidence
