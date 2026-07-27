@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "1.0",
+  "contractId": "GRIDGUARD-M22-PHYSICAL-AUDITONLY-VALIDATION-V1",
+  "validationRunId": "3dafe6e4-709b-4f5c-987f-39c502c530c2",
+  "evidenceId": "f5f31e10-4fdc-4003-a93f-1c8fe9725107",
+  "observedAt": "2026-07-27T22:18:46.5264953+09:00",
+  "repositoryIdentity": "zerosum80-sudo/GridGuard",
+  "repositoryHeadAtCollection": "84841526020afc351e713b9b5778ad5384cfb8f2",
+  "responseMode": "AuditOnly",
+  "validationTrigger": "post-reboot-final-removal-validation",
+  "outcome": "FAIL_RESIDUAL_COMPONENTS_PRESENT",
+  "processValidation": {
+    "gridGuardService": 0,
+    "gridKillerReference": 0,
+    "natService": 0,
+    "filebogoLauncher": 1,
+    "filebogoDown": 0,
+    "filebogoDownModule": 0,
+    "detectService": 0
+  },
+  "serviceValidation": {
+    "gridGuard": {
+      "present": false
+    },
+    "natService": {
+      "present": false
+    },
+    "filebogoLauncher": {
+      "present": true,
+      "state": "RUNNING",
+      "startMode": "AUTO_START",
+      "account": "LocalSystem",
+      "imagePath": "<PROGRAM_FILES_X86>\\Filebogo.com\\FilebogoLauncher.exe"
+    }
+  },
+  "fileValidation": {
+    "natServiceExecutable": {
+      "present": false
+    },
+    "filebogoLauncher": {
+      "present": true,
+      "sha256": "5AEF4BB0C390439E550870AA77242AFD4D9886B689631E3E092AA2724993FF3D"
+    },
+    "filebogoDown": {
+      "present": true,
+      "sha256": "9B384414AD17D377551D74FCFB655E6B4F3DB68C2317B06FB2C50B6D35F94B5C"
+    },
+    "filebogoDownModule": {
+      "present": true,
+      "sha256": "CDA37F07AF2AF7B06A36DB375182DE8D53D3D0FBB3CE64C19D9228964004CD0D"
+    },
+    "detectService": {
+      "present": true,
+      "sha256": "80FAF08664865AB41B17423AE0D84D719F32B02D2ADAD35E34B4EDBA9A92A527"
+    },
+    "priorDownloadReference": {
+      "present": true,
+      "sha256": "8CAB9BDCFEBB2A5EB6340C6A9F2FDF27737E42AF56EDDC15322D28D94473217B"
+    }
+  },
+  "persistenceValidation": {
+    "matchingScheduledTasks": 0,
+    "matchingRunEntries": 0,
+    "residualAutomaticService": "FilebogoLauncher"
+  },
+  "gridGuardValidation": {
+    "runtimeObserved": false,
+    "serviceObserved": false,
+    "statusPipeObserved": false,
+    "detectionLogObserved": false,
+    "auditOnlyStatusExitCode": 0,
+    "auditOnlyScanExitCode": 0,
+    "auditOnlyScanResult": "No candidate match. AuditOnly made no changes."
+  },
+  "repositoryValidation": {
+    "releaseBuild": {
+      "status": "PASS",
+      "errors": 0,
+      "warnings": 2,
+      "warningCode": "NU1900"
+    },
+    "tests": {
+      "status": "PASS",
+      "passed": 54,
+      "failed": 0,
+      "skipped": 0
+    },
+    "formatting": "PASS",
+    "ruleValidation": {
+      "status": "PASS",
+      "validatedRules": 7
+    },
+    "canonicalJson": "PASS",
+    "canonicalConsistency": "PASS"
+  },
+  "mutationVerification": {
+    "processTerminationRequested": false,
+    "fileDeletionRequested": false,
+    "quarantineRequested": false,
+    "serviceModificationRequested": false,
+    "persistenceModificationRequested": false,
+    "registryModificationRequested": false,
+    "referenceExecutionRequested": false
+  },
+  "decision": {
+    "removalValidated": false,
+    "reason": "FilebogoLauncher remains an automatic running service and process; Filebogo executables and the prior reference download remain present.",
+    "m22Status": "BLOCKED_RESIDUAL_COMPONENTS_AND_RUNTIME_EVIDENCE",
+    "m23Status": "BLOCKED_BY_M22",
+    "m24Status": "BLOCKED_BY_M23"
+  },
+  "privacy": {
+    "sanitized": true,
+    "privatePathsStored": false,
+    "rawBinariesStored": false,
+    "proprietaryContentsStored": false
+  }
+}

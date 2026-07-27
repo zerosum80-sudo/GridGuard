@@ -23,7 +23,7 @@
 | M19 | AuditOnly, Simulate, Privacy, and Regression Hardening | Complete; evidence allowlist/privacy tests added; Release build, 39 tests, formatting, and 6-rule validation pass |
 | M20 | CI, Documentation, and Packaging Hardening | Complete; CI-equivalent checks, 75-entry package manifest, advisory scan, docs, and canonical closure pass |
 | M21 | VM Preparation | Complete; hypervisor-neutral workflow, collectors, replay, evidence packaging, 52 tests, and validation gates pass |
-| M22 | Behavioral Validation | Candidate match validated; `grid.natservice.001` is AuditOnly/Simulate-safe and remains candidate-only; service runtime log still required |
+| M22 | Behavioral Validation | Blocked; post-reboot removal validation found residual Filebogo automatic service/files and prior reference download; GridGuard service runtime log still required |
 | M23 | Rule Confirmation | Registered; depends on M22 validated behavioral evidence |
 | M24 | Production Readiness | Registered; depends on M23 confirmed-rule review |
 
@@ -127,3 +127,18 @@ scans reproduced the candidate match, and Simulate produced an observation-only
 plan with no quarantine. Release build, rule compiler self-test, 7-rule validation,
 54 tests, and canonical consistency passed. No confirmed rule was created and the
 confirmation policy is unchanged.
+
+## M22 post-reboot final removal validation
+
+Read-only post-reboot inspection did not observe the Grid Killer process,
+NATService service/process, or the NATService executable. It did observe
+`FilebogoLauncher` as a running automatic LocalSystem service and process. Filebogo
+executables and the prior reference download also remain. No matching scheduled
+task or Run-key entry was observed.
+
+The GridGuard service/runtime, status pipe, and detection log remain absent. The
+trusted Release CLI preserved AuditOnly and returned no candidate match with no
+changes. Final removal validation is `FAIL_RESIDUAL_COMPONENTS_PRESENT`; M22 remains
+blocked and M23/M24 remain dependency-blocked. Evidence is stored in
+`docs/evidence/M22_FINAL_REMOVAL_VALIDATION.json` and the corresponding Markdown
+report.

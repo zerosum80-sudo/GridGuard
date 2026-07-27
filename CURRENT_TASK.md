@@ -2,7 +2,7 @@
 
 - Exact Task Contract: `GRIDGUARD-M22-PHYSICAL-AUDITONLY-VALIDATION-V1`
 - Milestone: M22 Behavioral Validation
-- Status: TRUE_POSITIVE_CANDIDATE_ONLY
+- Status: BLOCKED_RESIDUAL_COMPONENTS_AND_RUNTIME_EVIDENCE
 - Execution path: dedicated physical Windows test machine
 - Response mode: AuditOnly only
 - GridGuard runtime/status pipe: not observed
@@ -23,5 +23,13 @@
 - Simulate: observation-only, no quarantine or host modification proposed
 - Confirmation policy: unchanged; zero confirmed rules
 - M23/M24: dependency-blocked
-- Remaining blocker: observe the installed GridGuard service runtime and its
-  detection log for `grid.natservice.001`
+- Post-reboot final removal validation:
+  - Grid Killer process: absent
+  - NATService service/process/executable: absent
+  - FilebogoLauncher: running automatic LocalSystem service and process remain
+  - Filebogo executables: remain
+  - Prior reference download: remains
+  - GridGuard runtime/status pipe/detection log: absent
+  - AuditOnly scan: no candidate match; no changes
+- Remaining blockers: residual Filebogo persistence/files, prior reference download,
+  and missing GridGuard runtime detection evidence
