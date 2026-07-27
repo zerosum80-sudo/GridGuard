@@ -17,6 +17,7 @@
 | M13 | Tray management | Complete |
 | M14 | End-to-end synthetic validation | Complete |
 | M15 | CI, packaging, baseline release candidate | Complete |
+| M16 | Candidate Rule Audit Validation | Complete; 229 normalized candidates, zero current-system matches, 6 refined candidate rules |
 
 ## Required top-level deliverables
 
@@ -31,3 +32,14 @@ the external sample was absent. On 2026-07-27 the expected sample became availab
 at the actual repository path, its SHA-256 matched, and the residual static analysis,
 EA06 extraction, indicator normalization, candidate-rule validation, and full safe
 regression validation passed. Raw binary and extraction output remain ignored.
+
+## M16 completion
+
+M16 added deterministic candidate normalization, targeted read-only current-system
+matching, demand-driven matched-file metadata collection, privacy redaction,
+promotion-policy enforcement, matched-evidence-only detection output, and safe
+AuditOnly/Simulate behavior. Nine duplicate values and two empty rows were removed.
+No candidate object matched the current system and no rule was promoted.
+
+Recommended next milestone: M17 Rule confirmation from independent public evidence.
+It is not active without explicit operator approval.

@@ -2,10 +2,14 @@
 
 Resume GridGuard strictly from repository-local state at
 `C:\Users\Administrator\Documents\GridGuard`. Read `AGENTS.md` and its required
-files in order. The safe baseline through M15 and binary-dependent M02/M03/M04
-residual work are complete; no milestone is active.
+files in order.
 
-Preserve AuditOnly, runtime inactive, candidate-only rules, ignored private-analysis
-content, and every design-freeze boundary. Never execute, upload, or commit the
-reference binary or raw proprietary extraction output. Do not promote candidates or
-enable remediation without a new explicit milestone and independent evidence.
+M16 Candidate Rule Audit Validation is complete: 115 recovered rows produced 229
+distinct normalized candidates after 9 duplicates and 2 empty rows were removed.
+Current-system matches, correlations, and promotions were zero. Six rules remain
+candidate-only. AuditOnly, runtime inactive, privacy boundaries, and permanent
+deletion exclusion remain mandatory.
+
+The recommended next milestone is M17 Rule confirmation from independent public
+evidence, but it requires explicit approval before activation. Never execute the
+reference binary or a real webhard/grid component.

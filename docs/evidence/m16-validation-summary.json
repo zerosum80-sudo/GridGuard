@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "1.0",
+  "milestone": "M16",
+  "title": "Candidate Rule Audit Validation",
+  "observedAt": "2026-07-27T16:00:35+09:00",
+  "mode": "AuditOnly",
+  "runtimeActive": false,
+  "normalization": {
+    "rowsReviewed": 115,
+    "valuesReviewed": 238,
+    "duplicatesRemoved": 9,
+    "malformedRowsRemoved": 2,
+    "distinctCandidates": 229,
+    "byType": {
+      "executableName": 112,
+      "serviceName": 111,
+      "startupEntry": 6
+    },
+    "byClassification": {
+      "ActionableCandidate": 94,
+      "SupportingCandidate": 95,
+      "GenericRuntime": 8,
+      "VendorApplication": 20,
+      "PotentialGridComponent": 6,
+      "PersistenceIndicator": 6,
+      "RemovalException": 0,
+      "Unresolved": 0
+    }
+  },
+  "currentSystemMatches": {
+    "process": 0,
+    "file": 0,
+    "service": 0,
+    "autorun": 0,
+    "registry": 0,
+    "hash": 0
+  },
+  "correlations": [],
+  "candidateRules": 6,
+  "confirmedRules": 0,
+  "promotionRecommendations": 0,
+  "auditOnly": {
+    "result": "PASS",
+    "mutations": 0
+  },
+  "simulate": {
+    "result": "PASS",
+    "mutations": 0
+  },
+  "privacy": {
+    "rawInventoryTracked": false,
+    "privatePathsIncluded": false,
+    "unrelatedInventoryIncluded": false
+  },
+  "nextMilestone": "M17_RULE_CONFIRMATION_FROM_INDEPENDENT_PUBLIC_EVIDENCE"
+}

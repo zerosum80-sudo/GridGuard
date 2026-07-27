@@ -1,15 +1,16 @@
 {
   "project": "GridGuard",
-  "version": "0.1.0-rc.2",
-  "phase": "safe-baseline-complete",
+  "version": "0.1.0-rc.3",
+  "phase": "candidate-audit-complete",
   "current_milestone": null,
-  "last_completed_milestone": "M15",
-  "next_milestone": null,
+  "last_completed_milestone": "M16",
+  "next_milestone": "M17",
   "status": "COMPLETE",
   "blockers": [],
   "approvals": {
     "static_binary_inspection": true,
     "synthetic_testing": true,
+    "candidate_audit": true,
     "local_commits": true,
     "reference_binary_execution": false,
     "real_destructive_testing": false,
@@ -157,8 +158,15 @@
       "result": "PASS",
       "detail": "Five conservative candidate rules added; Release build passed with 0 warnings/errors, 22 tests passed, formatting passed, and all 6 candidate rules validated.",
       "observed_at": "2026-07-27T15:43:00+09:00"
+    },
+    {
+      "milestone": "M16",
+      "kind": "candidate-rule-audit-validation",
+      "result": "PASS",
+      "detail": "115 source rows and 238 values normalized to 229 distinct candidates; 9 duplicates and 2 malformed rows removed. Current-system matches and correlations were zero. AuditOnly and Simulate made no changes. Release build passed with 0 warnings/errors, 33 tests passed, formatting passed, and 6 candidate rules validated.",
+      "observed_at": "2026-07-27T16:01:00+09:00"
     }
   ],
   "repository_head": "HEAD",
-  "updated_at": "2026-07-27T15:43:00+09:00"
+  "updated_at": "2026-07-27T16:01:00+09:00"
 }
