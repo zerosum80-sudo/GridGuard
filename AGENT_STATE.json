@@ -1,14 +1,18 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-rc.3",
-  "phase": "m22-physical-auditonly-validation-authorized",
+  "phase": "m22-physical-auditonly-validation-insufficient-evidence",
   "active_contract_id": "GRIDGUARD-M22-PHYSICAL-AUDITONLY-VALIDATION-V1",
   "contract_status": "ACTIVE",
   "current_milestone": "M22",
   "last_completed_milestone": "M21",
   "next_milestone": "M22",
-  "status": "READY_FOR_PHYSICAL_AUDITONLY_VALIDATION",
-  "blockers": [],
+  "status": "BLOCKED",
+  "blockers": [
+    "M22_GRIDGUARD_RUNTIME_NOT_OBSERVED",
+    "M22_DETECTION_LOG_NOT_FOUND",
+    "M22_REPORTED_DETECTION_NOT_REPRODUCIBLE"
+  ],
   "approvals": {
     "static_binary_inspection": true,
     "synthetic_testing": true,
@@ -227,8 +231,15 @@
       "result": "PASS_READY",
       "detail": "GRIDGUARD-M22-PHYSICAL-AUDITONLY-VALIDATION-V1 authorizes detection-scoped read-only inspection and sanitized evidence collection on the physical Windows test machine in AuditOnly only. Release build passed with 0 errors and 2 NU1900 advisory-feed warnings; 52 tests and 6-rule validation passed. No live inspection or system mutation occurred.",
       "observed_at": "2026-07-27T19:51:22+09:00"
+    },
+    {
+      "milestone": "M22",
+      "kind": "physical-auditonly-live-detection-validation",
+      "result": "INSUFFICIENT_EVIDENCE",
+      "detail": "The already-running Grid Killer object matched the prohibited reference SHA-256, but no GridGuard runtime, status pipe, detection log, Rule ID, or candidate predicate match was observed. Two AuditOnly scans returned no candidate match and no changes. The P2P application and service identities did not match any of 6 candidate rules; confirmed rules remain zero. Forty-five focused tests and 6-rule validation passed; full Release build and the live-inventory Monitoring test were blocked by timeout without an emitted compiler or test failure.",
+      "observed_at": "2026-07-27T20:19:42+09:00"
     }
   ],
   "repository_head": "HEAD",
-  "updated_at": "2026-07-27T19:51:22+09:00"
+  "updated_at": "2026-07-27T20:19:42+09:00"
 }

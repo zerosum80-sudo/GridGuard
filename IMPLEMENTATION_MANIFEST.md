@@ -23,7 +23,7 @@
 | M19 | AuditOnly, Simulate, Privacy, and Regression Hardening | Complete; evidence allowlist/privacy tests added; Release build, 39 tests, formatting, and 6-rule validation pass |
 | M20 | CI, Documentation, and Packaging Hardening | Complete; CI-equivalent checks, 75-entry package manifest, advisory scan, docs, and canonical closure pass |
 | M21 | VM Preparation | Complete; hypervisor-neutral workflow, collectors, replay, evidence packaging, 52 tests, and validation gates pass |
-| M22 | Behavioral Validation | Ready; physical Windows read-only AuditOnly validation authorized by `GRIDGUARD-M22-PHYSICAL-AUDITONLY-VALIDATION-V1` |
+| M22 | Behavioral Validation | Blocked; physical AuditOnly observation produced insufficient evidence: no GridGuard runtime/log/Rule ID and no reproducible candidate match |
 | M23 | Rule Confirmation | Registered; depends on M22 validated behavioral evidence |
 | M24 | Production Readiness | Registered; depends on M23 confirmed-rule review |
 
@@ -89,3 +89,14 @@ Windows test machine in AuditOnly mode. All prior prohibitions remain active,
 including reference or target execution, privilege escalation, mutation,
 quarantine, remediation, and deletion. M23 and M24 remain dependency-blocked until
 validated M22 evidence exists.
+
+## M22 physical AuditOnly validation result
+
+Read-only validation observed the prohibited reference identity already running and
+did not execute or modify it. The normal P2P process and service identities did not
+match any of the six candidate rules. No GridGuard process, service, status pipe,
+detection log, or Rule ID was available. Two AuditOnly scans returned no candidate
+match and no changes. M22 is `INSUFFICIENT_EVIDENCE`; M23 and M24 remain blocked.
+Sanitized evidence is stored in
+`docs/evidence/M22_PHYSICAL_AUDITONLY_VALIDATION.json` and the corresponding
+Markdown report.

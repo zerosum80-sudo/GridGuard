@@ -3,7 +3,7 @@
   "repository_path": "C:\\Users\\Administrator\\Documents\\GridGuard",
   "branch": "main",
   "head": "HEAD",
-  "phase": "m22-physical-auditonly-validation-authorized",
+  "phase": "m22-physical-auditonly-validation-insufficient-evidence",
   "active_contract_id": "GRIDGUARD-M22-PHYSICAL-AUDITONLY-VALIDATION-V1",
   "contract_status": "ACTIVE",
   "current_milestone": "M22",
@@ -34,10 +34,10 @@
   "snapshot_validation_status": "PASS",
   "evidence_validation_status": "PASS_JSON_MARKDOWN",
   "package_status": "PASS_UNSIGNED_88_HASHED_FILES",
-  "m22_status": "READY_FOR_PHYSICAL_AUDITONLY_VALIDATION",
+  "m22_status": "INSUFFICIENT_EVIDENCE",
   "m23_status": "BLOCKED_BY_M22",
   "m24_status": "BLOCKED_BY_M23",
-  "next_approval_boundary": "EXECUTE_M22_READ_ONLY_PHYSICAL_AUDITONLY_VALIDATION",
+  "next_approval_boundary": "PROVIDE_OR_REPRODUCE_GRIDGUARD_DETECTION_OUTPUT_WITH_RUNNING_GRIDGUARD_RUNTIME",
   "remote_status": "PASS_REMOTE_HEAD_MATCH",
-  "updated_at": "2026-07-27T19:51:22+09:00"
+  "updated_at": "2026-07-27T20:19:42+09:00"
 }

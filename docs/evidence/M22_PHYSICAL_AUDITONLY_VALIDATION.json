@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "1.0",
+  "contractId": "GRIDGUARD-M22-PHYSICAL-AUDITONLY-VALIDATION-V1",
+  "validationRunId": "251cc53e-f1e4-4844-a214-6bfffdbf015a",
+  "evidenceId": "e405e113-3d2f-4021-84e8-c03f6b839673",
+  "startedAt": "2026-07-27T19:56:59.9420813+09:00",
+  "finishedAt": "2026-07-27T20:19:42+09:00",
+  "repositoryIdentity": "zerosum80-sudo/GridGuard",
+  "repositoryPath": "<USER_DOCUMENTS>\\GridGuard",
+  "branch": "main",
+  "repositoryHeadAtCollection": "96b73912716e8b758f2db0c089683fecd54a407d",
+  "responseMode": "AuditOnly",
+  "outcome": "INSUFFICIENT_EVIDENCE",
+  "gridGuardRuntime": {
+    "processObserved": false,
+    "serviceObserved": false,
+    "statusPipeAvailable": false,
+    "detectionLogObserved": false,
+    "eventProviderObserved": false
+  },
+  "claimedDetectionObject": {
+    "processName": "Grid_Killer_v.2.1.4.o_x64.exe",
+    "pid": 12160,
+    "parentPid": 14172,
+    "parentName": "unavailable",
+    "childProcesses": [],
+    "executablePath": "<USER_DOWNLOADS>\\Grid+Killer+2.1.4.o\\Grid_Killer_v.2.1.4.o_x64.exe",
+    "sha256": "8CAB9BDCFEBB2A5EB6340C6A9F2FDF27737E42AF56EDDC15322D28D94473217B",
+    "signatureStatus": "NotSigned",
+    "fileVersion": "3.3.6.1",
+    "fileDescription": "Grid Killer",
+    "identityAssessment": "canonical-reference-executable-already-running",
+    "executedByValidation": false,
+    "loadedModules": {
+      "status": "UNAVAILABLE",
+      "count": 0
+    }
+  },
+  "p2pApplication": {
+    "processName": "FilebogoDown.exe",
+    "pid": 12164,
+    "executablePath": "<PROGRAM_FILES_X86>\\Filebogo.com\\FilebogoDown.exe",
+    "sha256": "9B384414AD17D377551D74FCFB655E6B4F3DB68C2317B06FB2C50B6D35F94B5C",
+    "signatureStatus": "Valid",
+    "publisher": "WINPEOPLE CO., LTD",
+    "fileVersion": "1.0.0.18",
+    "childProcesses": [
+      "FilebogoDownModule.exe",
+      "detect_service.exe"
+    ],
+    "service": {
+      "name": "FilebogoLauncher",
+      "state": "Running",
+      "startMode": "Auto",
+      "pid": 4548,
+      "imagePath": "<PROGRAM_FILES_X86>\\Filebogo.com\\FilebogoLauncher.exe"
+    },
+    "transientChild": {
+      "processName": "detect_service.exe",
+      "observedBeforeScan": true,
+      "observedAfterScan": false,
+      "executablePath": "<PROGRAM_FILES_X86>\\Filebogo.com\\detect_service.exe",
+      "sha256": "80FAF08664865AB41B17423AE0D84D719F32B02D2ADAD35E34B4EDBA9A92A527",
+      "signatureStatus": "Valid",
+      "publisher": "iMBC Co., Ltd.",
+      "fileVersion": "1.0.0.7",
+      "fileDescription": "Conkeeper"
+    }
+  },
+  "persistenceEvidence": {
+    "matchingStartupEntries": 0,
+    "matchingScheduledTasks": 0,
+    "matchingCandidateServices": 0,
+    "p2pServiceObserved": "FilebogoLauncher"
+  },
+  "ruleEvaluation": {
+    "ruleSchemaVersion": "1.0",
+    "candidateRuleCount": 6,
+    "confirmedRuleCount": 0,
+    "matchedRuleId": null,
+    "confidence": null,
+    "score": 0,
+    "allowlistRuleCount": 0,
+    "allowlistMatched": false,
+    "predicateResult": "NO_CANDIDATE_RULE_PREDICATES_MATCHED",
+    "explanation": "The reference executable identity and the observed Filebogo process, service, and child identities are not predicates in the six candidate rules."
+  },
+  "reproducibility": {
+    "scanCount": 2,
+    "scan1ExitCode": 0,
+    "scan1Result": "No candidate match. AuditOnly made no changes.",
+    "scan2ExitCode": 0,
+    "scan2Result": "No candidate match. AuditOnly made no changes.",
+    "reproducedDetection": false
+  },
+  "mutationVerification": {
+    "processTerminationRequested": false,
+    "quarantineRequested": false,
+    "fileDeletionRequested": false,
+    "registryModificationRequested": false,
+    "serviceModificationRequested": false,
+    "persistenceModificationRequested": false,
+    "referenceExecutionRequested": false,
+    "repositoryWorktreeChangedByScan": false,
+    "persistentServiceStateChanged": false,
+    "note": "A transient P2P child exited during the observation window. GridGuard AuditOnly has no termination path and did not report or request an action."
+  },
+  "repositoryValidation": {
+    "focusedTests": {
+      "status": "PASS",
+      "passed": 45,
+      "failed": 0,
+      "scope": "Detection, Rules, Response, and synthetic Monitoring tests"
+    },
+    "liveInventoryMonitoringTest": {
+      "status": "BLOCKED",
+      "reason": "TIMEOUT_DURING_CURRENT_SYSTEM_INVENTORY"
+    },
+    "releaseBuild": {
+      "status": "BLOCKED",
+      "reason": "TIMEOUT_AFTER_PARTIAL_COMPILATION",
+      "compilerFailureObserved": false,
+      "warningsObserved": 2,
+      "warningCode": "NU1900"
+    },
+    "ruleValidation": {
+      "status": "PASS",
+      "validatedRules": 6
+    },
+    "canonicalJson": "PASS",
+    "canonicalConsistency": "PASS"
+  },
+  "privacy": {
+    "sanitized": true,
+    "rawBinaryStored": false,
+    "proprietaryContentsStored": false,
+    "privatePathsStored": false
+  }
+}

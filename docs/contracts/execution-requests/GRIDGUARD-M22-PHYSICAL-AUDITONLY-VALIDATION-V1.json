@@ -9,8 +9,12 @@
   "milestones": ["M22"],
   "active_milestone": "M22",
   "allowed_response_modes": ["AuditOnly"],
-  "status": "READY",
-  "result": "READY_FOR_PHYSICAL_AUDITONLY_VALIDATION",
-  "blockers": [],
-  "next_action": "EXECUTE_M22_READ_ONLY_PHYSICAL_VALIDATION"
+  "status": "BLOCKED_INSUFFICIENT_EVIDENCE",
+  "result": "INSUFFICIENT_EVIDENCE",
+  "blockers": [
+    "GRIDGUARD_RUNTIME_NOT_OBSERVED",
+    "DETECTION_LOG_NOT_FOUND",
+    "REPORTED_DETECTION_NOT_REPRODUCIBLE"
+  ],
+  "next_action": "PROVIDE_OR_REPRODUCE_GRIDGUARD_AUDITONLY_DETECTION_OUTPUT"
 }
