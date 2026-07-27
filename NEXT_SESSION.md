@@ -2,10 +2,15 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-M22 is blocked because the requested physical-machine execution path is outside the
-unchanged exact contract, which is limited to disposable Windows VM validation and
-stops before M22. No baseline or live evidence was collected.
+Activate `GRIDGUARD-M22-PHYSICAL-AUDITONLY-VALIDATION-V1` and execute M22 read-only
+validation on the dedicated physical Windows test machine.
 
-Resume only after authority exists to amend/replace the contract for a dedicated
-physical test machine and after the approved target identity/path and target
-filesystem locations are specified. The reference binary remains prohibited.
+Inspect existing GridGuard detection output, collect only detection-scoped metadata,
+repeat the supported read-only scan, evaluate exact rule predicates and allowlist
+precedence, verify no mutation, and store only sanitized evidence. AuditOnly is the
+only permitted response mode.
+
+Do not install or execute any target or reference binary. Do not terminate
+processes, delete or quarantine files, modify registry/services/tasks/startup or
+network configuration, load drivers, escalate privileges, remediate, or perform
+any destructive action. Stop if any prohibited authority is required.

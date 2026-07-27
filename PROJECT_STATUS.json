@@ -3,8 +3,8 @@
   "repository_path": "C:\\Users\\Administrator\\Documents\\GridGuard",
   "branch": "main",
   "head": "HEAD",
-  "phase": "m22-physical-path-contract-blocked",
-  "active_contract_id": "GRIDGUARD-VM-BEHAVIORAL-PREPARATION-V1",
+  "phase": "m22-physical-auditonly-validation-authorized",
+  "active_contract_id": "GRIDGUARD-M22-PHYSICAL-AUDITONLY-VALIDATION-V1",
   "contract_status": "ACTIVE",
   "current_milestone": "M22",
   "last_completed_milestone": "M21",
@@ -34,10 +34,10 @@
   "snapshot_validation_status": "PASS",
   "evidence_validation_status": "PASS_JSON_MARKDOWN",
   "package_status": "PASS_UNSIGNED_88_HASHED_FILES",
-  "m22_status": "BLOCKED_PHYSICAL_PATH_OUTSIDE_CONTRACT",
+  "m22_status": "READY_FOR_PHYSICAL_AUDITONLY_VALIDATION",
   "m23_status": "BLOCKED_BY_M22",
   "m24_status": "BLOCKED_BY_M23",
-  "next_approval_boundary": "AUTHORIZE_CONTRACT_AMENDMENT_OR_NEW_PHYSICAL_MACHINE_CONTRACT_AND_PROVIDE_TARGET_SCOPE",
+  "next_approval_boundary": "EXECUTE_M22_READ_ONLY_PHYSICAL_AUDITONLY_VALIDATION",
   "remote_status": "PASS_REMOTE_HEAD_MATCH",
-  "updated_at": "2026-07-27T19:00:00+09:00"
+  "updated_at": "2026-07-27T19:51:22+09:00"
 }

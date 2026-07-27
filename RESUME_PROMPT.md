@@ -3,10 +3,15 @@
 Resume GridGuard strictly from repository-local state. Read `AGENTS.md`,
 `AGENT_STATE.json`, and `AGENT_STATE.must_read_files`.
 
-M22 is `BLOCKED_CONTRACT_SCOPE`. The active exact contract authorizes disposable-VM
-preparation, while the latest requested execution path is a physical test machine
-and contract modification/new-contract creation was prohibited.
+M22 is `READY_FOR_PHYSICAL_AUDITONLY_VALIDATION`. The active exact contract is
+`GRIDGUARD-M22-PHYSICAL-AUDITONLY-VALIDATION-V1`.
 
-Do not capture a live baseline or install/execute a target until the contract
-authority is resolved and the approved target identity plus filesystem scope are
-provided. The reference binary remains prohibited.
+Inspect only the existing detection output and detection-scoped live metadata on
+the dedicated physical Windows test machine. Use AuditOnly only, repeat supported
+read-only validation, verify exact rule predicates and allowlist precedence, and
+store only sanitized evidence.
+
+Do not install or execute any target or reference binary. Process termination,
+deletion, quarantine, registry/service/task/startup/network modification, driver
+loading, privilege escalation, remediation, and every destructive action remain
+prohibited.
