@@ -104,7 +104,11 @@ public sealed class ResponseExecutor(
         if (errors.Count > 0)
             return [new("configuration", false, "failed", string.Join(" ", errors))];
         if (configuration.Mode == ResponseMode.Simulate &&
-            detection.Decision is DetectionDecision.Suspicious or DetectionDecision.Confirmed)
+            detection.Decision == DetectionDecision.Suspicious)
+            return [new("response-plan", false, "simulated",
+                "Candidate observation only; no quarantine or host modification proposed.")];
+        if (configuration.Mode == ResponseMode.Simulate &&
+            detection.Decision == DetectionDecision.Confirmed)
         {
             var paths = filePaths.Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
             return paths.Length == 0

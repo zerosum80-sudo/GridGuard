@@ -6,7 +6,7 @@
 - State mechanism: existing repository canonical files
 - Milestone: M22 Behavioral Validation
 - Execution environment: dedicated physical Windows test machine
-- Response mode: `AuditOnly` only
+- Response modes: `AuditOnly`; non-mutating `Simulate` for candidate validation
 - Runtime mutation: prohibited
 
 ## Amendment boundary
@@ -27,8 +27,15 @@ Only the following operations are allowed:
 - read-only live inspection
 - `AuditOnly` detection verification
 - rule evaluation with allowlist precedence
+- candidate-rule authoring from sanitized M22 evidence
+- focused synthetic validation of candidate rules
 - sanitized evidence collection
 - repeatable read-only validation
+
+Candidate-rule authoring authority is limited to status `candidate`, response score
+and predicates supported by sanitized M22 evidence, and response flags that grant no
+host mutation. Confirmed-rule creation and confirmation-policy changes remain
+prohibited.
 
 ## Authorized evidence
 
@@ -64,7 +71,9 @@ unrelated system inventory must not be committed.
 - network configuration changes
 - driver loading
 - privilege escalation
-- response modes other than `AuditOnly`
+- response modes other than `AuditOnly` or non-mutating `Simulate`
+- confirmed-rule creation or candidate promotion
+- modification of the independent-primary confirmation policy
 - remediation, rollback mutation, or any destructive action
 - uploading or committing reference binaries, proprietary content, secrets,
   private paths, or quarantine contents
@@ -85,6 +94,15 @@ unrelated system inventory must not be committed.
 Candidate promotion remains prohibited unless the existing independent-primary
 confirmation policy is fully satisfied. Behavioral evidence from this machine is
 one evidence control and is not independently sufficient by itself.
+
+## Candidate-rule authoring amendment
+
+On 2026-07-27, candidate-only rule authoring was approved for
+`grid.natservice.001`. The rule must require both `NATService` service-name evidence
+and an executable path ending in `\NAT Service\natsvc.exe`, use score 60, retain
+candidate status, and set every mutation response flag to false. Optional publisher,
+version, SHA-256, parent-process, and automatic-service evidence may be retained as
+sanitized provenance but cannot independently confirm the rule.
 
 ## Required validation
 

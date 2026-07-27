@@ -16,6 +16,26 @@ public sealed class RuleValidatorTests
     }
 
     [Fact]
+    public void LoadsNatServiceCandidateWithNonMutatingResponse()
+    {
+        var path = Path.GetFullPath(Path.Combine(
+            AppContext.BaseDirectory, "..", "..", "..", "..", "..",
+            "rules", "candidate", "grid.natservice.001.json"));
+        var rule = RuleLoader.LoadFile(path);
+
+        Assert.Equal("candidate", rule.Status);
+        Assert.Equal("strong-inference", rule.Confidence);
+        Assert.Equal(60, rule.Score);
+        Assert.Contains(
+            rule.Match.All!,
+            expression => expression.Operator == "endsWithIgnoreCase");
+        Assert.Equal(
+            new(false, false, false, false, false, false),
+            rule.Response);
+        Assert.Null(rule.Confirmation);
+    }
+
+    [Fact]
     public void RejectsPermanentDeletion()
     {
         var rule = ValidRule() with

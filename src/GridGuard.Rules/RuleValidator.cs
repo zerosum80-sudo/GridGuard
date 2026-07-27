@@ -6,7 +6,7 @@ public static class RuleValidator
         ["hypothesis", "candidate", "strong-inference", "confirmed"];
     private static readonly HashSet<string> Statuses = ["enabled", "disabled", "candidate"];
     private static readonly HashSet<string> Operators =
-        ["equalsIgnoreCase", "containsIgnoreCase", "equals", "sha256Equals"];
+        ["equalsIgnoreCase", "containsIgnoreCase", "endsWithIgnoreCase", "equals", "sha256Equals"];
 
     public static RuleValidationResult Validate(GridRule rule)
     {

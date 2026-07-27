@@ -89,7 +89,10 @@
           "properties": {
             "type": { "type": "string" },
             "operator": {
-              "enum": ["equalsIgnoreCase", "containsIgnoreCase", "equals", "sha256Equals"]
+              "enum": [
+                "equalsIgnoreCase", "containsIgnoreCase", "endsWithIgnoreCase",
+                "equals", "sha256Equals"
+              ]
             },
             "value": { "type": "string" },
             "weight": { "type": "integer", "minimum": 0 }

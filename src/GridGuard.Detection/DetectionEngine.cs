@@ -62,6 +62,7 @@ public sealed class DetectionEngine
     {
         "equalsIgnoreCase" => string.Equals(actual, expected, StringComparison.OrdinalIgnoreCase),
         "containsIgnoreCase" => actual.Contains(expected, StringComparison.OrdinalIgnoreCase),
+        "endsWithIgnoreCase" => actual.EndsWith(expected, StringComparison.OrdinalIgnoreCase),
         "equals" => actual == expected,
         "sha256Equals" => string.Equals(
             actual.Replace(" ", ""), expected.Replace(" ", ""), StringComparison.OrdinalIgnoreCase),

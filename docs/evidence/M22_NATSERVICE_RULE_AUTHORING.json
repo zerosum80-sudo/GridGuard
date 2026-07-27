@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "1.0",
+  "contractId": "GRIDGUARD-M22-PHYSICAL-AUDITONLY-VALIDATION-V1",
+  "validationRunId": "11a4aae1-78b2-4c2a-a786-03aafcebb5e7",
+  "evidenceId": "645f012a-9d87-4385-bf3a-37bd51f1ac53",
+  "startedAt": "2026-07-27T20:49:26+09:00",
+  "finishedAt": "2026-07-27T20:55:27+09:00",
+  "repositoryIdentity": "zerosum80-sudo/GridGuard",
+  "branch": "main",
+  "repositoryHeadAtStart": "9ca888155ce62eb7eaa5ef66fe16935f8b1ab1f3",
+  "rule": {
+    "id": "grid.natservice.001",
+    "schemaVersion": "1.0",
+    "status": "candidate",
+    "confidence": "strong-inference",
+    "score": 60,
+    "match": {
+      "all": [
+        {
+          "type": "serviceName",
+          "operator": "equalsIgnoreCase",
+          "value": "NATService"
+        },
+        {
+          "type": "serviceImagePath",
+          "operator": "endsWithIgnoreCase",
+          "value": "\\NAT Service\\natsvc.exe"
+        }
+      ]
+    },
+    "response": {
+      "terminateProcess": false,
+      "stopService": false,
+      "disableService": false,
+      "removePersistence": false,
+      "quarantineFiles": false,
+      "permanentDelete": false
+    },
+    "confirmation": null
+  },
+  "optionalEvidence": {
+    "publisher": "NeoNTech",
+    "fileVersion": "3.5.4.90",
+    "sha256": "24F3EEF66892FA2CA2C4A4D92CC87E658A15B13DD53176EEF4F0D99B0330D1AE",
+    "parentProcess": "services.exe",
+    "automaticServicePersistence": true,
+    "usedAsRequiredPredicate": false
+  },
+  "implementation": {
+    "endsWithIgnoreCaseSchema": "PASS",
+    "endsWithIgnoreCaseSemanticValidator": "PASS",
+    "endsWithIgnoreCaseDetection": "PASS",
+    "candidateOnly": true,
+    "confirmedRulesCreated": 0,
+    "confirmationPolicyChanged": false
+  },
+  "liveValidation": {
+    "auditOnlyScanCount": 2,
+    "matchedRuleId": "grid.natservice.001",
+    "confidence": "strong-inference",
+    "score": 60,
+    "decision": "Suspicious",
+    "affectedObject": "NATService",
+    "simulatedAction": "response-plan",
+    "simulatedPerformed": false,
+    "simulatedDetail": "Candidate observation only; no quarantine or host modification proposed."
+  },
+  "validation": {
+    "releaseBuild": {
+      "status": "PASS",
+      "projectCount": 17,
+      "warnings": 2,
+      "errors": 0,
+      "warningCode": "NU1900"
+    },
+    "ruleCompilerSelfTest": "PASS",
+    "ruleValidation": {
+      "status": "PASS",
+      "validatedRules": 7
+    },
+    "tests": {
+      "status": "PASS",
+      "passed": 54,
+      "failed": 0
+    },
+    "canonicalJson": "PASS",
+    "canonicalConsistency": "PASS"
+  },
+  "safety": {
+    "auditOnlyPreserved": true,
+    "simulateNonMutating": true,
+    "quarantinePerformed": false,
+    "remediationPerformed": false,
+    "deletionPerformed": false,
+    "referenceExecuted": false
+  },
+  "privacy": {
+    "sanitized": true,
+    "rawBinaryStored": false,
+    "privatePathsStored": false,
+    "proprietaryContentsStored": false
+  }
+}

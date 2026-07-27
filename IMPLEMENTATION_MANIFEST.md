@@ -23,7 +23,7 @@
 | M19 | AuditOnly, Simulate, Privacy, and Regression Hardening | Complete; evidence allowlist/privacy tests added; Release build, 39 tests, formatting, and 6-rule validation pass |
 | M20 | CI, Documentation, and Packaging Hardening | Complete; CI-equivalent checks, 75-entry package manifest, advisory scan, docs, and canonical closure pass |
 | M21 | VM Preparation | Complete; hypervisor-neutral workflow, collectors, replay, evidence packaging, 52 tests, and validation gates pass |
-| M22 | Behavioral Validation | Blocked; NATService gap analyzed, but candidate-rule authoring is outside the active read-only contract |
+| M22 | Behavioral Validation | Candidate match validated; `grid.natservice.001` is AuditOnly/Simulate-safe and remains candidate-only; service runtime log still required |
 | M23 | Rule Confirmation | Registered; depends on M22 validated behavioral evidence |
 | M24 | Production Readiness | Registered; depends on M23 confirmed-rule review |
 
@@ -114,3 +114,16 @@ satisfy confirmation policy. The active exact contract authorizes rule evaluatio
 but not rule authoring, so no rule file was created. Sanitized analysis is stored in
 `docs/evidence/M22_NATSERVICE_CANDIDATE_GAP.json` and the corresponding Markdown
 report.
+
+## M22 NATService candidate rule
+
+Candidate-only rule `grid.natservice.001` now requires both the exact NATService
+service name and an image path ending in `\NAT Service\natsvc.exe`. Score is 60,
+every mutation response flag is false, and optional publisher, version, hash,
+parent, and persistence evidence remains provenance only.
+
+The version 1.0 rule language now supports `endsWithIgnoreCase`. Two live AuditOnly
+scans reproduced the candidate match, and Simulate produced an observation-only
+plan with no quarantine. Release build, rule compiler self-test, 7-rule validation,
+54 tests, and canonical consistency passed. No confirmed rule was created and the
+confirmation policy is unchanged.

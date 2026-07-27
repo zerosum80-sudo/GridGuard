@@ -49,6 +49,8 @@ public sealed class ResponseTests
                 new(ResponseMode.Simulate, true), new(Path.Combine(root, "q")))
                 .ExecuteAsync(candidate, [path]);
             Assert.Equal("simulated", outcome.Single().Status);
+            Assert.Equal("response-plan", outcome.Single().Action);
+            Assert.Contains("no quarantine", outcome.Single().Detail);
             Assert.False(outcome.Single().Performed);
             Assert.True(File.Exists(path));
         }

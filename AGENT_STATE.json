@@ -1,7 +1,7 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-rc.3",
-  "phase": "m22-physical-auditonly-validation-insufficient-evidence",
+  "phase": "m22-natservice-candidate-rule-active",
   "active_contract_id": "GRIDGUARD-M22-PHYSICAL-AUDITONLY-VALIDATION-V1",
   "contract_status": "ACTIVE",
   "current_milestone": "M22",
@@ -10,9 +10,7 @@
   "status": "BLOCKED",
   "blockers": [
     "M22_GRIDGUARD_RUNTIME_NOT_OBSERVED",
-    "M22_DETECTION_LOG_NOT_FOUND",
-    "M22_REPORTED_DETECTION_NOT_REPRODUCIBLE",
-    "M22_CANDIDATE_RULE_AUTHORING_OUTSIDE_ACTIVE_CONTRACT"
+    "M22_DETECTION_LOG_NOT_FOUND"
   ],
   "approvals": {
     "static_binary_inspection": true,
@@ -23,6 +21,7 @@
     "disposable_vm_target_execution": true,
     "physical_test_machine_live_validation_requested": true,
     "physical_test_machine_read_only_auditonly_approved": true,
+    "candidate_rule_authoring": true,
     "reference_binary_execution": false,
     "real_destructive_testing": false,
     "permanent_deletion": false,
@@ -246,8 +245,15 @@
       "result": "PASS_ANALYSIS_BLOCKED_RULE_AUTHORING",
       "detail": "Read-only evidence identified NATService at the corrected NAT Service path with a valid NeoNTech signature, version 3.5.4.90, automatic service persistence, and services.exe parent. None of 6 candidate rules contains NATService predicates; AuditOnly reproduced no match and no changes. A conservative two-field candidate was specified but not created because the active exact contract does not authorize rule authoring. Confirmed rules remain zero. GridGuard.Cli Release build passed with 0 warnings and 0 errors; 6-rule validation and 25 focused tests passed.",
       "observed_at": "2026-07-27T20:42:20+09:00"
+    },
+    {
+      "milestone": "M22",
+      "kind": "natservice-candidate-rule-authoring",
+      "result": "PASS_TRUE_POSITIVE_CANDIDATE_ONLY",
+      "detail": "Candidate rule grid.natservice.001 requires exact NATService name plus an image path ending in NAT Service\\natsvc.exe, scores 60, and grants no mutation response. Two AuditOnly scans reproduced the candidate match; Simulate produced an observation-only plan with no quarantine. Release build passed with 0 errors and 2 NU1900 warnings; rule compiler self-test, 7-rule validation, and all 54 tests passed. Confirmed rules remain zero and confirmation policy is unchanged.",
+      "observed_at": "2026-07-27T20:55:27+09:00"
     }
   ],
   "repository_head": "HEAD",
-  "updated_at": "2026-07-27T20:42:20+09:00"
+  "updated_at": "2026-07-27T20:55:27+09:00"
 }

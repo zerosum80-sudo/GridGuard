@@ -91,6 +91,43 @@ public sealed class DetectionEngineTests
         Assert.DoesNotContain(result.Evidence, item => item.ObjectId == "private-process");
     }
 
+    [Fact]
+    public void EndsWithIgnoreCaseRequiresExactPathSuffix()
+    {
+        var rule = Rule(new()
+        {
+            All =
+            [
+                Leaf("serviceName", "NATService"),
+                Leaf(
+                    "serviceImagePath",
+                    @"\NAT Service\natsvc.exe",
+                    "endsWithIgnoreCase")
+            ]
+        });
+        var match = new DetectionEngine().Evaluate(
+            rule,
+            [
+                new("serviceName", "natservice", "NATService"),
+                new(
+                    "serviceImagePath",
+                    @"""C:\Program Files (x86)\NAT Service\natsvc.exe""",
+                    "NATService")
+            ]);
+        var mismatch = new DetectionEngine().Evaluate(
+            rule,
+            [
+                new("serviceName", "NATService", "NATService"),
+                new(
+                    "serviceImagePath",
+                    @"C:\Program Files (x86)\NAT Service\natsvc.exe.backup",
+                    "NATService")
+            ]);
+
+        Assert.Equal(DetectionDecision.Suspicious, match.Decision);
+        Assert.Equal(DetectionDecision.Clean, mismatch.Decision);
+    }
+
     private static MatchExpression Leaf(string type, string value, string op = "equalsIgnoreCase") =>
         new() { Type = type, Operator = op, Value = value };
 

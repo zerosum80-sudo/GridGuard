@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0",
+  "id": "grid.natservice.001",
+  "name": "NATService Exact Service Path Pair",
+  "vendor": "NeoNTech",
+  "family": "network-service-candidate",
+  "description": "Candidate-only correlation for the observed NATService service and its exact executable-path suffix. Valid publisher and version evidence are retained as false-positive review context and do not confirm the rule.",
+  "confidence": "strong-inference",
+  "status": "candidate",
+  "sources": [
+    "docs/evidence/M22_NATSERVICE_CANDIDATE_GAP.md",
+    "docs/evidence/M22_NATSERVICE_CANDIDATE_GAP.json"
+  ],
+  "match": {
+    "all": [
+      {
+        "type": "serviceName",
+        "operator": "equalsIgnoreCase",
+        "value": "NATService"
+      },
+      {
+        "type": "serviceImagePath",
+        "operator": "endsWithIgnoreCase",
+        "value": "\\NAT Service\\natsvc.exe"
+      }
+    ]
+  },
+  "exclusions": [],
+  "score": 60,
+  "response": {
+    "terminateProcess": false,
+    "stopService": false,
+    "disableService": false,
+    "removePersistence": false,
+    "quarantineFiles": false,
+    "permanentDelete": false
+  },
+  "createdAt": "2026-07-27T11:49:26Z",
+  "updatedAt": "2026-07-27T11:49:26Z"
+}

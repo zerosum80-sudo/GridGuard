@@ -3,18 +3,17 @@
 Resume GridGuard strictly from repository-local state. Read `AGENTS.md`,
 `AGENT_STATE.json`, and `AGENT_STATE.must_read_files`.
 
-M22 is `INSUFFICIENT_EVIDENCE`. The active exact contract is
+M22 is `TRUE_POSITIVE_CANDIDATE_ONLY`. The active exact contract is
 `GRIDGUARD-M22-PHYSICAL-AUDITONLY-VALIDATION-V1`.
 
-Resume only when an actual GridGuard AuditOnly runtime and its detection output are
-observable. The prior read-only observation found no GridGuard process, service,
-status pipe, log, Rule ID, or reproducible candidate match. Two scans returned no
-candidate match and no changes.
+`grid.natservice.001` reproducibly matches the exact NATService name plus image-path
+suffix with score 60. It remains candidate-only, grants no mutation response, and
+does not satisfy confirmation policy. Seven candidate rules and zero confirmed
+rules exist.
 
-NATService evidence supports a candidate-only service-name plus image-path design,
-but rule authoring remains outside the active read-only contract. Require an
-explicit M22 contract amendment before creating the rule. Preserve AuditOnly, zero
-response flags, and the existing confirmation policy.
+Resume by collecting the installed GridGuard service runtime and sanitized
+detection log for this Rule ID. Preserve AuditOnly, non-mutating Simulate, and the
+existing independent-primary confirmation policy.
 
 Do not install or execute any target or reference binary. Process termination,
 deletion, quarantine, registry/service/task/startup/network modification, driver
