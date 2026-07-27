@@ -24,7 +24,38 @@ public static class RuleValidator
             ValidateExpression(rule.Exclusions[i], $"exclusions[{i}]", errors);
         if (rule.Status == "candidate" && rule.Confidence == "confirmed")
             errors.Add("candidate rules cannot claim confirmed confidence.");
+        ValidateConfirmation(rule, errors);
         return new RuleValidationResult(errors.Count == 0, errors);
+    }
+
+    private static void ValidateConfirmation(GridRule rule, List<string> errors)
+    {
+        if (rule.Confidence != "confirmed")
+        {
+            if (rule.Confirmation is not null)
+                errors.Add("confirmation evidence is allowed only for confirmed rules.");
+            return;
+        }
+        if (rule.Confirmation is null)
+        {
+            errors.Add("confirmed rules require structured confirmation evidence.");
+            return;
+        }
+        if (rule.Confirmation.Policy != "independent-primary-v1")
+            errors.Add("confirmation policy must be independent-primary-v1.");
+        var sources = rule.Confirmation.Sources
+            .Where(source =>
+                !string.IsNullOrWhiteSpace(source.SourceId) &&
+                !string.IsNullOrWhiteSpace(source.ControlId) &&
+                Uri.TryCreate(source.Uri, UriKind.Absolute, out var uri) &&
+                uri.Scheme == Uri.UriSchemeHttps &&
+                !string.IsNullOrWhiteSpace(source.Identity))
+            .ToArray();
+        if (sources.Length != rule.Confirmation.Sources.Length)
+            errors.Add("confirmation sources require id, control, HTTPS URI, and identity.");
+        if (sources.Select(source => source.ControlId)
+            .Distinct(StringComparer.OrdinalIgnoreCase).Count() < 2)
+            errors.Add("confirmed rules require two independently controlled sources.");
     }
 
     private static void ValidateExpression(MatchExpression expression, string path, List<string> errors)
@@ -66,4 +97,3 @@ public static class RuleValidator
             ValidateExpression(children[i], $"{path}[{i}]", errors);
     }
 }
-

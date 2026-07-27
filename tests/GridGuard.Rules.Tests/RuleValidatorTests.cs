@@ -41,6 +41,72 @@ public sealed class RuleValidatorTests
         Assert.False(RuleValidator.Validate(rule).IsValid);
     }
 
+    [Fact]
+    public void RejectsConfirmedRuleWithoutIndependentStructuredEvidence()
+    {
+        var rule = ValidRule() with
+        {
+            Confidence = "confirmed",
+            Status = "enabled",
+            Confirmation = new()
+            {
+                Policy = "independent-primary-v1",
+                Sources =
+                [
+                    new()
+                    {
+                        SourceId = "vendor-page",
+                        ControlId = "vendor",
+                        Uri = "https://vendor.invalid/product",
+                        Identity = "name and version"
+                    },
+                    new()
+                    {
+                        SourceId = "vendor-mirror",
+                        ControlId = "vendor",
+                        Uri = "https://mirror.invalid/product",
+                        Identity = "same publisher"
+                    }
+                ]
+            }
+        };
+        Assert.Contains(
+            RuleValidator.Validate(rule).Errors,
+            error => error.Contains("independently controlled"));
+    }
+
+    [Fact]
+    public void AcceptsConfirmedRuleWithTwoIndependentStructuredSources()
+    {
+        var rule = ValidRule() with
+        {
+            Confidence = "confirmed",
+            Status = "enabled",
+            Confirmation = new()
+            {
+                Policy = "independent-primary-v1",
+                Sources =
+                [
+                    new()
+                    {
+                        SourceId = "vendor-page",
+                        ControlId = "vendor",
+                        Uri = "https://vendor.invalid/product",
+                        Identity = "publisher, product, file, version"
+                    },
+                    new()
+                    {
+                        SourceId = "security-advisory",
+                        ControlId = "security-lab",
+                        Uri = "https://security.invalid/advisory",
+                        Identity = "file hash and signer"
+                    }
+                ]
+            }
+        };
+        Assert.True(RuleValidator.Validate(rule).IsValid);
+    }
+
     private static GridRule ValidRule() => new()
     {
         SchemaVersion = "1.0",
@@ -59,4 +125,3 @@ public sealed class RuleValidatorTests
         UpdatedAt = DateTimeOffset.UtcNow
     };
 }
-

@@ -1,7 +1,7 @@
 # Current Task
 
 - Exact Task Contract: `GRIDGUARD-SAFE-BATCH-M17-PLUS-V1`
-- Milestone: M18 Confirmation Policy and Rule Provenance Hardening
+- Milestone: M19 AuditOnly, Simulate, Privacy, and Regression Hardening
 - Status: ACTIVE
 - Completed through: M16 Candidate Rule Audit Validation
 - Candidate source rows reviewed: 115
@@ -11,9 +11,9 @@
 - Confirmed rules: 0
 - AuditOnly: PASS, no mutation
 - Simulate: PASS, no mutation
-- M17 result: PASS_NO_CONFIRMATION; 0 qualifying sources, 0 promotions
-- Required result: typed primary/independence/non-circular promotion gate, focused
-  tests, rule validation, and false-positive review
-- Auto-continue: M19 and M20 after each required validation
+- M18 result: PASS; 22 focused tests and 6-rule validation
+- Required result: full Release build/tests/formatting plus mutation-safety and
+  privacy regression coverage
+- Auto-continue: M20 after validation
 - Stop boundary: VM or real-component execution, unknown binary download,
   proprietary upload, real remediation/quarantine/deletion, or system mutation

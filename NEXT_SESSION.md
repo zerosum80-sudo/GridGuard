@@ -4,9 +4,10 @@ Resume by reading the files listed in `AGENTS.md`.
 
 Active contract: `GRIDGUARD-SAFE-BATCH-M17-PLUS-V1`.
 
-Current resume point: M17 Independent Public Evidence Validation found zero
-qualifying candidate-specific primary sources and promoted no rules. M18
-Confirmation Policy and Rule Provenance Hardening is active.
+Current resume point: M18 Confirmation Policy and Rule Provenance Hardening added
+the typed non-circular evaluation gate and structured confirmed-rule evidence.
+Twenty-two focused tests and all six rule validations pass. M19 AuditOnly,
+Simulate, Privacy, and Regression Hardening is active.
 
 Raw current-system audit evidence remains below ignored
 `artifacts/private-analysis/`. Do not commit or disclose it. Candidate rules remain

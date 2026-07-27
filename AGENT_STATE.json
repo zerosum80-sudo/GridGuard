@@ -3,9 +3,9 @@
   "version": "0.1.0-rc.3",
   "phase": "safe-batch-active",
   "active_contract_id": "GRIDGUARD-SAFE-BATCH-M17-PLUS-V1",
-  "current_milestone": "M18",
-  "last_completed_milestone": "M17",
-  "next_milestone": "M19",
+  "current_milestone": "M19",
+  "last_completed_milestone": "M18",
+  "next_milestone": "M20",
   "status": "ACTIVE",
   "blockers": [],
   "approvals": {
@@ -173,6 +173,13 @@
       "result": "PASS_NO_CONFIRMATION",
       "detail": "Exact candidate identity pairs were checked against primary vendor, platform, and official security sources. No candidate had a qualifying independent primary source; all 6 rules remain candidate-only and confirmed rules remain zero.",
       "observed_at": "2026-07-27T16:35:00+09:00"
+    },
+    {
+      "milestone": "M18",
+      "kind": "confirmation-policy-and-rule-provenance-validation",
+      "result": "PASS",
+      "detail": "Typed evaluation rejects circular, secondary, duplicate-control, non-specific, and unreproducible evidence. Confirmed rules require structured independent-primary-v1 evidence from two control IDs. Detection and rules suites passed 22 focused tests; all 6 rules validated.",
+      "observed_at": "2026-07-27T16:50:00+09:00"
     }
   ],
   "repository_head": "HEAD",

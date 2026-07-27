@@ -14,12 +14,27 @@ public sealed record GridRule
     public required string Confidence { get; init; }
     public required string Status { get; init; }
     public required string[] Sources { get; init; }
+    public ConfirmationEvidence? Confirmation { get; init; }
     public required MatchExpression Match { get; init; }
     public MatchExpression[] Exclusions { get; init; } = [];
     public required int Score { get; init; }
     public required RuleResponse Response { get; init; }
     public required DateTimeOffset CreatedAt { get; init; }
     public required DateTimeOffset UpdatedAt { get; init; }
+}
+
+public sealed record ConfirmationEvidence
+{
+    public required string Policy { get; init; }
+    public required ConfirmationSource[] Sources { get; init; }
+}
+
+public sealed record ConfirmationSource
+{
+    public required string SourceId { get; init; }
+    public required string ControlId { get; init; }
+    public required string Uri { get; init; }
+    public required string Identity { get; init; }
 }
 
 public sealed record MatchExpression
@@ -64,4 +79,3 @@ public static class RuleLoader
 
     public static GridRule LoadFile(string path) => Load(File.ReadAllText(path));
 }
-

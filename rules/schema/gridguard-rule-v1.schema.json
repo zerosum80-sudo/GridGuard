@@ -23,6 +23,29 @@
     "sources": {
       "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 }
     },
+    "confirmation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy", "sources"],
+      "properties": {
+        "policy": { "const": "independent-primary-v1" },
+        "sources": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["sourceId", "controlId", "uri", "identity"],
+            "properties": {
+              "sourceId": { "type": "string", "minLength": 1 },
+              "controlId": { "type": "string", "minLength": 1 },
+              "uri": { "type": "string", "format": "uri", "pattern": "^https://" },
+              "identity": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    },
     "match": { "$ref": "#/$defs/expression" },
     "exclusions": {
       "type": "array", "items": { "$ref": "#/$defs/expression" }
@@ -47,6 +70,16 @@
     "createdAt": { "type": "string", "format": "date-time" },
     "updatedAt": { "type": "string", "format": "date-time" }
   },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "confidence": { "const": "confirmed" } },
+        "required": ["confidence"]
+      },
+      "then": { "required": ["confirmation"] },
+      "else": { "not": { "required": ["confirmation"] } }
+    }
+  ],
   "$defs": {
     "expression": {
       "type": "object",
@@ -85,4 +118,3 @@
     }
   }
 }
-

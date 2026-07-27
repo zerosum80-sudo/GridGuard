@@ -392,6 +392,58 @@ public sealed class CandidateAuditService(IMatchedFileInspector fileInspector)
 
 public static class CandidatePromotionPolicy
 {
+    public sealed record EvidenceSource(
+        string SourceId,
+        string ControlId,
+        bool IsPrimary,
+        bool IsCandidateSpecific,
+        bool HasReproducibleIdentity,
+        bool IsCircular);
+
+    public sealed record Evaluation(
+        string Recommendation,
+        int QualifyingSourceCount,
+        IReadOnlyList<string> Reasons);
+
+    public static Evaluation Evaluate(
+        CandidateClassification classification,
+        IEnumerable<EvidenceSource> sources,
+        bool hasPlausibleGenericInterpretation)
+    {
+        ArgumentNullException.ThrowIfNull(sources);
+        var reasons = new List<string>();
+        if (classification is CandidateClassification.GenericRuntime or
+            CandidateClassification.RemovalException)
+            return new("Excluded", 0, ["Candidate classification is excluded."]);
+        if (classification == CandidateClassification.VendorApplication)
+            return new("VendorApplication", 0, ["Candidate is a vendor application."]);
+
+        var qualifying = sources
+            .Where(source =>
+                !string.IsNullOrWhiteSpace(source.SourceId) &&
+                !string.IsNullOrWhiteSpace(source.ControlId) &&
+                source.IsPrimary &&
+                source.IsCandidateSpecific &&
+                source.HasReproducibleIdentity &&
+                !source.IsCircular)
+            .GroupBy(source => source.ControlId, StringComparer.OrdinalIgnoreCase)
+            .Select(group => group.First())
+            .ToArray();
+
+        if (hasPlausibleGenericInterpretation)
+            reasons.Add("A plausible generic interpretation remains.");
+        if (qualifying.Length < 2)
+            reasons.Add("Fewer than two independently controlled qualifying sources.");
+
+        return qualifying.Length >= 2 && !hasPlausibleGenericInterpretation
+            ? new("RecommendConfirmationReview", qualifying.Length,
+                ["Two independent primary sources establish reproducible candidate identity."])
+            : new(
+                qualifying.Length >= 1 ? "StrongCandidate" : "Unresolved",
+                qualifying.Length,
+                reasons);
+    }
+
     public static string Recommend(
         CandidateClassification classification,
         int independentNonCircularSources,

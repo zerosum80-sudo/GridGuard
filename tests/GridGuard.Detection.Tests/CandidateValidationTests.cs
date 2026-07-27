@@ -150,7 +150,50 @@ public sealed class CandidateValidationTests
                 hasPlausibleGenericInterpretation: false));
     }
 
+    [Fact]
+    public void PromotionPolicyCountsIndependentPrimaryIdentityEvidenceOnly()
+    {
+        var sources = new[]
+        {
+            Source("vendor-a", "vendor-a"),
+            Source("mirror-a", "vendor-a"),
+            Source("security-b", "security-b"),
+            Source("secondary-c", "secondary-c") with { IsPrimary = false },
+            Source("circular-d", "circular-d") with { IsCircular = true }
+        };
+
+        var result = CandidatePromotionPolicy.Evaluate(
+            CandidateClassification.PotentialGridComponent,
+            sources,
+            hasPlausibleGenericInterpretation: false);
+
+        Assert.Equal(2, result.QualifyingSourceCount);
+        Assert.Equal("RecommendConfirmationReview", result.Recommendation);
+        Assert.NotEqual("Confirmed", result.Recommendation);
+    }
+
+    [Fact]
+    public void PromotionPolicyFailsClosedForGenericOrUnreproducibleEvidence()
+    {
+        var result = CandidatePromotionPolicy.Evaluate(
+            CandidateClassification.PotentialGridComponent,
+            [
+                Source("snippet", "search") with { HasReproducibleIdentity = false },
+                Source("generic", "vendor")
+            ],
+            hasPlausibleGenericInterpretation: true);
+
+        Assert.Equal("StrongCandidate", result.Recommendation);
+        Assert.Equal(1, result.QualifyingSourceCount);
+        Assert.Contains(result.Reasons, reason => reason.Contains("generic"));
+    }
+
     private static CandidateCatalog Catalog(params CandidateCatalogRow[] rows) => new(rows);
+
+    private static CandidatePromotionPolicy.EvidenceSource Source(
+        string sourceId,
+        string controlId) =>
+        new(sourceId, controlId, true, true, true, false);
 
     private static InventorySnapshot Snapshot(params InventoryRecord[] records) =>
         new(DateTimeOffset.UtcNow, records, []);
