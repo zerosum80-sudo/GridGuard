@@ -67,4 +67,3 @@ Continue through M20 without an inter-milestone pause. Stop only if progress
 requires a virtual machine, reference or real-component execution, unknown binary
 download, proprietary upload, real quarantine/remediation/deletion, system mutation,
 or another explicit approval boundary.
-

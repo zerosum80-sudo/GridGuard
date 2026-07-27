@@ -1,18 +1,15 @@
 # Resume Prompt
 
 Resume GridGuard strictly from repository-local state at
-`C:\Users\Administrator\Documents\GridGuard`. Read `AGENTS.md` and its required
-files in order.
+`C:\Users\Administrator\Documents\GridGuard`. Read `AGENTS.md`,
+`AGENT_STATE.json`, and `AGENT_STATE.must_read_files`.
 
-M16 Candidate Rule Audit Validation is complete: 115 recovered rows produced 229
-distinct normalized candidates after 9 duplicates and 2 empty rows were removed.
-Current-system matches, correlations, and promotions were zero. Six rules remain
-candidate-only. AuditOnly, runtime inactive, privacy boundaries, and permanent
-deletion exclusion remain mandatory.
+`GRIDGUARD-SAFE-BATCH-M17-PLUS-V1` is complete through M20. Candidate rules: 6.
+Confirmed rules: 0. All approved safe work is terminal. Runtime remains inactive
+and AuditOnly remains the default.
 
-Exact Task Contract `GRIDGUARD-SAFE-BATCH-M17-PLUS-V1` is active at M20 CI,
-Documentation, and Packaging Hardening. M17 found zero qualifying independent
-primary sources; M18 hardened the confirmation gate; M19 passed safe regression. Continue until
-each validation. Never execute the reference binary or a real webhard/grid
-component, download an unknown executable, expose proprietary evidence, mutate the
-real system, or promote a rule without two qualifying independent primary sources.
+The exact next approval boundary is disposable-VM acquisition or execution of a
+real webhard/grid component. Never execute the reference binary, download an unknown
+executable, expose proprietary content, mutate the real system, quarantine or
+remediate real files, or enable a response mode beyond AuditOnly/Simulate without
+new explicit approval.

@@ -1,12 +1,13 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-rc.3",
-  "phase": "safe-batch-active",
+  "phase": "safe-batch-complete",
   "active_contract_id": "GRIDGUARD-SAFE-BATCH-M17-PLUS-V1",
-  "current_milestone": "M20",
-  "last_completed_milestone": "M19",
+  "contract_status": "COMPLETE",
+  "current_milestone": null,
+  "last_completed_milestone": "M20",
   "next_milestone": null,
-  "status": "ACTIVE",
+  "status": "COMPLETE",
   "blockers": [],
   "approvals": {
     "static_binary_inspection": true,
@@ -187,8 +188,15 @@
       "result": "PASS",
       "detail": "Evidence allowlisting, no-mutation, and idempotent privacy redaction coverage added. Release build passed with 0 errors and 2 NU1900 advisory-feed warnings; 39 tests, formatting, and 6-rule validation passed.",
       "observed_at": "2026-07-27T17:05:00+09:00"
+    },
+    {
+      "milestone": "M20",
+      "kind": "ci-documentation-and-packaging-validation",
+      "result": "PASS",
+      "detail": "Restore, Release build, 39 tests, formatting, 6-rule validation, dependency advisory scan, unsigned package creation, 75-entry SHA-256 manifest verification, forbidden-content inspection, and canonical consistency passed.",
+      "observed_at": "2026-07-27T17:25:00+09:00"
     }
   ],
   "repository_head": "HEAD",
-  "updated_at": "2026-07-27T16:01:00+09:00"
+  "updated_at": "2026-07-27T17:25:00+09:00"
 }

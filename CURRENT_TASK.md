@@ -1,19 +1,16 @@
 # Current Task
 
 - Exact Task Contract: `GRIDGUARD-SAFE-BATCH-M17-PLUS-V1`
-- Milestone: M20 CI, Documentation, and Packaging Hardening
-- Status: ACTIVE
-- Completed through: M16 Candidate Rule Audit Validation
-- Candidate source rows reviewed: 115
-- Distinct normalized candidates: 229
-- Current-system candidate matches: 0
+- Status: COMPLETE
+- Completed milestones: M17, M18, M19, M20
 - Candidate rules: 6
 - Confirmed rules: 0
-- AuditOnly: PASS, no mutation
-- Simulate: PASS, no mutation
-- M19 result: PASS; Release build, 39 tests, formatting, and 6-rule validation
-- Required result: CI-equivalent validation, unsigned package inspection, canonical
-  consistency, and contract closure
-- Auto-continue: contract terminal after validation
-- Stop boundary: VM or real-component execution, unknown binary download,
-  proprietary upload, real remediation/quarantine/deletion, or system mutation
+- Release build: PASS
+- Tests: PASS, 39
+- Rule validation: PASS, 6
+- Dependency advisory scan: PASS, no vulnerable packages reported
+- Unsigned package: PASS, 75-file SHA-256 manifest verified
+- Blockers: none inside the approved safe batch
+- Next approval boundary: disposable-VM acquisition or execution of a real
+  webhard/grid component
+- Runtime: inactive; AuditOnly default

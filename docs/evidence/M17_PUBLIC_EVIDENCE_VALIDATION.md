@@ -49,4 +49,3 @@ No candidate satisfies the contract's non-circular confirmation gate. Lack of
 confirmation is the valid M17 outcome. Further confirmation requires new accountable
 vendor/security evidence or disposable-VM acquisition and execution, which is an
 explicit approval boundary.
-

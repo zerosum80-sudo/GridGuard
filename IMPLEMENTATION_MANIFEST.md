@@ -21,7 +21,7 @@
 | M17 | Independent Public Evidence Validation | Complete; zero qualifying candidate-specific primary sources, zero promotions |
 | M18 | Confirmation Policy and Rule Provenance Hardening | Complete; typed non-circular gate, structured confirmed-rule provenance, 22 focused tests and 6-rule validation pass |
 | M19 | AuditOnly, Simulate, Privacy, and Regression Hardening | Complete; evidence allowlist/privacy tests added; Release build, 39 tests, formatting, and 6-rule validation pass |
-| M20 | CI, Documentation, and Packaging Hardening | Active; depends on completed M19; contract terminal after CI-equivalent and package validation |
+| M20 | CI, Documentation, and Packaging Hardening | Complete; CI-equivalent checks, 75-entry package manifest, advisory scan, docs, and canonical closure pass |
 
 ## Required top-level deliverables
 
@@ -48,3 +48,9 @@ No candidate object matched the current system and no rule was promoted.
 M17-M20 are registered by `GRIDGUARD-SAFE-BATCH-M17-PLUS-V1`. The batch uses the
 existing canonical state mechanism and permits sequential auto-continuation only
 inside its non-destructive AuditOnly/Simulate scope.
+
+## Safe batch completion
+
+M17-M20 are complete. Public evidence did not satisfy confirmation policy, so all
+six rules remain candidate-only. The next approval boundary is disposable-VM
+acquisition or execution of a real component; it is not authorized.

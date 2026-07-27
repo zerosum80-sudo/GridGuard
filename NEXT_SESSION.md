@@ -2,18 +2,12 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Active contract: `GRIDGUARD-SAFE-BATCH-M17-PLUS-V1`.
+Exact Task Contract `GRIDGUARD-SAFE-BATCH-M17-PLUS-V1` is complete through M20.
+Six rules remain candidate-only and confirmed rules remain zero because no candidate
+had qualifying independent primary evidence. Release build, 39 tests, formatting,
+six-rule validation, dependency advisory review, and the 75-entry unsigned package
+manifest pass.
 
-Current resume point: M19 safe regression passed the Release build, 39 tests,
-formatting, and validation of all six rules. M20 CI, Documentation, and Packaging
-Hardening is active.
-
-Raw current-system audit evidence remains below ignored
-`artifacts/private-analysis/`. Do not commit or disclose it. Candidate rules remain
-candidate-only; confirmed rules remain zero unless the contract's independent
-primary-source confirmation gate passes.
-
-Continue sequentially through registered M18-M20 after each milestone validation.
-Do not execute a webhard/grid component, contact extracted endpoints, download an
-unknown executable, enable remediation, expose proprietary content, or promote a
-rule from recovered or circular evidence.
+Runtime remains inactive and AuditOnly remains the default. No safe-batch blocker
+remains. The next approval boundary is disposable-VM acquisition or execution of a
+real webhard/grid component. Do not cross it without a new explicit approval.

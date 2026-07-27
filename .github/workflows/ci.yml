@@ -22,8 +22,15 @@ jobs:
       - run: dotnet list GridGuard.sln package --vulnerable --include-transitive
       - shell: pwsh
         run: ./scripts/Build-Package.ps1 -Configuration Release
+      - shell: pwsh
+        run: |
+          $manifest = Get-Content artifacts/package/PACKAGE_MANIFEST.sha256
+          if ($manifest.Count -lt 1) { throw "Package manifest is empty." }
+          if (Get-ChildItem artifacts/package -Recurse -Force |
+              Where-Object { $_.Name -in @('input', 'private-analysis', 'quarantine') }) {
+            throw "Forbidden private or operational directory in package."
+          }
       - uses: actions/upload-artifact@v4
         with:
           name: gridguard-unsigned
           path: artifacts/package/
-

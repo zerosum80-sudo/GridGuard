@@ -1,11 +1,17 @@
 # Release Checklist
 
-- [ ] Full restore/build/test pass with zero failures.
-- [ ] Formatting and rule validation pass.
-- [ ] Dependency vulnerability review has no actionable finding.
-- [ ] AuditOnly remains the default; deletion is unavailable.
-- [ ] Synthetic E2E detection, simulation, quarantine, restore, and failure paths pass.
-- [ ] No reference binary, extracted content, secrets, logs, or quarantine items are tracked.
-- [ ] Package is unsigned and not automatically published.
-- [ ] Known limitations and binary-analysis blockers are disclosed.
-
+- [ ] Release build succeeds.
+- [ ] Full test suite succeeds using synthetic fixtures and temporary directories.
+- [ ] Formatting verification succeeds.
+- [ ] Every rule validates against the canonical schema and semantic validator.
+- [ ] AuditOnly remains the default and permanent deletion remains unavailable.
+- [ ] Dependency vulnerability review is attempted against the configured advisory
+  source; an unavailable feed is recorded rather than represented as a clean scan.
+- [ ] No reference binary, extracted content, secrets, logs, or quarantine items
+  are tracked.
+- [ ] `scripts/Build-Package.ps1` recreates the generated package directory so stale
+  files cannot survive from a prior build.
+- [ ] Package content excludes `input`, `private-analysis`, and `quarantine`.
+- [ ] `PACKAGE_MANIFEST.sha256` contains a SHA-256 entry for every packaged file.
+- [ ] Package remains unsigned and unpublished; signing and distribution are
+  outside this baseline.

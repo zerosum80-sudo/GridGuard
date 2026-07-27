@@ -9,5 +9,12 @@
   "execution_mode": "SEQUENTIAL_AUTO_CONTINUE",
   "milestones": ["M17", "M18", "M19", "M20"],
   "allowed_response_modes": ["AuditOnly", "Simulate"],
-  "status": "ACTIVE"
+  "status": "COMPLETE",
+  "completed_at": "2026-07-27T17:25:00+09:00",
+  "ending_head": "HEAD",
+  "result": "M17_M18_M19_M20_COMPLETE",
+  "candidate_rule_count": 6,
+  "confirmed_rule_count": 0,
+  "blockers": [],
+  "next_approval_boundary": "DISPOSABLE_VM_OR_REAL_COMPONENT_ACQUISITION_EXECUTION"
 }
