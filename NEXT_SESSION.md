@@ -2,12 +2,10 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Exact Task Contract `GRIDGUARD-SAFE-BATCH-M17-PLUS-V1` is complete through M20.
-Six rules remain candidate-only and confirmed rules remain zero because no candidate
-had qualifying independent primary evidence. Release build, 39 tests, formatting,
-six-rule validation, dependency advisory review, and the 75-entry unsigned package
-manifest pass.
+Exact Task Contract `GRIDGUARD-VM-BEHAVIORAL-PREPARATION-V1` is active at M21 VM
+Preparation. Implement and validate all hypervisor-neutral preparation artifacts
+using synthetic fixtures, fakes, and temporary directories only.
 
-Runtime remains inactive and AuditOnly remains the default. No safe-batch blocker
-remains. The next approval boundary is disposable-VM acquisition or execution of a
-real webhard/grid component. Do not cross it without a new explicit approval.
+Stop after M21 at `READY_FOR_VM_BEHAVIORAL_VALIDATION`. M22 is
+`blocked_by_human_approval`. Do not install or execute a real target or reference
+binary and do not enable remediation, quarantine, deletion, or runtime activation.

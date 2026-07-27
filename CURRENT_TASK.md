@@ -1,16 +1,12 @@
 # Current Task
 
-- Exact Task Contract: `GRIDGUARD-SAFE-BATCH-M17-PLUS-V1`
-- Status: COMPLETE
-- Completed milestones: M17, M18, M19, M20
-- Candidate rules: 6
-- Confirmed rules: 0
-- Release build: PASS
-- Tests: PASS, 39
-- Rule validation: PASS, 6
-- Dependency advisory scan: PASS, no vulnerable packages reported
-- Unsigned package: PASS, 75-file SHA-256 manifest verified
-- Blockers: none inside the approved safe batch
-- Next approval boundary: disposable-VM acquisition or execution of a real
-  webhard/grid component
-- Runtime: inactive; AuditOnly default
+- Exact Task Contract: `GRIDGUARD-VM-BEHAVIORAL-PREPARATION-V1`
+- Milestone: M21 VM Preparation
+- Status: ACTIVE
+- Scope: hypervisor-neutral workflow and synthetic evidence tooling
+- Runtime: inactive
+- Allowed modes: AuditOnly, Simulate
+- Forbidden: target/reference execution, third-party installation, remediation,
+  quarantine, deletion, and real-system mutation
+- Stop state: `READY_FOR_VM_BEHAVIORAL_VALIDATION`
+- M22: `blocked_by_human_approval`

@@ -1,0 +1,13 @@
+{
+  "request_id": "GRIDGUARD-VM-BEHAVIORAL-PREPARATION-V1-EXEC-001",
+  "contract_id": "GRIDGUARD-VM-BEHAVIORAL-PREPARATION-V1",
+  "request_count": 1,
+  "created_at": "2026-07-27T17:40:00+09:00",
+  "repository": "C:\\Users\\Administrator\\Documents\\GridGuard",
+  "starting_head": "8d487eb9c4e400f4fd02ad6e042291c2a6bf0ef1",
+  "execution_mode": "PREPARATION_ONLY",
+  "milestones": ["M21", "M22", "M23", "M24"],
+  "active_milestone": "M21",
+  "stop_before": "M22",
+  "status": "ACTIVE"
+}

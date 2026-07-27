@@ -22,6 +22,10 @@
 | M18 | Confirmation Policy and Rule Provenance Hardening | Complete; typed non-circular gate, structured confirmed-rule provenance, 22 focused tests and 6-rule validation pass |
 | M19 | AuditOnly, Simulate, Privacy, and Regression Hardening | Complete; evidence allowlist/privacy tests added; Release build, 39 tests, formatting, and 6-rule validation pass |
 | M20 | CI, Documentation, and Packaging Hardening | Complete; CI-equivalent checks, 75-entry package manifest, advisory scan, docs, and canonical closure pass |
+| M21 | VM Preparation | Active under `GRIDGUARD-VM-BEHAVIORAL-PREPARATION-V1`; preparation and synthetic validation only |
+| M22 | Behavioral Validation | `blocked_by_human_approval`; depends on M21; real target installation/execution boundary |
+| M23 | Rule Confirmation | Registered; depends on M22 validated behavioral evidence |
+| M24 | Production Readiness | Registered; depends on M23 confirmed-rule review |
 
 ## Required top-level deliverables
 
