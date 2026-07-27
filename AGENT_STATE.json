@@ -1,19 +1,12 @@
 {
   "project": "GridGuard",
-  "version": "0.1.0-rc.1",
+  "version": "0.1.0-rc.2",
   "phase": "safe-baseline-complete",
   "current_milestone": null,
   "last_completed_milestone": "M15",
   "next_milestone": null,
-  "status": "COMPLETE_WITH_EXTERNAL_BLOCKERS",
-  "blockers": [
-    {
-      "code": "BINARY_NOT_FOUND",
-      "scope": ["M02", "M03", "M04"],
-      "blocks_all_work": false,
-      "detail": "Reference binary was not found in the approved search locations."
-    }
-  ],
+  "status": "COMPLETE",
+  "blockers": [],
   "approvals": {
     "static_binary_inspection": true,
     "synthetic_testing": true,
@@ -143,8 +136,29 @@
       "result": "PASS",
       "detail": "17-project Release build passed with 0 warnings/errors; 22 tests passed; formatting, 1-rule validation, vulnerability review, and unsigned packaging passed.",
       "observed_at": "2026-07-26T14:53:16.1715518+09:00"
+    },
+    {
+      "milestone": "M02-residual",
+      "kind": "reference-binary-static-analysis",
+      "result": "PASS",
+      "detail": "Expected SHA-256 matched; PE32+ AMD64 headers, 5 sections, 16 import libraries, 23 resources, version/manifest, unsigned status, 252584-byte overlay, strings, and EA06 marker were inspected without execution.",
+      "observed_at": "2026-07-27T15:31:42+09:00"
+    },
+    {
+      "milestone": "M03-residual",
+      "kind": "isolated-autoit-extraction",
+      "result": "PASS",
+      "detail": "Pinned AutoIt-Ripper 1.2.0 recovered an EA06 opcode reconstruction and one bundled JPEG; two resources total, raw output retained only below ignored private analysis.",
+      "observed_at": "2026-07-27T15:40:40+09:00"
+    },
+    {
+      "milestone": "M04-residual",
+      "kind": "candidate-rule-integration-and-safe-validation",
+      "result": "PASS",
+      "detail": "Five conservative candidate rules added; Release build passed with 0 warnings/errors, 22 tests passed, formatting passed, and all 6 candidate rules validated.",
+      "observed_at": "2026-07-27T15:43:00+09:00"
     }
   ],
   "repository_head": "HEAD",
-  "updated_at": "2026-07-26T14:53:16.1715518+09:00"
+  "updated_at": "2026-07-27T15:43:00+09:00"
 }

@@ -1,7 +1,6 @@
 {
   "project": "GridGuard",
   "repository_path": "C:\\Users\\Administrator\\Documents\\GridGuard",
-  "preferred_path_unavailable_for_writes": "D:\\AI Project\\GridGuard",
   "branch": "main",
   "head": "HEAD",
   "phase": "safe-baseline-complete",
@@ -10,11 +9,15 @@
   "next_milestone": null,
   "runtime_active": false,
   "default_mode": "AuditOnly",
-  "binary_status": "BINARY_NOT_FOUND",
+  "binary_status": "PASS_STATIC_EXPECTED_SHA256",
+  "autoit_status": "PASS_EA06_OPCODE_RECONSTRUCTION",
+  "extracted_resource_count": 2,
+  "candidate_rule_count": 6,
+  "confirmed_rule_count": 0,
   "sdk_status": "LOCAL_DOTNET_8_0_423",
   "build_status": "PASS_RELEASE_17_PROJECTS_0_WARNINGS",
   "test_status": "PASS_22",
-  "rule_validation_status": "PASS",
+  "rule_validation_status": "PASS_6",
   "remote_status": "REMOTE_REPOSITORY_UNAVAILABLE",
-  "updated_at": "2026-07-26T14:53:16.1715518+09:00"
+  "updated_at": "2026-07-27T15:43:00+09:00"
 }

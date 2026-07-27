@@ -2,18 +2,17 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Current resume point: all safe synthetic milestones through M15 are complete.
-Release build, 22 tests, formatting, rule validation, vulnerability review, and
-unsigned packaging pass. Resume only the sample-specific M02/M03 remainder after the
-reference binary is placed at the path below.
+Current resume point: the safe baseline through M15 and all reference-binary-
+dependent M02/M03/M04 residual work are complete. Release build, 22 tests,
+formatting, and validation of 6 candidate rules pass.
 
-For M02 extraction-specific work, place the reference binary at:
+The supplied binary remains private and ignored at:
 
-`D:\AI Project\GridGuard\input\Grid_Killer_v.2.1.4.o_x64.exe`
+`C:\Users\Administrator\Documents\GridGuard\input\Grid_Killer_v.2.1.4.o_x64.exe`
 
-Expected SHA-256:
+Do not execute or commit it. Raw EA06 reconstruction, extracted resources, full
+strings, and verbose logs remain below ignored `artifacts/private-analysis/`.
 
-`8cab9bdcfebb2a5eb6340c6a9f2fdf27737e42af56eddc15322d28d94473217b`
-
-Do not execute the file. If it remains absent, record `BINARY_NOT_FOUND` and continue
-with all synthetic and architecture work.
+There is no active milestone and no external blocker. A future session may begin
+only from an explicitly approved milestone. Candidate rules must remain candidate-
+only until independently verified; AuditOnly and runtime inactive remain mandatory.

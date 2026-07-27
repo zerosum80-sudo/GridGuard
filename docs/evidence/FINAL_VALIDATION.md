@@ -1,23 +1,20 @@
 # Final Safe Validation
 
-Observed: 2026-07-26T14:53:16+09:00
+Observed: 2026-07-27T15:43:00+09:00
 
 - Local .NET SDK: 8.0.423
 - Solution projects: 17
 - Release build: PASS, 0 warnings, 0 errors
 - Safe tests: PASS, 22 passed, 0 failed, 0 skipped
 - Formatting: PASS (`dotnet format --verify-no-changes`)
-- Rule validation: PASS, 1 synthetic rule
-- NuGet vulnerability review: PASS after test-tool updates; no vulnerable packages
-- Unsigned package: PASS, 70 files, 3,014,351 bytes under ignored
-  `artifacts/package/`
-- Reference static identity: PARTIAL, `BINARY_NOT_FOUND`
-- AutoIt extraction: PARTIAL, `BINARY_NOT_FOUND`; extractor not run
+- Rule validation: PASS, 6 candidate rules
+- Reference static identity: PASS, expected SHA-256 matched
+- AutoIt extraction: PASS, EA06 reconstruction and 2 resources
 - Default safety mode: AuditOnly
+- Runtime active: false
 - Permanent deletion: unavailable
 - Real remediation adapters: disabled
 - Reference binary execution: not attempted
 
-This is a synthetic defensive baseline, not evidence that any real Grid Killer
-target has been identified.
-
+The five reference-derived rules remain candidate-only and have all response flags
+disabled. No target component is independently confirmed.

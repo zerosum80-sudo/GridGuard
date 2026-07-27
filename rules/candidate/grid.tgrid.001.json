@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0",
+  "id": "grid.tgrid.001",
+  "name": "TGrid Service Pair",
+  "vendor": "unverified",
+  "family": "webhard-grid-component",
+  "description": "Candidate process and service pair recovered from the statically verified Grid Killer EA06 target table.",
+  "confidence": "strong-inference",
+  "status": "candidate",
+  "sources": [
+    "docs/evidence/M03_EXTRACTION_ATTEMPT.md",
+    "docs/analysis/INDICATOR_PROVENANCE.md"
+  ],
+  "match": {
+    "all": [
+      { "type": "executablePath", "operator": "containsIgnoreCase", "value": "\\TGridService.exe" },
+      { "type": "serviceName", "operator": "equalsIgnoreCase", "value": "TGridService" }
+    ]
+  },
+  "exclusions": [],
+  "score": 70,
+  "response": {
+    "terminateProcess": false,
+    "stopService": false,
+    "disableService": false,
+    "removePersistence": false,
+    "quarantineFiles": false,
+    "permanentDelete": false
+  },
+  "createdAt": "2026-07-27T06:40:00Z",
+  "updatedAt": "2026-07-27T06:40:00Z"
+}

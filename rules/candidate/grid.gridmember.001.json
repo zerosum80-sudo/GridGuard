@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "1.0",
+  "id": "grid.gridmember.001",
+  "name": "Gridmember Correlated Component",
+  "vendor": "unverified",
+  "family": "webhard-grid-component",
+  "description": "Candidate process, service, and startup correlation recovered from the statically verified Grid Killer EA06 target table.",
+  "confidence": "strong-inference",
+  "status": "candidate",
+  "sources": [
+    "docs/evidence/M03_EXTRACTION_ATTEMPT.md",
+    "docs/analysis/INDICATOR_PROVENANCE.md"
+  ],
+  "match": {
+    "threshold": [
+      { "type": "executablePath", "operator": "containsIgnoreCase", "value": "\\Gridmember.exe" },
+      { "type": "serviceName", "operator": "equalsIgnoreCase", "value": "gridmember" },
+      { "type": "commandLine", "operator": "containsIgnoreCase", "value": "gridmember.exe" }
+    ],
+    "minimum": 2
+  },
+  "exclusions": [],
+  "score": 75,
+  "response": {
+    "terminateProcess": false,
+    "stopService": false,
+    "disableService": false,
+    "removePersistence": false,
+    "quarantineFiles": false,
+    "permanentDelete": false
+  },
+  "createdAt": "2026-07-27T06:40:00Z",
+  "updatedAt": "2026-07-27T06:40:00Z"
+}
