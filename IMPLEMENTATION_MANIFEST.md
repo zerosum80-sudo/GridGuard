@@ -22,7 +22,7 @@
 | M18 | Confirmation Policy and Rule Provenance Hardening | Complete; typed non-circular gate, structured confirmed-rule provenance, 22 focused tests and 6-rule validation pass |
 | M19 | AuditOnly, Simulate, Privacy, and Regression Hardening | Complete; evidence allowlist/privacy tests added; Release build, 39 tests, formatting, and 6-rule validation pass |
 | M20 | CI, Documentation, and Packaging Hardening | Complete; CI-equivalent checks, 75-entry package manifest, advisory scan, docs, and canonical closure pass |
-| M21 | VM Preparation | Active under `GRIDGUARD-VM-BEHAVIORAL-PREPARATION-V1`; preparation and synthetic validation only |
+| M21 | VM Preparation | Complete; hypervisor-neutral workflow, collectors, replay, evidence packaging, 52 tests, and validation gates pass |
 | M22 | Behavioral Validation | `blocked_by_human_approval`; depends on M21; real target installation/execution boundary |
 | M23 | Rule Confirmation | Registered; depends on M22 validated behavioral evidence |
 | M24 | Production Readiness | Registered; depends on M23 confirmed-rule review |
@@ -58,3 +58,9 @@ inside its non-destructive AuditOnly/Simulate scope.
 M17-M20 are complete. Public evidence did not satisfy confirmation policy, so all
 six rules remain candidate-only. The next approval boundary is disposable-VM
 acquisition or execution of a real component; it is not authorized.
+
+## VM preparation boundary
+
+M21 is complete under `GRIDGUARD-VM-BEHAVIORAL-PREPARATION-V1`. The repository is
+`READY_FOR_VM_BEHAVIORAL_VALIDATION`. M22 remains
+`blocked_by_human_approval`; M23 and M24 remain dependency-blocked.

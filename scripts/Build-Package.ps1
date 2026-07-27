@@ -19,14 +19,36 @@ if (Test-Path -LiteralPath $output) {
 }
 New-Item -ItemType Directory -Path $output -Force | Out-Null
 
-foreach ($project in @('GridGuard.Cli', 'GridGuard.Service', 'GridGuard.Tray')) {
-    $projectPath = Join-Path $root "src\$project\$project.csproj"
-    $projectOutput = Join-Path $output $project
+foreach ($project in @(
+    @{ Name = 'GridGuard.Cli'; Path = 'src\GridGuard.Cli\GridGuard.Cli.csproj' },
+    @{ Name = 'GridGuard.Service'; Path = 'src\GridGuard.Service\GridGuard.Service.csproj' },
+    @{ Name = 'GridGuard.Tray'; Path = 'src\GridGuard.Tray\GridGuard.Tray.csproj' },
+    @{ Name = 'GridGuard.SnapshotDiff'; Path = 'tools\GridGuard.SnapshotDiff\GridGuard.SnapshotDiff.csproj' }
+)) {
+    $projectPath = Join-Path $root $project.Path
+    $projectOutput = Join-Path $output $project.Name
     & $DotnetPath publish $projectPath -c $Configuration --no-restore -o $projectOutput
-    if ($LASTEXITCODE -ne 0) { throw "Publish failed for $project." }
+    if ($LASTEXITCODE -ne 0) { throw "Publish failed for $($project.Name)." }
 }
 
 Copy-Item (Join-Path $root 'rules') (Join-Path $output 'rules') -Recurse -Force
+New-Item -ItemType Directory -Path (Join-Path $output 'docs\operations') -Force |
+    Out-Null
+New-Item -ItemType Directory -Path (Join-Path $output 'docs\vm') -Force |
+    Out-Null
+foreach ($guide in @(
+    'VM_PREPARATION_GUIDE.md',
+    'VM_EXECUTION_GUIDE.md',
+    'EVIDENCE_COLLECTION_GUIDE.md',
+    'RULE_CONFIRMATION_GUIDE.md'
+)) {
+    Copy-Item (Join-Path $root "docs\operations\$guide") `
+        (Join-Path $output "docs\operations\$guide") -Force
+}
+Copy-Item (Join-Path $root 'docs\vm\evidence-package.schema.json') `
+    (Join-Path $output 'docs\vm\evidence-package.schema.json') -Force
+Copy-Item (Join-Path $root 'docs\vm\false-positive-review-template.md') `
+    (Join-Path $output 'docs\vm\false-positive-review-template.md') -Force
 Copy-Item (Join-Path $root 'README.md') $output -Force
 Copy-Item (Join-Path $root 'SECURITY.md') $output -Force
 

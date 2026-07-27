@@ -19,6 +19,8 @@ jobs:
       - run: dotnet test GridGuard.sln --configuration Release --no-build
       - run: dotnet format GridGuard.sln --verify-no-changes --no-restore
       - run: dotnet run --project src/GridGuard.Cli --configuration Release --no-build -- rules validate
+      - shell: pwsh
+        run: ./scripts/Validate-VmPreparation.ps1 -Configuration Release
       - run: dotnet list GridGuard.sln package --vulnerable --include-transitive
       - shell: pwsh
         run: ./scripts/Build-Package.ps1 -Configuration Release
@@ -26,6 +28,15 @@ jobs:
         run: |
           $manifest = Get-Content artifacts/package/PACKAGE_MANIFEST.sha256
           if ($manifest.Count -lt 1) { throw "Package manifest is empty." }
+          foreach ($required in @(
+            'artifacts/package/GridGuard.SnapshotDiff/GridGuard.SnapshotDiff.dll',
+            'artifacts/package/docs/operations/VM_PREPARATION_GUIDE.md',
+            'artifacts/package/docs/vm/evidence-package.schema.json'
+          )) {
+            if (!(Test-Path -LiteralPath $required)) {
+              throw "Required VM preparation artifact is missing: $required"
+            }
+          }
           if (Get-ChildItem artifacts/package -Recurse -Force |
               Where-Object { $_.Name -in @('input', 'private-analysis', 'quarantine') }) {
             throw "Forbidden private or operational directory in package."

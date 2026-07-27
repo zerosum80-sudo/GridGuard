@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\GridGuard.Response\GridGuard.Response.csproj" />
+    <ProjectReference Include="..\..\src\GridGuard.Monitoring\GridGuard.Monitoring.csproj" />
   </ItemGroup>
 
 </Project>

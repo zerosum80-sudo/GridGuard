@@ -42,6 +42,9 @@ public sealed class WindowsInventoryAdapter(IEnumerable<string>? selectedDirecto
 
     private static void CollectProcesses(List<InventoryRecord> records, List<string> errors)
     {
+        var parentIds = OperatingSystem.IsWindows()
+            ? WindowsProcessTreeSnapshot.Capture(errors)
+            : new Dictionary<int, int>();
         foreach (var process in Process.GetProcesses())
         {
             using (process)
@@ -70,7 +73,10 @@ public sealed class WindowsInventoryAdapter(IEnumerable<string>? selectedDirecto
                 records.Add(new("process", process.Id.ToString(), new Dictionary<string, string>
                 {
                     ["processName"] = processName,
-                    ["executablePath"] = executablePath
+                    ["executablePath"] = executablePath,
+                    ["parentProcessId"] = parentIds.TryGetValue(process.Id, out var parentId)
+                        ? parentId.ToString()
+                        : ""
                 }));
             }
         }
@@ -117,13 +123,24 @@ public sealed class WindowsInventoryAdapter(IEnumerable<string>? selectedDirecto
             {
                 using var key = root.OpenSubKey(path);
                 foreach (var name in key?.GetValueNames() ?? [])
+                {
+                    var registryPath = $"{root.Name}\\{path}";
+                    var value = key!.GetValue(name)?.ToString() ?? "";
                     records.Add(new("autorun", $"{root.Name}\\{path}\\{name}",
                         new Dictionary<string, string>
                         {
-                            ["registryPath"] = $"{root.Name}\\{path}",
+                            ["registryPath"] = registryPath,
                             ["entryName"] = name,
-                            ["commandLine"] = key!.GetValue(name)?.ToString() ?? ""
+                            ["commandLine"] = value
                         }));
+                    records.Add(new("registry", $"{registryPath}\\{name}",
+                        new Dictionary<string, string>
+                        {
+                            ["registryPath"] = registryPath,
+                            ["valueName"] = name,
+                            ["valueData"] = value
+                        }));
+                }
             }
             catch (Exception ex) when (ex is UnauthorizedAccessException or IOException)
             {

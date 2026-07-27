@@ -1,13 +1,13 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-rc.3",
-  "phase": "vm-preparation-active",
+  "phase": "vm-preparation-complete",
   "active_contract_id": "GRIDGUARD-VM-BEHAVIORAL-PREPARATION-V1",
-  "contract_status": "ACTIVE",
-  "current_milestone": "M21",
-  "last_completed_milestone": "M20",
+  "contract_status": "COMPLETE",
+  "current_milestone": null,
+  "last_completed_milestone": "M21",
   "next_milestone": "M22",
-  "status": "ACTIVE",
+  "status": "READY_FOR_VM_BEHAVIORAL_VALIDATION",
   "blockers": ["M22_BLOCKED_BY_HUMAN_APPROVAL"],
   "approvals": {
     "static_binary_inspection": true,
@@ -195,8 +195,15 @@
       "result": "PASS",
       "detail": "Restore, Release build, 39 tests, formatting, 6-rule validation, dependency advisory scan, unsigned package creation, 75-entry SHA-256 manifest verification, forbidden-content inspection, and canonical consistency passed.",
       "observed_at": "2026-07-27T17:25:00+09:00"
+    },
+    {
+      "milestone": "M21",
+      "kind": "vm-behavioral-validation-preparation",
+      "result": "PASS_READY_FOR_VM",
+      "detail": "Hyper-V, VMware, and VirtualBox abstractions; canonical workflow; snapshot/delta engines; hashes, publisher/version, process-tree, timeline, correlation, replay, AuditOnly/Simulate, JSON/Markdown evidence, false-positive review, CI, docs, and packaging passed. Release build had 0 errors; 52 tests and 6 rules passed; 88 package hashes verified. No real target or reference was executed.",
+      "observed_at": "2026-07-27T18:30:00+09:00"
     }
   ],
   "repository_head": "HEAD",
-  "updated_at": "2026-07-27T17:25:00+09:00"
+  "updated_at": "2026-07-27T18:30:00+09:00"
 }

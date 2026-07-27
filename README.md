@@ -11,9 +11,10 @@ executed or redistributed.
 
 ## Project status
 
-See `PROJECT_STATUS.json`, `CURRENT_TASK.md`, and `NEXT_SESSION.md`. The reference
-binary was not present during repository foundation work; binary-specific analysis
-therefore remains externally blocked without blocking synthetic implementation.
+See `PROJECT_STATUS.json`, `CURRENT_TASK.md`, and `NEXT_SESSION.md`. Static reference
+analysis is closed; the reference binary remains ignored and must never be executed
+or redistributed. Disposable-VM behavioral preparation is available, while real
+target installation and execution remain an explicit approval boundary.
 
 ## Safety
 
@@ -33,7 +34,11 @@ gridguard quarantine restore <item-id>
 gridguard snapshot capture --output <file>
 gridguard snapshot diff <before> <after>
 gridguard diagnostics
+GridGuard.SnapshotDiff workflow validate
+GridGuard.SnapshotDiff hypervisors inspect
+GridGuard.SnapshotDiff evidence <before.json> <after.json> --output <directory>
 ```
 
 The Windows Worker Service and tray remain local-only. Build unsigned artifacts with
-`scripts/Build-Package.ps1`.
+`scripts/Build-Package.ps1`. Validate the VM preparation workflow with
+`scripts/Validate-VmPreparation.ps1`.

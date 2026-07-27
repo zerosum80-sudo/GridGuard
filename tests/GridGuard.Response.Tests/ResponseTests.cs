@@ -81,6 +81,26 @@ public sealed class ResponseTests
             new(ResponseMode.AuditOnly, AllowProcessTermination: true)));
     }
 
+    [Fact]
+    public async Task VmVerificationRunsAuditAndSimulateWithoutMutation()
+    {
+        var (root, path) = await FixtureAsync();
+        try
+        {
+            var evidence = await VmSafeVerificationWorkflow.VerifyAsync(
+                Confirmed(),
+                [path],
+                Path.Combine(root, "unused-quarantine"));
+
+            Assert.Contains(evidence, item => item.Mode == "AuditOnly");
+            Assert.Contains(evidence, item => item.Mode == "Simulate");
+            Assert.All(evidence, item => Assert.False(item.Performed));
+            Assert.True(File.Exists(path));
+            Assert.False(Directory.Exists(Path.Combine(root, "unused-quarantine")));
+        }
+        finally { Directory.Delete(root, true); }
+    }
+
     private static DetectionResult Confirmed() => new(
         "synthetic", [], "confirmed", 100, DetectionDecision.Confirmed, "synthetic",
         DateTimeOffset.UtcNow, [], "quarantine");

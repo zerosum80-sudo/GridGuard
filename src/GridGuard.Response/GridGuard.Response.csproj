@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GridGuard.Core\GridGuard.Core.csproj" />
+    <ProjectReference Include="..\GridGuard.Monitoring\GridGuard.Monitoring.csproj" />
   </ItemGroup>
 
 </Project>

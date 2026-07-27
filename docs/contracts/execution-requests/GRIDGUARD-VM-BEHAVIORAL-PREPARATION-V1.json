@@ -7,7 +7,11 @@
   "starting_head": "8d487eb9c4e400f4fd02ad6e042291c2a6bf0ef1",
   "execution_mode": "PREPARATION_ONLY",
   "milestones": ["M21", "M22", "M23", "M24"],
-  "active_milestone": "M21",
+  "active_milestone": null,
   "stop_before": "M22",
-  "status": "ACTIVE"
+  "status": "COMPLETE",
+  "completed_at": "2026-07-27T18:30:00+09:00",
+  "ending_head": "HEAD",
+  "result": "READY_FOR_VM_BEHAVIORAL_VALIDATION",
+  "blocker": "M22_BLOCKED_BY_HUMAN_APPROVAL"
 }

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gridguard.local/schema/vm-evidence-package-1.0.json",
+  "title": "GridGuard VM Evidence Package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "generatedAt", "before", "after", "deltas",
+    "hashesPublishersVersions", "timeline", "processTree", "correlationGraph",
+    "ruleMatches", "simulatedResponse", "falsePositiveReview",
+    "safetyMode", "runtimeActive"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "before": { "$ref": "#/$defs/snapshot" },
+    "after": { "$ref": "#/$defs/snapshot" },
+    "deltas": { "type": "object" },
+    "hashesPublishersVersions": { "type": "array" },
+    "timeline": { "type": "array" },
+    "processTree": { "type": "array" },
+    "correlationGraph": { "type": "array" },
+    "ruleMatches": { "type": "array" },
+    "simulatedResponse": { "type": "array" },
+    "falsePositiveReview": { "type": "array" },
+    "safetyMode": { "const": "AuditOnly/Simulate" },
+    "runtimeActive": { "const": false }
+  },
+  "$defs": {
+    "snapshot": {
+      "type": "object",
+      "required": ["capturedAt", "records", "errors"],
+      "properties": {
+        "capturedAt": { "type": "string", "format": "date-time" },
+        "records": { "type": "array" },
+        "errors": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}
