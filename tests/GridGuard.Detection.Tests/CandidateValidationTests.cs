@@ -80,6 +80,32 @@ public sealed class CandidateValidationTests
     }
 
     [Fact]
+    public async Task AuditReportRetainsOnlyAllowlistedEvidenceWithoutMutation()
+    {
+        var properties = new Dictionary<string, string>
+        {
+            ["serviceName"] = "TGridService",
+            ["serviceImagePath"] = @"C:\Synthetic\TGridService.exe",
+            ["operatorSecret"] = "must-not-leave-adapter",
+            ["arbitraryEnvironment"] = "private"
+        };
+        var snapshot = Snapshot(new InventoryRecord("service", "synthetic", properties));
+        var normalization = CandidateNormalizer.Normalize(Catalog(
+            new CandidateCatalogRow("TGridService.exe", "TGridService", null, null)));
+
+        var report = await new CandidateAuditService(new FakeInspector())
+            .AuditAsync(normalization, snapshot);
+
+        Assert.All(report.Matches, match =>
+        {
+            Assert.DoesNotContain("operatorSecret", match.Evidence.Keys);
+            Assert.DoesNotContain("arbitraryEnvironment", match.Evidence.Keys);
+        });
+        Assert.Equal("must-not-leave-adapter", properties["operatorSecret"]);
+        Assert.Contains("no process", report.MutationStatus, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
     public async Task CorrelatesAutorunNameWithExecutable()
     {
         var normalization = CandidateNormalizer.Normalize(Catalog(
@@ -131,6 +157,20 @@ public sealed class CandidateValidationTests
         Assert.DoesNotContain("alice", result, StringComparison.OrdinalIgnoreCase);
         Assert.DoesNotContain("WORKSTATION", result, StringComparison.OrdinalIgnoreCase);
         Assert.Contains("<USER_PROFILE>", result);
+    }
+
+    [Fact]
+    public void PrivacyRedactionIsCaseInsensitiveAndIdempotent()
+    {
+        var redactor = new PrivacyRedactor(
+            "Alice", "WORKSTATION", @"C:\Users\Alice");
+        var once = redactor.Redact(
+            @"workstation c:\users\ALICE\AppData\Vendor alice");
+        var twice = redactor.Redact(once);
+
+        Assert.Equal(once, twice);
+        Assert.DoesNotContain("alice", twice, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("workstation", twice, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]

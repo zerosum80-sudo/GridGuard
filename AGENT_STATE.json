@@ -3,9 +3,9 @@
   "version": "0.1.0-rc.3",
   "phase": "safe-batch-active",
   "active_contract_id": "GRIDGUARD-SAFE-BATCH-M17-PLUS-V1",
-  "current_milestone": "M19",
-  "last_completed_milestone": "M18",
-  "next_milestone": "M20",
+  "current_milestone": "M20",
+  "last_completed_milestone": "M19",
+  "next_milestone": null,
   "status": "ACTIVE",
   "blockers": [],
   "approvals": {
@@ -180,6 +180,13 @@
       "result": "PASS",
       "detail": "Typed evaluation rejects circular, secondary, duplicate-control, non-specific, and unreproducible evidence. Confirmed rules require structured independent-primary-v1 evidence from two control IDs. Detection and rules suites passed 22 focused tests; all 6 rules validated.",
       "observed_at": "2026-07-27T16:50:00+09:00"
+    },
+    {
+      "milestone": "M19",
+      "kind": "safe-regression-validation",
+      "result": "PASS",
+      "detail": "Evidence allowlisting, no-mutation, and idempotent privacy redaction coverage added. Release build passed with 0 errors and 2 NU1900 advisory-feed warnings; 39 tests, formatting, and 6-rule validation passed.",
+      "observed_at": "2026-07-27T17:05:00+09:00"
     }
   ],
   "repository_head": "HEAD",
