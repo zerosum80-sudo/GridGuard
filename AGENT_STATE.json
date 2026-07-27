@@ -1,19 +1,24 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-rc.3",
-  "phase": "vm-preparation-complete",
+  "phase": "m22-preflight-blocked",
   "active_contract_id": "GRIDGUARD-VM-BEHAVIORAL-PREPARATION-V1",
-  "contract_status": "COMPLETE",
-  "current_milestone": null,
+  "contract_status": "ACTIVE",
+  "current_milestone": "M22",
   "last_completed_milestone": "M21",
   "next_milestone": "M22",
-  "status": "READY_FOR_VM_BEHAVIORAL_VALIDATION",
-  "blockers": ["M22_BLOCKED_BY_HUMAN_APPROVAL"],
+  "status": "BLOCKED",
+  "blockers": [
+    "M22_NO_SUPPORTED_HYPERVISOR_AVAILABLE",
+    "M22_APPROVED_TARGET_NOT_IDENTIFIED"
+  ],
   "approvals": {
     "static_binary_inspection": true,
     "synthetic_testing": true,
     "candidate_audit": true,
     "local_commits": true,
+    "m22_human_approval": true,
+    "disposable_vm_target_execution": true,
     "reference_binary_execution": false,
     "real_destructive_testing": false,
     "permanent_deletion": false,
@@ -202,8 +207,15 @@
       "result": "PASS_READY_FOR_VM",
       "detail": "Hyper-V, VMware, and VirtualBox abstractions; canonical workflow; snapshot/delta engines; hashes, publisher/version, process-tree, timeline, correlation, replay, AuditOnly/Simulate, JSON/Markdown evidence, false-positive review, CI, docs, and packaging passed. Release build had 0 errors; 52 tests and 6 rules passed; 88 package hashes verified. No real target or reference was executed.",
       "observed_at": "2026-07-27T18:30:00+09:00"
+    },
+    {
+      "milestone": "M22",
+      "kind": "vm-behavioral-validation-preflight",
+      "result": "BLOCKED",
+      "detail": "Human approval was accepted. Read-only hypervisor inspection returned READY_FOR_VM with zero available providers. No repository-local approved-target identity exists. The reference binary remains prohibited. No installation, execution, snapshot mutation, or behavioral collection occurred.",
+      "observed_at": "2026-07-27T18:45:00+09:00"
     }
   ],
   "repository_head": "HEAD",
-  "updated_at": "2026-07-27T18:30:00+09:00"
+  "updated_at": "2026-07-27T18:45:00+09:00"
 }

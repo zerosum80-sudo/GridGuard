@@ -9,9 +9,14 @@
   "milestones": ["M21", "M22", "M23", "M24"],
   "active_milestone": null,
   "stop_before": "M22",
-  "status": "COMPLETE",
+  "status": "BLOCKED_EXTERNAL_INPUT",
   "completed_at": "2026-07-27T18:30:00+09:00",
   "ending_head": "HEAD",
-  "result": "READY_FOR_VM_BEHAVIORAL_VALIDATION",
-  "blocker": "M22_BLOCKED_BY_HUMAN_APPROVAL"
+  "result": "M22_PREFLIGHT_BLOCKED",
+  "m22_human_approval": true,
+  "m22_approval_received_at": "2026-07-27T18:45:00+09:00",
+  "blockers": [
+    "NO_SUPPORTED_HYPERVISOR_AVAILABLE",
+    "APPROVED_TARGET_NOT_IDENTIFIED"
+  ]
 }
