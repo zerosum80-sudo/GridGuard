@@ -11,6 +11,12 @@ observable. Capture the Rule ID and sanitized evidence, then repeat the read-onl
 scan and compare exact predicates. The current observation found no GridGuard
 runtime, status pipe, detection log, or reproducible candidate match.
 
+NATService evidence now supports a conservative candidate design using exact
+service-name and image-path correlation. Do not create the rule until the active
+contract is explicitly amended to authorize candidate-rule authoring and focused
+synthetic validation. Preserve AuditOnly, zero response flags, candidate-only
+status, and the existing independent-primary confirmation policy.
+
 Do not install or execute any target or reference binary. Do not terminate
 processes, delete or quarantine files, modify registry/services/tasks/startup or
 network configuration, load drivers, escalate privileges, remediate, or perform

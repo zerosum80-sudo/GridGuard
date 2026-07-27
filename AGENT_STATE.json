@@ -11,7 +11,8 @@
   "blockers": [
     "M22_GRIDGUARD_RUNTIME_NOT_OBSERVED",
     "M22_DETECTION_LOG_NOT_FOUND",
-    "M22_REPORTED_DETECTION_NOT_REPRODUCIBLE"
+    "M22_REPORTED_DETECTION_NOT_REPRODUCIBLE",
+    "M22_CANDIDATE_RULE_AUTHORING_OUTSIDE_ACTIVE_CONTRACT"
   ],
   "approvals": {
     "static_binary_inspection": true,
@@ -238,8 +239,15 @@
       "result": "INSUFFICIENT_EVIDENCE",
       "detail": "The already-running Grid Killer object matched the prohibited reference SHA-256, but no GridGuard runtime, status pipe, detection log, Rule ID, or candidate predicate match was observed. Two AuditOnly scans returned no candidate match and no changes. The P2P application and service identities did not match any of 6 candidate rules; confirmed rules remain zero. Forty-five focused tests and 6-rule validation passed; full Release build and the live-inventory Monitoring test were blocked by timeout without an emitted compiler or test failure.",
       "observed_at": "2026-07-27T20:19:42+09:00"
+    },
+    {
+      "milestone": "M22",
+      "kind": "natservice-candidate-gap-analysis",
+      "result": "PASS_ANALYSIS_BLOCKED_RULE_AUTHORING",
+      "detail": "Read-only evidence identified NATService at the corrected NAT Service path with a valid NeoNTech signature, version 3.5.4.90, automatic service persistence, and services.exe parent. None of 6 candidate rules contains NATService predicates; AuditOnly reproduced no match and no changes. A conservative two-field candidate was specified but not created because the active exact contract does not authorize rule authoring. Confirmed rules remain zero. GridGuard.Cli Release build passed with 0 warnings and 0 errors; 6-rule validation and 25 focused tests passed.",
+      "observed_at": "2026-07-27T20:42:20+09:00"
     }
   ],
   "repository_head": "HEAD",
-  "updated_at": "2026-07-27T20:19:42+09:00"
+  "updated_at": "2026-07-27T20:42:20+09:00"
 }

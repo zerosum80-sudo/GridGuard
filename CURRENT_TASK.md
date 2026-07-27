@@ -12,6 +12,13 @@
   not executed or modified by validation
 - P2P candidate-rule predicates: no match across 6 candidate rules
 - Confirmed rules: 0
+- NATService evidence: running automatic service; corrected image path
+  `<PROGRAM_FILES_X86>\NAT Service\natsvc.exe`; valid NeoNTech signature;
+  version 3.5.4.90; parent `services.exe`
+- NATService rule gap: no predicate across 6 candidate rules
+- Candidate proposal: exact service-name plus image-path pair; response flags false
+- Candidate implementation: blocked because the active exact contract permits
+  rule evaluation but not rule authoring
 - M23/M24: dependency-blocked
-- Next action: provide or reproduce an actual GridGuard AuditOnly detection output
-  while GridGuard runtime is observable
+- Next action: authorize an M22 contract amendment for conservative candidate-rule
+  authoring and focused synthetic validation

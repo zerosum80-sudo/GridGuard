@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "1.0",
+  "contractId": "GRIDGUARD-M22-PHYSICAL-AUDITONLY-VALIDATION-V1",
+  "validationRunId": "edb9b3d1-02f6-42b9-8811-5b47442cff09",
+  "evidenceId": "7d5cecbb-74a3-4f09-bcdd-9548b930a9ad",
+  "startedAt": "2026-07-27T20:37:34.5300004+09:00",
+  "finishedAt": "2026-07-27T20:42:20+09:00",
+  "repositoryIdentity": "zerosum80-sudo/GridGuard",
+  "branch": "main",
+  "repositoryHeadAtCollection": "3f0966faa84509b4b309f252a0476ff4b0e244dd",
+  "responseMode": "AuditOnly",
+  "observedService": {
+    "serviceName": "NATService",
+    "displayName": "NATService",
+    "state": "Running",
+    "startMode": "Auto",
+    "serviceType": "Own Process",
+    "account": "LocalSystem",
+    "pid": 10720,
+    "imagePath": "<PROGRAM_FILES_X86>\\NAT Service\\natsvc.exe",
+    "registryStart": 2,
+    "registryType": 16
+  },
+  "observedFile": {
+    "name": "natsvc.exe",
+    "path": "<PROGRAM_FILES_X86>\\NAT Service\\natsvc.exe",
+    "length": 4568336,
+    "lastWriteUtc": "2024-10-18T02:07:18.0000000Z",
+    "sha256": "24F3EEF66892FA2CA2C4A4D92CC87E658A15B13DD53176EEF4F0D99B0330D1AE",
+    "signatureStatus": "Valid",
+    "publisher": "NeoNTech",
+    "fileVersion": "3.5.4.90",
+    "productVersion": "1.0.0.0",
+    "description": "Neo Network Technology Windows Service Program"
+  },
+  "processRelationship": {
+    "processName": "natsvc.exe",
+    "pid": 10720,
+    "parentPid": 940,
+    "parentName": "services.exe",
+    "children": [],
+    "loadedModules": "UNAVAILABLE"
+  },
+  "persistence": {
+    "windowsService": true,
+    "automaticStart": true,
+    "matchingStartupEntries": 0,
+    "matchingScheduledTasks": 0
+  },
+  "pathCorrection": {
+    "reportedPath": "<PROGRAM_FILES_X86>\\HNAT Service",
+    "reportedPathExists": false,
+    "observedPath": "<PROGRAM_FILES_X86>\\NAT Service",
+    "observedPathExists": true
+  },
+  "currentRuleComparison": {
+    "candidateRuleCount": 6,
+    "confirmedRuleCount": 0,
+    "natServicePredicateCount": 0,
+    "missingRuleDimensions": [
+      "serviceName",
+      "serviceImagePath",
+      "publisher",
+      "version",
+      "fileMetadata",
+      "persistence",
+      "processRelationship"
+    ],
+    "scanResult": "No candidate match. AuditOnly made no changes.",
+    "scanExitCode": 0,
+    "explanation": "All current real candidate rules require exact non-NAT service and image-path pairs. No current predicate references NATService, natsvc.exe, NeoNTech, the observed version or hash, service persistence, or its services.exe parent."
+  },
+  "conservativeCandidateProposal": {
+    "id": "grid.natservice.001",
+    "status": "candidate",
+    "confidence": "strong-inference",
+    "score": 60,
+    "match": {
+      "all": [
+        {
+          "type": "serviceName",
+          "operator": "equalsIgnoreCase",
+          "value": "NATService"
+        },
+        {
+          "type": "serviceImagePath",
+          "operator": "containsIgnoreCase",
+          "value": "\\NAT Service\\natsvc.exe"
+        }
+      ]
+    },
+    "response": {
+      "terminateProcess": false,
+      "stopService": false,
+      "disableService": false,
+      "removePersistence": false,
+      "quarantineFiles": false,
+      "permanentDelete": false
+    },
+    "implementationStatus": "BLOCKED_CONTRACT_SCOPE",
+    "reason": "The active exact contract allows rule evaluation and sanitized evidence collection only; candidate-rule authoring is not authorized."
+  },
+  "confirmationPolicy": {
+    "confirmedRuleCreated": false,
+    "candidatePromotionRecommended": false,
+    "independentPrimaryEvidenceControls": 0,
+    "note": "The reference detector observation is not independent primary confirmation."
+  },
+  "mutationVerification": {
+    "serviceStateBefore": "Running",
+    "serviceStateAfter": "Running",
+    "pidBefore": 10720,
+    "pidAfter": 10720,
+    "prohibitedActionOccurred": false
+  },
+  "repositoryValidation": {
+    "cliReleaseBuild": {
+      "status": "PASS",
+      "warnings": 0,
+      "errors": 0
+    },
+    "ruleValidation": {
+      "status": "PASS",
+      "validatedRules": 6
+    },
+    "focusedTests": {
+      "status": "PASS",
+      "passed": 25,
+      "failed": 0,
+      "scope": "Rules and Detection"
+    },
+    "canonicalJson": "PASS",
+    "canonicalConsistency": "PASS"
+  },
+  "privacy": {
+    "sanitized": true,
+    "rawBinaryStored": false,
+    "privatePathsStored": false,
+    "proprietaryContentsStored": false
+  }
+}

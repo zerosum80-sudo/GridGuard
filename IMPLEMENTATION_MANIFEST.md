@@ -23,7 +23,7 @@
 | M19 | AuditOnly, Simulate, Privacy, and Regression Hardening | Complete; evidence allowlist/privacy tests added; Release build, 39 tests, formatting, and 6-rule validation pass |
 | M20 | CI, Documentation, and Packaging Hardening | Complete; CI-equivalent checks, 75-entry package manifest, advisory scan, docs, and canonical closure pass |
 | M21 | VM Preparation | Complete; hypervisor-neutral workflow, collectors, replay, evidence packaging, 52 tests, and validation gates pass |
-| M22 | Behavioral Validation | Blocked; physical AuditOnly observation produced insufficient evidence: no GridGuard runtime/log/Rule ID and no reproducible candidate match |
+| M22 | Behavioral Validation | Blocked; NATService gap analyzed, but candidate-rule authoring is outside the active read-only contract |
 | M23 | Rule Confirmation | Registered; depends on M22 validated behavioral evidence |
 | M24 | Production Readiness | Registered; depends on M23 confirmed-rule review |
 
@@ -100,3 +100,17 @@ match and no changes. M22 is `INSUFFICIENT_EVIDENCE`; M23 and M24 remain blocked
 Sanitized evidence is stored in
 `docs/evidence/M22_PHYSICAL_AUDITONLY_VALIDATION.json` and the corresponding
 Markdown report.
+
+## M22 NATService candidate gap
+
+Read-only evidence identified `NATService` as an automatic service running
+`natsvc.exe` from the corrected `NAT Service` directory. The file has a valid
+NeoNTech signature and version 3.5.4.90. None of the six candidate rules contains
+NATService predicates, so AuditOnly correctly returned no candidate match.
+
+A conservative candidate design requires both exact service name and image-path
+evidence, retains candidate status, assigns no response authority, and does not
+satisfy confirmation policy. The active exact contract authorizes rule evaluation
+but not rule authoring, so no rule file was created. Sanitized analysis is stored in
+`docs/evidence/M22_NATSERVICE_CANDIDATE_GAP.json` and the corresponding Markdown
+report.
