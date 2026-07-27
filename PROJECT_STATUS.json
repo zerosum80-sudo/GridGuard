@@ -38,6 +38,6 @@
   "m23_status": "BLOCKED_BY_M22",
   "m24_status": "BLOCKED_BY_M23",
   "next_approval_boundary": "AUTHORIZE_CONTRACT_AMENDMENT_OR_NEW_PHYSICAL_MACHINE_CONTRACT_AND_PROVIDE_TARGET_SCOPE",
-  "remote_status": "REMOTE_REPOSITORY_UNAVAILABLE",
+  "remote_status": "PASS_REMOTE_HEAD_MATCH",
   "updated_at": "2026-07-27T19:00:00+09:00"
 }
