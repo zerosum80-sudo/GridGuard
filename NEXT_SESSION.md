@@ -2,19 +2,19 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-Current resume point: M16 Candidate Rule Audit Validation is complete. The current
-system produced zero candidate matches across 229 normalized indicators. AuditOnly
+Active contract: `GRIDGUARD-SAFE-BATCH-M17-PLUS-V1`.
+
+Current resume point: M17 Independent Public Evidence Validation is active. M16
+produced zero current-system matches across 229 normalized indicators. AuditOnly
 and Simulate produced no mutation. Release build, 33 tests, formatting, and
-validation of 6 candidate rules pass.
+validation of 6 candidate rules passed.
 
 Raw current-system audit evidence remains below ignored
 `artifacts/private-analysis/`. Do not commit or disclose it. Candidate rules remain
-candidate-only; confirmed rules remain zero.
+candidate-only; confirmed rules remain zero unless the contract's independent
+primary-source confirmation gate passes.
 
-Recommended next milestone:
-
-`M17 — Rule confirmation from independent public evidence`
-
-M17 is not active until explicitly approved. Do not execute a webhard/grid
-component, contact extracted endpoints, enable remediation, or promote a rule from
-the recovered script alone.
+Continue sequentially through registered M18-M20 after each milestone validation.
+Do not execute a webhard/grid component, contact extracted endpoints, download an
+unknown executable, enable remediation, expose proprietary content, or promote a
+rule from recovered or circular evidence.

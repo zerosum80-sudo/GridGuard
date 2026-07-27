@@ -1,11 +1,12 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-rc.3",
-  "phase": "candidate-audit-complete",
-  "current_milestone": null,
+  "phase": "safe-batch-active",
+  "active_contract_id": "GRIDGUARD-SAFE-BATCH-M17-PLUS-V1",
+  "current_milestone": "M17",
   "last_completed_milestone": "M16",
-  "next_milestone": "M17",
-  "status": "COMPLETE",
+  "next_milestone": "M18",
+  "status": "ACTIVE",
   "blockers": [],
   "approvals": {
     "static_binary_inspection": true,

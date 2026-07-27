@@ -1,7 +1,8 @@
 # Current Task
 
-- Milestone: none
-- Status: M16_COMPLETE
+- Exact Task Contract: `GRIDGUARD-SAFE-BATCH-M17-PLUS-V1`
+- Milestone: M17 Independent Public Evidence Validation
+- Status: ACTIVE
 - Completed through: M16 Candidate Rule Audit Validation
 - Candidate source rows reviewed: 115
 - Distinct normalized candidates: 229
@@ -10,6 +11,8 @@
 - Confirmed rules: 0
 - AuditOnly: PASS, no mutation
 - Simulate: PASS, no mutation
-- Remaining blocker: independent non-circular confirmation evidence absent
-- Recommended next milestone: M17 Rule confirmation from independent public evidence
-- M17 is not active until explicitly approved.
+- Required result: candidate-specific primary-source research and non-circular
+  confirmation evaluation
+- Auto-continue: M18, M19, and M20 after each required validation
+- Stop boundary: VM or real-component execution, unknown binary download,
+  proprietary upload, real remediation/quarantine/deletion, or system mutation

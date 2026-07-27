@@ -10,6 +10,8 @@ Current-system matches, correlations, and promotions were zero. Six rules remain
 candidate-only. AuditOnly, runtime inactive, privacy boundaries, and permanent
 deletion exclusion remain mandatory.
 
-The recommended next milestone is M17 Rule confirmation from independent public
-evidence, but it requires explicit approval before activation. Never execute the
-reference binary or a real webhard/grid component.
+Exact Task Contract `GRIDGUARD-SAFE-BATCH-M17-PLUS-V1` is active at M17 Independent
+Public Evidence Validation. Continue automatically through registered M18-M20 after
+each validation. Never execute the reference binary or a real webhard/grid
+component, download an unknown executable, expose proprietary evidence, mutate the
+real system, or promote a rule without two qualifying independent primary sources.
