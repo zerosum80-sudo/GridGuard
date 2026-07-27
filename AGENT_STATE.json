@@ -3,9 +3,9 @@
   "version": "0.1.0-rc.3",
   "phase": "safe-batch-active",
   "active_contract_id": "GRIDGUARD-SAFE-BATCH-M17-PLUS-V1",
-  "current_milestone": "M17",
-  "last_completed_milestone": "M16",
-  "next_milestone": "M18",
+  "current_milestone": "M18",
+  "last_completed_milestone": "M17",
+  "next_milestone": "M19",
   "status": "ACTIVE",
   "blockers": [],
   "approvals": {
@@ -166,6 +166,13 @@
       "result": "PASS",
       "detail": "115 source rows and 238 values normalized to 229 distinct candidates; 9 duplicates and 2 malformed rows removed. Current-system matches and correlations were zero. AuditOnly and Simulate made no changes. Release build passed with 0 warnings/errors, 33 tests passed, formatting passed, and 6 candidate rules validated.",
       "observed_at": "2026-07-27T16:01:00+09:00"
+    },
+    {
+      "milestone": "M17",
+      "kind": "independent-public-evidence-validation",
+      "result": "PASS_NO_CONFIRMATION",
+      "detail": "Exact candidate identity pairs were checked against primary vendor, platform, and official security sources. No candidate had a qualifying independent primary source; all 6 rules remain candidate-only and confirmed rules remain zero.",
+      "observed_at": "2026-07-27T16:35:00+09:00"
     }
   ],
   "repository_head": "HEAD",

@@ -18,8 +18,8 @@
 | M14 | End-to-end synthetic validation | Complete |
 | M15 | CI, packaging, baseline release candidate | Complete |
 | M16 | Candidate Rule Audit Validation | Complete; 229 normalized candidates, zero current-system matches, 6 refined candidate rules |
-| M17 | Independent Public Evidence Validation | Active under `GRIDGUARD-SAFE-BATCH-M17-PLUS-V1`; depends on M16; auto-continue to M18 after validation |
-| M18 | Confirmation Policy and Rule Provenance Hardening | Registered; depends on M17; auto-continue to M19 after focused tests and rule validation |
+| M17 | Independent Public Evidence Validation | Complete; zero qualifying candidate-specific primary sources, zero promotions |
+| M18 | Confirmation Policy and Rule Provenance Hardening | Active; depends on completed M17; auto-continue to M19 after focused tests and rule validation |
 | M19 | AuditOnly, Simulate, Privacy, and Regression Hardening | Registered; depends on M18; auto-continue to M20 after full safe regression validation |
 | M20 | CI, Documentation, and Packaging Hardening | Registered; depends on M19; contract terminal after CI-equivalent and package validation |
 
