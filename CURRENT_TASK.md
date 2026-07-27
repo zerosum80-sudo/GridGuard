@@ -2,13 +2,14 @@
 
 - Exact Task Contract: `GRIDGUARD-VM-BEHAVIORAL-PREPARATION-V1`
 - Milestone: M22 Behavioral Validation
-- Human approval: ACCEPTED
-- Status: BLOCKED
-- Hypervisor preflight: `READY_FOR_VM`; available providers: 0
-- Approved target identity: absent
-- Reference binary execution: prohibited
+- Status: BLOCKED_CONTRACT_SCOPE
+- Requested path: dedicated physical Windows test machine
+- Contract path: disposable Windows VM only
+- Contract modification: prohibited by current request
+- Approved target identity/path: absent
+- Target filesystem locations: absent
+- Baseline/live collection performed: no
 - Installation/execution performed: no
-- Snapshot/evidence collection performed: no
 - M23/M24: dependency-blocked
-- Required external inputs: accessible disposable Windows VM and explicit approved
-  target identity/path distinct from the reference binary
+- Required decision: authorize a contract amendment or new physical-machine contract,
+  then provide the approved target identity and target filesystem scope

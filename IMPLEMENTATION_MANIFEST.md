@@ -23,7 +23,7 @@
 | M19 | AuditOnly, Simulate, Privacy, and Regression Hardening | Complete; evidence allowlist/privacy tests added; Release build, 39 tests, formatting, and 6-rule validation pass |
 | M20 | CI, Documentation, and Packaging Hardening | Complete; CI-equivalent checks, 75-entry package manifest, advisory scan, docs, and canonical closure pass |
 | M21 | VM Preparation | Complete; hypervisor-neutral workflow, collectors, replay, evidence packaging, 52 tests, and validation gates pass |
-| M22 | Behavioral Validation | Blocked after approval preflight; no supported hypervisor available and approved target identity absent |
+| M22 | Behavioral Validation | Blocked; requested physical-machine path is outside unchanged disposable-VM contract; target identity and filesystem scope absent |
 | M23 | Rule Confirmation | Registered; depends on M22 validated behavioral evidence |
 | M24 | Production Readiness | Registered; depends on M23 confirmed-rule review |
 
@@ -72,3 +72,10 @@ VMware, or VirtualBox provider and no repository-local approved-target identity.
 The only non-placeholder input remains governed by the reference-binary execution
 prohibition. M22 is active but externally blocked; no installation or execution
 occurred.
+
+## M22 physical-machine request
+
+Physical-machine live validation was requested without permission to amend or
+replace the exact disposable-VM contract. The execution path therefore fails closed.
+The approved target identity and target filesystem locations are also unspecified.
+No baseline capture or live operation occurred.

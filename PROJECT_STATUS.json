@@ -3,7 +3,7 @@
   "repository_path": "C:\\Users\\Administrator\\Documents\\GridGuard",
   "branch": "main",
   "head": "HEAD",
-  "phase": "m22-preflight-blocked",
+  "phase": "m22-physical-path-contract-blocked",
   "active_contract_id": "GRIDGUARD-VM-BEHAVIORAL-PREPARATION-V1",
   "contract_status": "ACTIVE",
   "current_milestone": "M22",
@@ -34,10 +34,10 @@
   "snapshot_validation_status": "PASS",
   "evidence_validation_status": "PASS_JSON_MARKDOWN",
   "package_status": "PASS_UNSIGNED_88_HASHED_FILES",
-  "m22_status": "BLOCKED_NO_HYPERVISOR_OR_APPROVED_TARGET",
+  "m22_status": "BLOCKED_PHYSICAL_PATH_OUTSIDE_CONTRACT",
   "m23_status": "BLOCKED_BY_M22",
   "m24_status": "BLOCKED_BY_M23",
-  "next_approval_boundary": "PROVIDE_DISPOSABLE_VM_AND_EXPLICIT_APPROVED_TARGET_IDENTITY",
+  "next_approval_boundary": "AUTHORIZE_CONTRACT_AMENDMENT_OR_NEW_PHYSICAL_MACHINE_CONTRACT_AND_PROVIDE_TARGET_SCOPE",
   "remote_status": "REMOTE_REPOSITORY_UNAVAILABLE",
-  "updated_at": "2026-07-27T18:45:00+09:00"
+  "updated_at": "2026-07-27T19:00:00+09:00"
 }

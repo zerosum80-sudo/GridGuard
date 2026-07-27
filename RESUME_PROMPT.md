@@ -3,10 +3,10 @@
 Resume GridGuard strictly from repository-local state. Read `AGENTS.md`,
 `AGENT_STATE.json`, and `AGENT_STATE.must_read_files`.
 
-M22 is approved but blocked: no supported hypervisor is available and no explicit
-approved-target identity/path is present. Required inputs are an accessible
-disposable Windows VM plus a specifically identified approved target distinct from
-the reference binary.
+M22 is `BLOCKED_CONTRACT_SCOPE`. The active exact contract authorizes disposable-VM
+preparation, while the latest requested execution path is a physical test machine
+and contract modification/new-contract creation was prohibited.
 
-Do not execute the reference binary or install/execute an inferred target. Runtime
-remains inactive; AuditOnly and Simulate remain the only permitted validation modes.
+Do not capture a live baseline or install/execute a target until the contract
+authority is resolved and the approved target identity plus filesystem scope are
+provided. The reference binary remains prohibited.
