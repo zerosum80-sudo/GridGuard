@@ -46,19 +46,32 @@ public sealed class WindowsInventoryAdapter(IEnumerable<string>? selectedDirecto
         {
             using (process)
             {
+                string processName;
                 try
                 {
-                    records.Add(new("process", process.Id.ToString(), new Dictionary<string, string>
-                    {
-                        ["processName"] = process.ProcessName,
-                        ["executablePath"] = process.MainModule?.FileName ?? ""
-                    }));
+                    processName = process.ProcessName;
                 }
                 catch (Exception ex) when (ex is InvalidOperationException or
                     System.ComponentModel.Win32Exception or NotSupportedException)
                 {
                     errors.Add($"process:{process.Id}:{ex.GetType().Name}");
+                    continue;
                 }
+                var executablePath = "";
+                try
+                {
+                    executablePath = process.MainModule?.FileName ?? "";
+                }
+                catch (Exception ex) when (ex is InvalidOperationException or
+                    System.ComponentModel.Win32Exception or NotSupportedException)
+                {
+                    errors.Add($"processPath:{process.Id}:{ex.GetType().Name}");
+                }
+                records.Add(new("process", process.Id.ToString(), new Dictionary<string, string>
+                {
+                    ["processName"] = processName,
+                    ["executablePath"] = executablePath
+                }));
             }
         }
     }
@@ -77,7 +90,8 @@ public sealed class WindowsInventoryAdapter(IEnumerable<string>? selectedDirecto
                     ["serviceName"] = name,
                     ["serviceDisplayName"] = service?.GetValue("DisplayName")?.ToString() ?? "",
                     ["serviceImagePath"] = service?.GetValue("ImagePath")?.ToString() ?? "",
-                    ["serviceStartType"] = service?.GetValue("Start")?.ToString() ?? ""
+                    ["serviceStartType"] = service?.GetValue("Start")?.ToString() ?? "",
+                    ["serviceState"] = "unresolved-read-only-registry-adapter"
                 }));
             }
         }

@@ -13,7 +13,7 @@
   ],
   "match": {
     "all": [
-      { "type": "executablePath", "operator": "containsIgnoreCase", "value": "\\WEBHARD_Agent.exe" },
+      { "type": "serviceImagePath", "operator": "containsIgnoreCase", "value": "\\WEBHARD_Agent.exe" },
       { "type": "serviceName", "operator": "equalsIgnoreCase", "value": "USADISK_AGENT" }
     ]
   },

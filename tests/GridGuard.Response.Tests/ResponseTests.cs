@@ -35,6 +35,27 @@ public sealed class ResponseTests
     }
 
     [Fact]
+    public async Task SimulateCandidateProducesObservationPlanWithoutMove()
+    {
+        var (root, path) = await FixtureAsync();
+        try
+        {
+            var candidate = Confirmed() with
+            {
+                Confidence = "strong-inference",
+                Decision = DetectionDecision.Suspicious
+            };
+            var outcome = await new ResponseExecutor(
+                new(ResponseMode.Simulate, true), new(Path.Combine(root, "q")))
+                .ExecuteAsync(candidate, [path]);
+            Assert.Equal("simulated", outcome.Single().Status);
+            Assert.False(outcome.Single().Performed);
+            Assert.True(File.Exists(path));
+        }
+        finally { Directory.Delete(root, true); }
+    }
+
+    [Fact]
     public async Task QuarantineRecordsAndRestores()
     {
         var (root, path) = await FixtureAsync();
@@ -73,4 +94,3 @@ public sealed class ResponseTests
         return (root, path);
     }
 }
-

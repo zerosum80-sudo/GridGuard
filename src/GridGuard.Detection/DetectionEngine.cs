@@ -14,7 +14,8 @@ public sealed class DetectionEngine
         var allowed = allowlist?.FirstOrDefault(item =>
             item.Status == "enabled" && EvaluateExpression(item.Match, normalized));
         if (allowed is not null)
-            return Result(rule, normalized, 0, DetectionDecision.Allowlisted,
+            return Result(rule, SelectMatchedEvidence(allowed.Match, normalized), 0,
+                DetectionDecision.Allowlisted,
                 $"Allowlist rule {allowed.Id} takes precedence.", "No action.");
 
         if (rule.Status == "disabled")
@@ -29,10 +30,11 @@ public sealed class DetectionEngine
             return Result(rule, normalized, 0, DetectionDecision.Clean,
                 "Required evidence did not match.", "No action.");
 
+        var matched = SelectMatchedEvidence(rule.Match, normalized);
         var decision = rule.Confidence == "confirmed"
             ? DetectionDecision.Confirmed
             : DetectionDecision.Suspicious;
-        return Result(rule, normalized, rule.Score, decision,
+        return Result(rule, matched, rule.Score, decision,
             $"Rule {rule.Id} matched with {rule.Confidence} confidence.",
             decision == DetectionDecision.Confirmed
                 ? "Apply the configured guarded response."
@@ -65,6 +67,30 @@ public sealed class DetectionEngine
             actual.Replace(" ", ""), expected.Replace(" ", ""), StringComparison.OrdinalIgnoreCase),
         _ => false
     };
+
+    private static IReadOnlyList<EvidenceItem> SelectMatchedEvidence(
+        MatchExpression expression,
+        IReadOnlyList<EvidenceItem> evidence)
+    {
+        var leaves = EnumerateLeaves(expression).ToArray();
+        return evidence.Where(item => leaves.Any(leaf =>
+                string.Equals(item.Type, leaf.Type, StringComparison.OrdinalIgnoreCase) &&
+                MatchValue(item.Value, leaf.Operator!, leaf.Value!)))
+            .Distinct()
+            .ToArray();
+    }
+
+    private static IEnumerable<MatchExpression> EnumerateLeaves(MatchExpression expression)
+    {
+        if (expression.Type is not null)
+        {
+            yield return expression;
+            yield break;
+        }
+        foreach (var child in expression.All ?? expression.Any ?? expression.Threshold ?? [])
+            foreach (var leaf in EnumerateLeaves(child))
+                yield return leaf;
+    }
 
     private static DetectionResult Result(
         GridRule rule,

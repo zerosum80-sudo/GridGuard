@@ -13,7 +13,7 @@
   ],
   "match": {
     "all": [
-      { "type": "executablePath", "operator": "containsIgnoreCase", "value": "\\TGridService.exe" },
+      { "type": "serviceImagePath", "operator": "containsIgnoreCase", "value": "\\TGridService.exe" },
       { "type": "serviceName", "operator": "equalsIgnoreCase", "value": "TGridService" }
     ]
   },

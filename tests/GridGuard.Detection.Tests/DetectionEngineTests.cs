@@ -78,6 +78,19 @@ public sealed class DetectionEngineTests
             EvidenceNormalizer.Normalize(new("certificateThumbprint", "AA:BB", "x")).Value);
     }
 
+    [Fact]
+    public void MatchedResultContainsOnlyRuleRelevantEvidence()
+    {
+        var result = new DetectionEngine().Evaluate(
+            Rule(Leaf("serviceName", "target")),
+            [
+                new("serviceName", "target", "target-service"),
+                new("processName", "unrelated", "private-process")
+            ]);
+        Assert.Single(result.Evidence);
+        Assert.DoesNotContain(result.Evidence, item => item.ObjectId == "private-process");
+    }
+
     private static MatchExpression Leaf(string type, string value, string op = "equalsIgnoreCase") =>
         new() { Type = type, Operator = op, Value = value };
 
@@ -99,4 +112,3 @@ public sealed class DetectionEngineTests
         UpdatedAt = DateTimeOffset.UtcNow
     };
 }
-

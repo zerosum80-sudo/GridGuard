@@ -13,7 +13,7 @@
   ],
   "match": {
     "threshold": [
-      { "type": "executablePath", "operator": "containsIgnoreCase", "value": "\\Gridmember.exe" },
+      { "type": "serviceImagePath", "operator": "containsIgnoreCase", "value": "\\Gridmember.exe" },
       { "type": "serviceName", "operator": "equalsIgnoreCase", "value": "gridmember" },
       { "type": "commandLine", "operator": "containsIgnoreCase", "value": "gridmember.exe" }
     ],

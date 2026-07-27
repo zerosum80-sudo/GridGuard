@@ -13,7 +13,7 @@
   ],
   "match": {
     "all": [
-      { "type": "executablePath", "operator": "containsIgnoreCase", "value": "\\FileZzimGService.exe" },
+      { "type": "serviceImagePath", "operator": "containsIgnoreCase", "value": "\\FileZzimGService.exe" },
       { "type": "serviceName", "operator": "equalsIgnoreCase", "value": "_FILEZZIM_GGUARD_" }
     ]
   },

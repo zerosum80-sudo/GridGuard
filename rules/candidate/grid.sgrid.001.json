@@ -13,7 +13,7 @@
   ],
   "match": {
     "all": [
-      { "type": "executablePath", "operator": "containsIgnoreCase", "value": "\\sGridClient.exe" },
+      { "type": "serviceImagePath", "operator": "containsIgnoreCase", "value": "\\sGridClient.exe" },
       { "type": "serviceName", "operator": "equalsIgnoreCase", "value": "sGrid Client" }
     ]
   },

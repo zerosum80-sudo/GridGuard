@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using GridGuard.Core;
 using GridGuard.Detection;
 using GridGuard.Monitoring;
@@ -25,19 +26,84 @@ public static class CliApplication
                 return 0;
             }
 
-            if (args is ["scan"] or ["scan", "--mode", "audit"])
+            if (args is ["scan"] or ["scan", "--mode", "audit"] or
+                ["scan", "--mode", "simulate"])
             {
+                var simulate = args is ["scan", "--mode", "simulate"];
                 var rulePath = Path.Combine(repositoryRoot, "rules", "candidate");
                 var rules = LoadRules(rulePath);
                 var results = await new Scanner(inventory, new DetectionEngine()).ScanAsync(rules);
                 if (results.Count == 0)
                 {
-                    await output.WriteLineAsync("No threat found. AuditOnly made no changes.");
+                    await output.WriteLineAsync(
+                        simulate
+                            ? "No candidate match. Simulate made no changes."
+                            : "No candidate match. AuditOnly made no changes.");
                     return 0;
                 }
+                var redactor = CurrentRedactor();
                 foreach (var result in results)
-                    await output.WriteLineAsync(JsonSerializer.Serialize(result));
+                {
+                    await output.WriteLineAsync(JsonSerializer.Serialize(Redact(result, redactor)));
+                    if (!simulate) continue;
+                    var paths = result.Evidence
+                        .Where(item => item.Type is "executablePath" or "serviceImagePath")
+                        .Select(item => CandidatePathParser.ExtractExecutablePath(item.Value))
+                        .Where(path => path is not null)
+                        .Cast<string>();
+                    var outcomes = await new ResponseExecutor(
+                        new(ResponseMode.Simulate, ExplicitlyEnabled: true),
+                        new QuarantineStore(Path.Combine(repositoryRoot, "quarantine")))
+                        .ExecuteAsync(result, paths);
+                    foreach (var outcome in outcomes)
+                        await output.WriteLineAsync(JsonSerializer.Serialize(outcome with
+                        {
+                            Detail = redactor.Redact(outcome.Detail)
+                        }));
+                }
                 return results.Any(item => item.Decision == DetectionDecision.Confirmed) ? 20 : 10;
+            }
+
+            if (args is ["audit", "candidates", "--catalog", var catalogPath,
+                "--output", var auditOutput])
+            {
+                EnsurePrivateOutput(repositoryRoot, auditOutput);
+                var catalog = JsonSerializer.Deserialize<CandidateCatalog>(
+                    await File.ReadAllTextAsync(catalogPath),
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
+                    ?? throw new InvalidDataException("Candidate catalog is empty.");
+                var normalization = CandidateNormalizer.Normalize(catalog);
+                var snapshot = await inventory.CaptureAsync();
+                var report = await new CandidateAuditService(new MatchedFileInspector())
+                    .AuditAsync(normalization, snapshot);
+                var auditJsonOptions = new JsonSerializerOptions { WriteIndented = true };
+                auditJsonOptions.Converters.Add(new JsonStringEnumConverter());
+                await File.WriteAllTextAsync(
+                    auditOutput,
+                    JsonSerializer.Serialize(report, auditJsonOptions));
+                var summary = new
+                {
+                    report.CapturedAt,
+                    normalization.RowsReviewed,
+                    normalization.ValuesReviewed,
+                    normalization.DuplicatesRemoved,
+                    normalization.MalformedRowsRemoved,
+                    CandidateCount = normalization.Candidates.Count,
+                    report.MatchCounts,
+                    Correlations = report.Correlations,
+                    InventoryErrorCount = report.InventoryErrors.Count,
+                    InventoryErrorKinds = report.InventoryErrors
+                        .Select(item => item.Split(':', 2)[0])
+                        .Distinct(StringComparer.OrdinalIgnoreCase)
+                        .OrderBy(item => item, StringComparer.OrdinalIgnoreCase)
+                        .ToArray(),
+                    report.PromotionPolicy,
+                    report.MutationStatus
+                };
+                await output.WriteLineAsync(JsonSerializer.Serialize(
+                    summary,
+                    new JsonSerializerOptions { WriteIndented = true }));
+                return 0;
             }
 
             if (args is ["rules", "validate"])
@@ -121,7 +187,7 @@ public static class CliApplication
             }
 
             await error.WriteLineAsync(
-                "Usage: gridguard status|scan|rules ...|quarantine ...|snapshot ...|diagnostics");
+                "Usage: gridguard status|scan [--mode audit|simulate]|audit candidates ...|rules ...|quarantine ...|snapshot ...|diagnostics");
             return 64;
         }
         catch (Exception ex) when (ex is IOException or JsonException or InvalidDataException)
@@ -137,4 +203,37 @@ public static class CliApplication
                 .Where(file => !file.EndsWith("synthetic-indicators.json"))
                 .Select(RuleLoader.LoadFile).ToArray()
             : [];
+
+    private static void EnsurePrivateOutput(string repositoryRoot, string outputPath)
+    {
+        var privateRoot = Path.GetFullPath(
+            Path.Combine(repositoryRoot, "artifacts", "private-analysis")) +
+            Path.DirectorySeparatorChar;
+        var fullOutput = Path.GetFullPath(outputPath);
+        if (!fullOutput.StartsWith(privateRoot, StringComparison.OrdinalIgnoreCase))
+            throw new InvalidDataException(
+                "Candidate audit output must remain below artifacts/private-analysis.");
+        Directory.CreateDirectory(Path.GetDirectoryName(fullOutput)!);
+    }
+
+    private static PrivacyRedactor CurrentRedactor() => new(
+        Environment.UserName,
+        Environment.MachineName,
+        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+
+    private static DetectionResult Redact(
+        DetectionResult result,
+        PrivacyRedactor redactor) =>
+        result with
+        {
+            Evidence = result.Evidence.Select(item => item with
+            {
+                Value = redactor.Redact(item.Value),
+                ObjectId = redactor.Redact(item.ObjectId),
+                Metadata = item.Metadata?.ToDictionary(
+                    pair => pair.Key,
+                    pair => redactor.Redact(pair.Value))
+            }).ToArray(),
+            AffectedObjects = result.AffectedObjects.Select(redactor.Redact).ToArray()
+        };
 }

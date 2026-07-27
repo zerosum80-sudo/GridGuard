@@ -103,15 +103,27 @@ public sealed class ResponseExecutor(
         var errors = ResponseConfigurationValidator.Validate(configuration);
         if (errors.Count > 0)
             return [new("configuration", false, "failed", string.Join(" ", errors))];
+        if (configuration.Mode == ResponseMode.Simulate &&
+            detection.Decision is DetectionDecision.Suspicious or DetectionDecision.Confirmed)
+        {
+            var paths = filePaths.Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
+            return paths.Length == 0
+                ? [new("response-plan", false, "simulated",
+                    "Observation-only plan; no host modification performed.")]
+                : paths.Select(path =>
+                    new ResponseOutcome(
+                        "quarantine",
+                        false,
+                        "simulated",
+                        $"Proposed only; no host modification: {path}"))
+                    .ToArray();
+        }
         if (detection.Decision != DetectionDecision.Confirmed ||
             detection.Score < configuration.ConfirmedScoreThreshold)
             return [new("response", false, "observation-only",
                 "Only confirmed detections meeting the score threshold may mutate the host.")];
         if (configuration.Mode == ResponseMode.AuditOnly)
             return [new("response", false, "audit-only", "No system modification performed.")];
-        if (configuration.Mode == ResponseMode.Simulate)
-            return filePaths.Select(path =>
-                new ResponseOutcome("quarantine", false, "simulated", path)).ToArray();
         if (configuration.Mode == ResponseMode.Remediate)
             return [new("remediate", false, "failed",
                 "Real process/service/persistence adapters are disabled in this baseline.")];
@@ -127,4 +139,3 @@ public sealed class ResponseExecutor(
         return outcomes;
     }
 }
-
