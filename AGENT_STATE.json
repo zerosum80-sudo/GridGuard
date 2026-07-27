@@ -1,19 +1,16 @@
 {
   "project": "GridGuard",
   "version": "0.1.0-rc.3",
-  "phase": "m22-final-removal-validation-incomplete",
-  "active_contract_id": "GRIDGUARD-M22-PHYSICAL-AUDITONLY-VALIDATION-V1",
+  "phase": "m22-exact-auto-removal-deployment-validation",
+  "active_contract_id": "GRIDGUARD-M22-AUTO-REMOVE-NATSERVICE-V1",
   "contract_status": "ACTIVE",
   "current_milestone": "M22",
   "last_completed_milestone": "M21",
   "next_milestone": "M22",
-  "status": "BLOCKED",
+  "status": "IMPLEMENTED_AWAITING_ELEVATED_DEPLOYMENT_VALIDATION",
   "blockers": [
-    "M22_GRIDGUARD_RUNTIME_NOT_OBSERVED",
-    "M22_DETECTION_LOG_NOT_FOUND",
-    "M22_FILEBOGO_AUTOMATIC_SERVICE_REMAINS",
-    "M22_FILEBOGO_FILES_REMAIN",
-    "M22_REFERENCE_DOWNLOAD_REMAINS"
+    "M22_ELEVATED_GRIDGUARD_SERVICE_DEPLOYMENT_NOT_RUN",
+    "M22_LIVE_AUTO_REMOVAL_EVIDENCE_NOT_COLLECTED"
   ],
   "approvals": {
     "static_binary_inspection": true,
@@ -26,6 +23,7 @@
     "physical_test_machine_read_only_auditonly_approved": true,
     "candidate_rule_authoring": true,
     "reference_binary_execution": false,
+    "exact_natservice_auto_removal_implementation": true,
     "real_destructive_testing": false,
     "permanent_deletion": false,
     "proprietary_upload": false
@@ -262,8 +260,15 @@
       "result": "FAIL_RESIDUAL_COMPONENTS_PRESENT",
       "detail": "Grid Killer and NATService runtime objects were absent, but FilebogoLauncher remained a running automatic LocalSystem service and process. Filebogo executables and the prior reference download remained present. GridGuard runtime, status pipe, and detection log were absent. AuditOnly returned no candidate match and made no changes. Release build passed with 0 errors and 2 NU1900 warnings; 54 tests, formatting, and 7-rule validation passed.",
       "observed_at": "2026-07-27T22:18:46.5264953+09:00"
+    },
+    {
+      "milestone": "M22",
+      "kind": "exact-natservice-auto-removal-implementation",
+      "result": "PASS_SYNTHETIC_AWAITING_LIVE_DEPLOYMENT",
+      "detail": "Delayed-auto Windows Service hosting, restart recovery, exact NATService service/process monitoring, same-object rule authorization, ordered exact removal, absence verification, and JSONL audit were implemented. Filebogo and every non-exact object remain unauthorized. Release build passed with 0 warnings/errors; all 65 synthetic tests, formatting, 7-rule validation, VM preparation validation, and unsigned 100-hash package verification passed. No live service installation or host removal occurred.",
+      "observed_at": "2026-07-27T23:11:13.2617993+09:00"
     }
   ],
   "repository_head": "HEAD",
-  "updated_at": "2026-07-27T22:18:46.5264953+09:00"
+  "updated_at": "2026-07-27T23:11:13.2617993+09:00"
 }

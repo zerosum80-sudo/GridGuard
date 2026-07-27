@@ -29,6 +29,10 @@ jobs:
           $manifest = Get-Content artifacts/package/PACKAGE_MANIFEST.sha256
           if ($manifest.Count -lt 1) { throw "Package manifest is empty." }
           foreach ($required in @(
+            'artifacts/package/GridGuard.Service/GridGuard.Service.exe',
+            'artifacts/package/GridGuard.Service/appsettings.json',
+            'artifacts/package/rules/candidate/grid.natservice.001.json',
+            'artifacts/package/scripts/Install-GridGuardService.ps1',
             'artifacts/package/GridGuard.SnapshotDiff/GridGuard.SnapshotDiff.dll',
             'artifacts/package/docs/operations/VM_PREPARATION_GUIDE.md',
             'artifacts/package/docs/vm/evidence-package.schema.json'

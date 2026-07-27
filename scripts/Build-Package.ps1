@@ -37,6 +37,8 @@ New-Item -ItemType Directory -Path (Join-Path $output 'docs\operations') -Force 
 New-Item -ItemType Directory -Path (Join-Path $output 'docs\vm') -Force |
     Out-Null
 foreach ($guide in @(
+    'SERVICE_INSTALLATION.md',
+    'OPERATOR_GUIDE.md',
     'VM_PREPARATION_GUIDE.md',
     'VM_EXECUTION_GUIDE.md',
     'EVIDENCE_COLLECTION_GUIDE.md',
@@ -51,6 +53,12 @@ Copy-Item (Join-Path $root 'docs\vm\false-positive-review-template.md') `
     (Join-Path $output 'docs\vm\false-positive-review-template.md') -Force
 Copy-Item (Join-Path $root 'README.md') $output -Force
 Copy-Item (Join-Path $root 'SECURITY.md') $output -Force
+New-Item -ItemType Directory -Path (Join-Path $output 'scripts') -Force |
+    Out-Null
+Copy-Item (Join-Path $root 'scripts\Install-GridGuardService.ps1') `
+    (Join-Path $output 'scripts\Install-GridGuardService.ps1') -Force
+Copy-Item (Join-Path $root 'scripts\Uninstall-GridGuardService.ps1') `
+    (Join-Path $output 'scripts\Uninstall-GridGuardService.ps1') -Force
 
 $forbiddenNames = @('input', 'private-analysis', 'quarantine')
 $forbidden = Get-ChildItem -LiteralPath $output -Recurse -Force |

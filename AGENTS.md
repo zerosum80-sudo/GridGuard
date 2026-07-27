@@ -26,6 +26,10 @@ attachments, or files outside this repository.
 - Permanent deletion is outside the production baseline.
 - Process termination, service mutation, persistence removal, and file quarantine
   require explicit runtime configuration and confirmed-rule thresholds.
+- The sole operator-approved exception is the exact, explicitly enabled
+  `grid.natservice.001` workflow defined by
+  `GRIDGUARD-M22-AUTO-REMOVE-NATSERVICE-V1`. It may stop and delete only
+  `NATService` and delete only `%ProgramFiles(x86)%\NAT Service\natsvc.exe`.
 - Tests must use synthetic fixtures, fakes, and temporary directories.
 - Preserve unrelated working-tree changes.
 - Never redesign the frozen architecture without explicit operator approval.
@@ -36,4 +40,3 @@ Implement only the current milestone. Tests and inspection evidence must precede
 completion claim. Update all affected canonical files in the same milestone commit.
 If an external input is absent, complete every safe unblocked component and record
 the exact blocker.
-

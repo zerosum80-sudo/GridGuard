@@ -66,4 +66,40 @@ public sealed class InventoryTests
         await processor.RunAsync(CancellationToken.None);
         Assert.Equal(["a", "b"], handled);
     }
+
+    [Fact]
+    public void GridComponentMonitorEmitsOnlyExactServiceAndProcessEvents()
+    {
+        var initial = new GridComponentState(
+            true,
+            @"C:\Program Files (x86)\NAT Service\natsvc.exe",
+            "2",
+            new HashSet<int> { 42 });
+
+        var events = GridComponentEventSource.DetectChanges(null, initial);
+
+        Assert.Contains(events, item =>
+            item.Kind == "service-created" && item.ObjectId == "NATService");
+        Assert.Contains(events, item =>
+            item.Kind == "process-created" && item.ObjectId == "42");
+        Assert.DoesNotContain(events, item =>
+            item.ObjectId.Contains("Filebogo", StringComparison.OrdinalIgnoreCase));
+    }
+
+    [Fact]
+    public void GridComponentMonitorDetectsServiceStateChange()
+    {
+        var previous = new GridComponentState(
+            true,
+            @"C:\Program Files (x86)\NAT Service\natsvc.exe",
+            "2",
+            new HashSet<int>());
+        var current = previous with { ProcessIds = new HashSet<int> { 99 } };
+
+        var events = GridComponentEventSource.DetectChanges(previous, current);
+
+        Assert.Contains(events, item => item.Kind == "service-state-changed");
+        Assert.Contains(events, item =>
+            item.Kind == "process-created" && item.ObjectId == "99");
+    }
 }

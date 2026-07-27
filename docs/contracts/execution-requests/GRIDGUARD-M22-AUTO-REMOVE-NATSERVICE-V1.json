@@ -1,0 +1,16 @@
+{
+  "request_id": "GRIDGUARD-M22-AUTO-REMOVE-NATSERVICE-V1-EXEC-001",
+  "contract_id": "GRIDGUARD-M22-AUTO-REMOVE-NATSERVICE-V1",
+  "request_count": 1,
+  "created_at": "2026-07-27T23:00:00+09:00",
+  "repository": "C:\\Users\\Administrator\\Documents\\GridGuard",
+  "starting_head": "28231b81206f8700a582817c90db4baa847734e9",
+  "execution_mode": "EXACT_NATSERVICE_AUTO_REMOVAL_IMPLEMENTATION",
+  "milestones": ["M22"],
+  "active_milestone": "M22",
+  "authorized_rule_id": "grid.natservice.001",
+  "authorized_service_name": "NATService",
+  "authorized_component_path": "%ProgramFiles(x86)%\\NAT Service\\natsvc.exe",
+  "status": "IMPLEMENTED_AWAITING_ELEVATED_DEPLOYMENT_VALIDATION",
+  "next_action": "INSTALL_PACKAGED_GRIDGUARD_SERVICE_AND_RUN_LIVE_M22_VALIDATION"
+}

@@ -30,10 +30,15 @@
 - `Quarantine` and `Remediate` are fail-closed and require explicit configuration.
 - Permanent deletion is not implemented in the first production baseline.
 - Quarantine records must support restoration and integrity validation.
+- One narrow exception is authorized by
+  `GRIDGUARD-M22-AUTO-REMOVE-NATSERVICE-V1`: when explicitly enabled, a same-object
+  exact match for `grid.natservice.001` may remove only the `NATService` service and
+  `%ProgramFiles(x86)%\NAT Service\natsvc.exe`, then must verify service, process,
+  file, and rule absence. It grants no authority over Filebogo, the P2P
+  application, downloads, user files, or any other rule.
 
 ## Quality
 
 - Build and relevant tests follow every meaningful implementation unit.
 - Full safe tests and canonical-state consistency checks precede milestone commits.
 - Claims must be backed by repository-local evidence.
-

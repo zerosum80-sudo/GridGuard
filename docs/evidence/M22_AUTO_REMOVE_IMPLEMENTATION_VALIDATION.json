@@ -1,0 +1,33 @@
+{
+  "contract_id": "GRIDGUARD-M22-AUTO-REMOVE-NATSERVICE-V1",
+  "milestone": "M22",
+  "result": "PASS_SYNTHETIC_AWAITING_LIVE_DEPLOYMENT",
+  "observed_at": "2026-07-27T23:11:13.2617993+09:00",
+  "authorized_scope": {
+    "rule_id": "grid.natservice.001",
+    "service_name": "NATService",
+    "component_path": "%ProgramFiles(x86)%\\NAT Service\\natsvc.exe"
+  },
+  "validation": {
+    "release_build": "PASS_17_PROJECTS_0_WARNINGS_0_ERRORS",
+    "tests": "PASS_65_0_FAILED",
+    "formatting": "PASS",
+    "rule_validation": "PASS_7",
+    "vm_preparation_regression": "PASS",
+    "powershell_parse": "PASS",
+    "package": "PASS_UNSIGNED_100_HASHES_VERIFIED",
+    "canonical_json": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "safety": {
+    "filebogo_authorized": false,
+    "p2p_application_authorized": false,
+    "user_files_authorized": false,
+    "downloads_authorized": false,
+    "other_rules_authorized": false,
+    "reference_execution": "NOT_PERFORMED",
+    "live_installation": "NOT_PERFORMED",
+    "live_host_removal": "NOT_PERFORMED"
+  },
+  "next_state": "AWAITING_ELEVATED_GRIDGUARD_SERVICE_DEPLOYMENT_VALIDATION"
+}

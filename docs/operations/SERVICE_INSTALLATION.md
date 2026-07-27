@@ -7,5 +7,16 @@ the `GridGuard.Status.v1` current-user named pipe. It has no network listener.
 
 The recovery script configures two delayed restarts. Logs are structured host logs.
 Changing mode requires `ExplicitlyEnabled=true` and response validation. Permanent
-deletion is unavailable. The uninstall script also supports `-WhatIf`.
+deletion remains unavailable to the general response framework. The uninstall
+script also supports `-WhatIf`.
 
+The installer creates and starts `GridGuard` as a delayed automatic Windows Service
+and configures restart recovery. Its exact NATService workflow monitors service
+creation, service state changes, and `natsvc.exe` process creation, with periodic
+reconciliation as a fallback.
+
+`AutoRemoval.Enabled=true` authorizes only `grid.natservice.001`, exact service name
+`NATService`, and exact file
+`%ProgramFiles(x86)%\NAT Service\natsvc.exe`. Configuration validation rejects a
+different rule, service, or path. Each attempt appends JSONL audit data to
+`%ProgramData%\GridGuard\logs\auto-removal.jsonl`.

@@ -1,20 +1,20 @@
 # GridGuard
 
-GridGuard is defensive Windows software for evidence-based monitoring of known
-Korean webhard/P2P grid components. It does not classify software solely because it
-uses high CPU/network resources, is unsigned, runs from AppData, or has a generic
-filename.
+GridGuard is defensive Windows software with one production purpose: monitor for
+the exact Grid component identified by `grid.natservice.001` and remove only its
+`NATService` service and `natsvc.exe` component. It never removes Filebogo, the P2P
+application, downloads, user files, or objects outside that exact rule.
 
-The default mode is **AuditOnly**. Initial rules may be incomplete. Real remediation
-must be enabled intentionally and remains guarded. The reference binary is never
-executed or redistributed.
+The general response framework remains **AuditOnly** by default. The exact
+NATService workflow has separate explicit configuration and fail-closed guards.
+The reference binary is never executed or redistributed.
 
 ## Project status
 
 See `PROJECT_STATUS.json`, `CURRENT_TASK.md`, and `NEXT_SESSION.md`. Static reference
 analysis is closed; the reference binary remains ignored and must never be executed
-or redistributed. Disposable-VM behavioral preparation is available, while real
-target installation and execution remain an explicit approval boundary.
+or redistributed. The M22 exact auto-removal implementation is ready for elevated
+service deployment and live validation.
 
 ## Safety
 
