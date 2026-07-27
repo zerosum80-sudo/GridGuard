@@ -32,8 +32,7 @@ never staged or published.
 
 ```powershell
 .\scripts\Invoke-AutoItExtraction.ps1 `
-  -InputPath 'D:\AI Project\GridGuard\input\Grid_Killer_v.2.1.4.o_x64.exe'
+  -InputPath 'C:\Users\Administrator\Documents\GridGuard\input\Grid_Killer_v.2.1.4.o_x64.exe'
 ```
 
 Do not execute the input file.
-

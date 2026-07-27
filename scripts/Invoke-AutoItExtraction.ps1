@@ -9,6 +9,8 @@ $expectedSha256 = '8cab9bdcfebb2a5eb6340c6a9f2fdf27737e42af56eddc15322d28d944732
 $repositoryRoot = Split-Path -Parent $PSScriptRoot
 $privateRoot = Join-Path $repositoryRoot 'artifacts\private-analysis'
 $outputPath = Join-Path $privateRoot 'autoit-ripper'
+$logPath = Join-Path $privateRoot 'autoit-ripper.log'
+$stdoutLogPath = Join-Path $privateRoot 'autoit-ripper.stdout.log'
 $environmentPath = Join-Path $repositoryRoot '.venv\autoit-ripper'
 $lockPath = Join-Path $repositoryRoot 'tools\GridGuard.BinaryAnalysis\requirements-autoit-ripper.lock'
 
@@ -32,8 +34,15 @@ $venvPython = Join-Path $environmentPath 'Scripts\python.exe'
 if ($LASTEXITCODE -ne 0) { throw "Pinned dependency installation failed." }
 
 New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
-& $venvPython -m autoit_ripper.cli --ea EA06 $InputPath $outputPath
-if ($LASTEXITCODE -ne 0) { throw "AutoIt-Ripper did not recover an EA06 payload." }
+$previousErrorPreference = $ErrorActionPreference
+$ErrorActionPreference = 'Continue'
+& $venvPython -m autoit_ripper.cli --verbose --ea guess `
+    $InputPath $outputPath 1> $stdoutLogPath 2> $logPath
+$extractExitCode = $LASTEXITCODE
+$ErrorActionPreference = $previousErrorPreference
+Get-Content -LiteralPath $logPath
+if ($extractExitCode -ne 0) {
+    throw "AutoIt-Ripper did not recover a supported payload. See ignored log: $logPath"
+}
 
 Write-Output "Private extraction completed under ignored path: $outputPath"
-
