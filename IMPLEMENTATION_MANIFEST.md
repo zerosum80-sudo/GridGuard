@@ -23,7 +23,7 @@
 | M19 | AuditOnly, Simulate, Privacy, and Regression Hardening | Complete; evidence allowlist/privacy tests added; Release build, 39 tests, formatting, and 6-rule validation pass |
 | M20 | CI, Documentation, and Packaging Hardening | Complete; CI-equivalent checks, 75-entry package manifest, advisory scan, docs, and canonical closure pass |
 | M21 | VM Preparation | Complete; hypervisor-neutral workflow, collectors, replay, evidence packaging, 52 tests, and validation gates pass |
-| M22 | Behavioral Validation | Active; exact NATService auto-removal implemented and synthetically validated, awaiting elevated service deployment validation |
+| M22 | Behavioral Validation | Partial pass; elevated deployment and reboot pass, live exact removal trigger blocked by pre-existing path directory and absent NATService |
 | M23 | Rule Confirmation | Registered; depends on M22 validated behavioral evidence |
 | M24 | Production Readiness | Registered; depends on M23 confirmed-rule review |
 
@@ -155,5 +155,24 @@ service/process/file/rule absence verification and JSONL audit.
 Configuration cannot broaden the rule, service, or path. Filebogo, the P2P
 application, downloads, user files, and all other rules retain the existing safety
 rules. The general response executor and candidate rule response flags remain
-non-mutating. Synthetic validation passed; elevated service deployment and live
-M22 validation remain pending. M23 and M24 remain dependency-blocked.
+non-mutating.
+
+## M22 elevated deployment and reboot validation
+
+The first framework-dependent service start exposed the absence of a machine-wide
+.NET runtime. Packaging now carries a private Windows x64 runtime and installs the
+service through that runtime. GridGuard reached `RUNNING`, retained delayed
+automatic startup and restart recovery, and returned `RUNNING` with a new process
+after a physical reboot.
+
+Before and after reboot, Filebogo retained the same automatic running service,
+process count, executable SHA-256, 125-file count, and aggregate SHA-256. Synthetic
+sentinels in Desktop, Documents, and Downloads retained their hashes while
+GridGuard ran.
+
+NATService did not recreate. The exact natsvc path is currently occupied by a
+pre-existing directory. The live fixture therefore stopped before host mutation;
+the runtime now explicitly rejects this collision rather than reporting a removal.
+AuditOnly returns `NO_MATCH`, and no live removal JSONL record exists because no
+exact trigger occurred. M22 remains active and blocked at live auto-removal
+observation; M23/M24 remain dependency-blocked.

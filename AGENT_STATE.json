@@ -7,10 +7,11 @@
   "current_milestone": "M22",
   "last_completed_milestone": "M21",
   "next_milestone": "M22",
-  "status": "IMPLEMENTED_AWAITING_ELEVATED_DEPLOYMENT_VALIDATION",
+  "status": "PARTIAL_PASS_BLOCKED_LIVE_AUTO_REMOVAL_TRIGGER",
   "blockers": [
-    "M22_ELEVATED_GRIDGUARD_SERVICE_DEPLOYMENT_NOT_RUN",
-    "M22_LIVE_AUTO_REMOVAL_EVIDENCE_NOT_COLLECTED"
+    "M22_EXACT_NATSVC_PATH_OCCUPIED_BY_PREEXISTING_DIRECTORY",
+    "M22_NATSERVICE_DID_NOT_RECREATE",
+    "M22_LIVE_AUTO_REMOVAL_JSONL_NOT_OBSERVED"
   ],
   "approvals": {
     "static_binary_inspection": true,
@@ -24,6 +25,8 @@
     "candidate_rule_authoring": true,
     "reference_binary_execution": false,
     "exact_natservice_auto_removal_implementation": true,
+    "elevated_gridguard_service_deployment": true,
+    "physical_reboot_validation": true,
     "real_destructive_testing": false,
     "permanent_deletion": false,
     "proprietary_upload": false
@@ -267,8 +270,15 @@
       "result": "PASS_SYNTHETIC_AWAITING_LIVE_DEPLOYMENT",
       "detail": "Delayed-auto Windows Service hosting, restart recovery, exact NATService service/process monitoring, same-object rule authorization, ordered exact removal, absence verification, and JSONL audit were implemented. Filebogo and every non-exact object remain unauthorized. Release build passed with 0 warnings/errors; all 65 synthetic tests, formatting, 7-rule validation, VM preparation validation, and unsigned 100-hash package verification passed. No live service installation or host removal occurred.",
       "observed_at": "2026-07-27T23:11:13.2617993+09:00"
+    },
+    {
+      "milestone": "M22",
+      "kind": "elevated-deployment-and-reboot-validation",
+      "result": "PARTIAL_PASS_BLOCKED_LIVE_AUTO_REMOVAL_TRIGGER",
+      "detail": "GridGuard was installed with a packaged private .NET runtime, delayed automatic start, restart recovery, and LocalSystem service hosting. It returned RUNNING with a new PID after physical reboot. Filebogo service/process/executable and all 125 Filebogo files were unchanged; Desktop, Documents, and Downloads sentinels were unchanged. NATService did not recreate, the exact natsvc.exe path is occupied by a pre-existing directory, and no live automatic-removal JSONL record was produced. The fixture stopped before mutation at that fail-closed path collision. AuditOnly returned NO_MATCH. M23/M24 remain blocked.",
+      "observed_at": "2026-07-28T09:57:09.9573015+09:00"
     }
   ],
   "repository_head": "HEAD",
-  "updated_at": "2026-07-27T23:11:13.2617993+09:00"
+  "updated_at": "2026-07-28T09:57:09.9573015+09:00"
 }

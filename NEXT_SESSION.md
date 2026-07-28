@@ -2,16 +2,21 @@
 
 Resume by reading the files listed in `AGENTS.md`.
 
-M22 remains active under `GRIDGUARD-M22-AUTO-REMOVE-NATSERVICE-V1`. The exact
-automatic-removal workflow is implemented and validated with synthetic fakes. It
-acts only on `grid.natservice.001`, `NATService`, and
-`%ProgramFiles(x86)%\NAT Service\natsvc.exe`.
+M22 is `PARTIAL_PASS_BLOCKED_LIVE_AUTO_REMOVAL_TRIGGER` under
+`GRIDGUARD-M22-AUTO-REMOVE-NATSERVICE-V1`.
 
-The next allowed operation is elevated deployment of the packaged GridGuard
-Windows Service followed by live M22 validation. Verify delayed automatic startup,
-restart recovery, the three monitoring event classes, ordered exact removal, JSONL
-audit content, and service/process/file/rule absence.
+GridGuard is installed and running as a delayed automatic LocalSystem service from
+the packaged private .NET runtime. Physical reboot validation passed. Filebogo/P2P
+and Desktop/Documents/Downloads sentinels were unchanged.
 
-Do not touch Filebogo, the P2P application, user files, downloads, or objects
-outside the exact rule. Do not execute the reference binary. Do not begin M23 or
-M24.
+NATService did not recreate. The exact
+`%ProgramFiles(x86)%\NAT Service\natsvc.exe` path is occupied by a pre-existing
+directory, so the exact synthetic fixture cannot be placed there without touching
+an unmatched object. The live validator fails closed and the runtime now rejects
+that directory collision before mutation. No live removal JSONL record exists
+because no exact match occurred.
+
+Resume only when a real exact NATService/file pair recreates or after the operator
+separately resolves the pre-existing directory collision. Do not move, delete, or
+rename that directory without explicit authority. Do not touch Filebogo, the P2P
+application, or user files. Do not begin M23 or M24.

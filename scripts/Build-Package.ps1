@@ -27,9 +27,33 @@ foreach ($project in @(
 )) {
     $projectPath = Join-Path $root $project.Path
     $projectOutput = Join-Path $output $project.Name
-    & $DotnetPath publish $projectPath -c $Configuration --no-restore -o $projectOutput
+    & $DotnetPath publish $projectPath -c $Configuration --no-restore `
+        -o $projectOutput
     if ($LASTEXITCODE -ne 0) { throw "Publish failed for $($project.Name)." }
 }
+
+$dotnetExecutable = (Get-Command $DotnetPath -ErrorAction Stop).Source
+$dotnetRoot = Split-Path -Parent $dotnetExecutable
+$runtimeSourceRoot = Join-Path $dotnetRoot 'shared\Microsoft.NETCore.App'
+$runtimeVersion = Get-ChildItem -LiteralPath $runtimeSourceRoot -Directory |
+    Sort-Object { [version]$_.Name } -Descending |
+    Select-Object -First 1
+if (-not $runtimeVersion) {
+    throw 'A local Microsoft.NETCore.App runtime is required for service packaging.'
+}
+$serviceRuntime = Join-Path $output 'GridGuard.Service\runtime'
+$serviceHostFxr = Join-Path $serviceRuntime "host\fxr\$($runtimeVersion.Name)"
+$serviceSharedRuntime = Join-Path $serviceRuntime `
+    "shared\Microsoft.NETCore.App\$($runtimeVersion.Name)"
+New-Item -ItemType Directory -Path $serviceHostFxr -Force | Out-Null
+New-Item -ItemType Directory -Path $serviceSharedRuntime -Force | Out-Null
+Copy-Item -LiteralPath $dotnetExecutable `
+    (Join-Path $serviceRuntime 'dotnet.exe') -Force
+Copy-Item -LiteralPath (
+    Join-Path $dotnetRoot "host\fxr\$($runtimeVersion.Name)\hostfxr.dll") `
+    (Join-Path $serviceHostFxr 'hostfxr.dll') -Force
+Copy-Item -Path (Join-Path $runtimeVersion.FullName '*') `
+    $serviceSharedRuntime -Recurse -Force
 
 Copy-Item (Join-Path $root 'rules') (Join-Path $output 'rules') -Recurse -Force
 New-Item -ItemType Directory -Path (Join-Path $output 'docs\operations') -Force |

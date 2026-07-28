@@ -121,7 +121,8 @@ public sealed record GridComponentPresence(
     bool ServicePresent,
     bool ProcessPresent,
     bool FilePresent,
-    string? ServiceImagePath);
+    string? ServiceImagePath,
+    bool PathCollisionPresent = false);
 
 public interface IGridComponentHost
 {
@@ -208,6 +209,16 @@ public sealed class GridAutoRemovalWorkflow(
             var errors = new List<string>();
             string? removedService = null;
             var before = await host.InspectAsync(cancellationToken);
+            if (before.PathCollisionPresent)
+                return await RecordAsync(new(
+                    detection.Timestamp,
+                    detection.RuleId,
+                    "FAILED",
+                    null,
+                    [],
+                    "NOT_RUN",
+                    ["component:exact natsvc.exe path is occupied by a directory."]),
+                    cancellationToken);
 
             try
             {
@@ -292,7 +303,8 @@ public sealed class WindowsGridComponentHost(GridAutoRemovalOptions options)
                 service is not null,
                 processes.Length > 0,
                 File.Exists(_allowedPath),
-                servicePath));
+                servicePath,
+                Directory.Exists(_allowedPath)));
         }
         finally
         {

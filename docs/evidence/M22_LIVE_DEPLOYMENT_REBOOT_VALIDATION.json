@@ -1,0 +1,56 @@
+{
+  "contract_id": "GRIDGUARD-M22-AUTO-REMOVE-NATSERVICE-V1",
+  "milestone": "M22",
+  "result": "PARTIAL_PASS_BLOCKED_LIVE_AUTO_REMOVAL_TRIGGER",
+  "observed_at": "2026-07-28T09:57:09.9573015+09:00",
+  "deployment": {
+    "elevated_install": "PASS",
+    "service_state": "RUNNING",
+    "start_mode": "DELAYED_AUTO",
+    "restart_recovery": "ENABLED",
+    "private_runtime": "PASS"
+  },
+  "reboot": {
+    "physical_reboot": "PASS",
+    "service_auto_start": "PASS",
+    "service_state": "RUNNING",
+    "process_identity_changed": true
+  },
+  "protection": {
+    "filebogo_service_unchanged": true,
+    "filebogo_process_count_unchanged": true,
+    "filebogo_executable_hash_unchanged": true,
+    "filebogo_file_count": 125,
+    "filebogo_file_aggregate_unchanged": true,
+    "desktop_sentinel_unchanged": true,
+    "documents_sentinel_unchanged": true,
+    "downloads_sentinel_unchanged": true
+  },
+  "exact_rule_state": {
+    "rule_id": "grid.natservice.001",
+    "natservice_present": false,
+    "natsvc_process_present": false,
+    "audit_only": "NO_MATCH",
+    "automatic_removal_observed": false,
+    "jsonl_live_removal_record": false,
+    "blocker": "EXACT_NATSVC_PATH_OCCUPIED_BY_PREEXISTING_DIRECTORY"
+  },
+  "safety": {
+    "fixture_mutation_started": false,
+    "path_collision_rejected_before_mutation": true,
+    "reference_executed": false,
+    "m23_started": false,
+    "m24_started": false
+  },
+  "validation": {
+    "release_build": "PASS_17_PROJECTS_0_WARNINGS_0_ERRORS",
+    "fixture_build": "PASS",
+    "tests": "PASS_66_0_FAILED",
+    "formatting": "PASS",
+    "rules": "PASS_7",
+    "powershell_parse": "PASS",
+    "package": "PASS_PRIVATE_RUNTIME_286_HASHES",
+    "canonical": "PASS",
+    "git_diff_check": "PASS"
+  }
+}

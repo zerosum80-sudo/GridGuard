@@ -57,4 +57,24 @@ path fails configuration validation.
 - `git diff --check`;
 - commit, push, and remote HEAD equality.
 
-Live elevated service installation is a separate deployment validation step.
+## Live deployment validation amendment
+
+On 2026-07-28 the operator explicitly approved elevated deployment and physical
+Windows validation. This includes creating and starting a harmless synthetic
+Windows Service fixture using only the exact `NATService` name and exact
+`natsvc.exe` path, so service creation, service state, and process creation can be
+observed without executing the reference or third-party binary.
+
+The fixture must contain no target or proprietary code. Baseline and post-removal
+fingerprints must prove Filebogo, the P2P application, Desktop, Documents, and
+Downloads are unchanged. Any fixture residue must be removed after GridGuard has
+logged its own exact action. GridGuard remains installed for reboot validation.
+
+## Live observation result
+
+Elevated deployment and physical reboot validation passed. NATService did not
+recreate. The exact natsvc file path is occupied by a pre-existing directory, so
+placing the fixture would require touching an unmatched object. The validator
+stopped before mutation, and the runtime rejects this path collision. Live
+automatic removal and its JSONL record remain unobserved; this contract does not
+authorize moving, deleting, or renaming the directory.

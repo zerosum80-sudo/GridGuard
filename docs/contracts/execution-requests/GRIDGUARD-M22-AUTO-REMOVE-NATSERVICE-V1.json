@@ -11,6 +11,6 @@
   "authorized_rule_id": "grid.natservice.001",
   "authorized_service_name": "NATService",
   "authorized_component_path": "%ProgramFiles(x86)%\\NAT Service\\natsvc.exe",
-  "status": "IMPLEMENTED_AWAITING_ELEVATED_DEPLOYMENT_VALIDATION",
-  "next_action": "INSTALL_PACKAGED_GRIDGUARD_SERVICE_AND_RUN_LIVE_M22_VALIDATION"
+  "status": "PARTIAL_PASS_BLOCKED_LIVE_AUTO_REMOVAL_TRIGGER",
+  "next_action": "WAIT_FOR_REAL_NATSERVICE_RECREATION_OR_OPERATOR_RESOLVE_PATH_COLLISION"
 }

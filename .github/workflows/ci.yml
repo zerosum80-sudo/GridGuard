@@ -31,6 +31,7 @@ jobs:
           foreach ($required in @(
             'artifacts/package/GridGuard.Service/GridGuard.Service.exe',
             'artifacts/package/GridGuard.Service/appsettings.json',
+            'artifacts/package/GridGuard.Service/runtime/dotnet.exe',
             'artifacts/package/rules/candidate/grid.natservice.001.json',
             'artifacts/package/scripts/Install-GridGuardService.ps1',
             'artifacts/package/GridGuard.SnapshotDiff/GridGuard.SnapshotDiff.dll',

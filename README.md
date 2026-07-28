@@ -13,8 +13,9 @@ The reference binary is never executed or redistributed.
 
 See `PROJECT_STATUS.json`, `CURRENT_TASK.md`, and `NEXT_SESSION.md`. Static reference
 analysis is closed; the reference binary remains ignored and must never be executed
-or redistributed. The M22 exact auto-removal implementation is ready for elevated
-service deployment and live validation.
+or redistributed. M22 elevated deployment and physical reboot validation passed.
+Live automatic removal remains blocked because NATService did not recreate and the
+exact natsvc file path is occupied by a pre-existing directory.
 
 ## Safety
 

@@ -149,6 +149,27 @@ public sealed class GridAutoRemovalTests
     }
 
     [Fact]
+    public async Task DirectoryAtExactComponentPathFailsBeforeMutation()
+    {
+        var path = AllowedPath();
+        var host = new FakeHost
+        {
+            Before = new(true, false, false, path, PathCollisionPresent: true)
+        };
+        var result = await new GridAutoRemovalWorkflow(
+                Options(path),
+                host,
+                new FakeVerifier(true),
+                new FakeAudit())
+            .ExecuteAsync(Detection(path));
+
+        Assert.Equal("FAILED", result.Status);
+        Assert.Equal("NOT_RUN", result.VerificationResult);
+        Assert.Equal(["inspect"], host.Calls);
+        Assert.Contains("directory", result.Errors.Single());
+    }
+
+    [Fact]
     public void PolicyRejectsBroaderServiceOrPathConfiguration()
     {
         Assert.NotEmpty(GridAutoRemovalPolicy.Validate(
